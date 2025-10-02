@@ -3,6 +3,8 @@ import numpy as np
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from statsmodels.nonparametric.kernel_density import KDEMultivariate
+import pandas as pd
+
 
 plt.rcParams.update({"font.size": 9})
 
@@ -34,7 +36,7 @@ def scree(X, out=None, target=0.90):
     plt.xlabel('Number of Principal Components', fontsize=14)
     plt.ylabel('Cumulative Explained Variance', fontsize=14)
     plt.xticks(k, fontsize=12); plt.yticks(fontsize=12)
-    plt.ylim(0, 1.02); plt.xlim(1, k[-1])
+    plt.ylim(0, 1.05); plt.xlim(0.55, k[-1]+0.55)
     #plt.grid(True, alpha=0.35)
     plt.legend(loc='lower right', fontsize=12) #, frameon=True)
     plt.tight_layout()
@@ -49,3 +51,38 @@ def learn_kde(data, var_type=None):
     if var_type is None:
         var_type = 'c' * X.shape[1]
     return KDEMultivariate(data=X, var_type=var_type, bw='normal_reference')
+
+def score_with_kdes(X_pca, kde_by_class, eps=1e-300):
+    X_pca = np.asarray(X_pca, float)
+    classes = np.array(list(kde_by_class.keys()))
+    logpdf = np.column_stack([
+        np.log(np.maximum(kde_by_class[c].pdf(X_pca), eps))
+        for c in classes
+    ])
+    y_pred = classes[np.argmax(logpdf, axis=1)]
+
+    argmax_idx = logpdf.argmax(axis=1)
+    preds = pd.DataFrame({
+        "pred_label": classes[argmax_idx],
+        "argmax_idx": argmax_idx,
+        "argmax_logpdf": logpdf[np.arange(len(argmax_idx)), argmax_idx],
+    })
+    scores = pd.DataFrame(logpdf, columns=[f'state{x}_prob' for x in classes])
+
+    return preds, scores 
+
+def reshape_to_cmat(tbl):
+    # tbl should have columns: target_site, cell_name, pred_label
+    state_wide = (
+        tbl.pivot_table(
+            index='target_site',
+            columns='cell_name',
+            values='pred_label',
+            aggfunc='first'   
+        )
+        .sort_index()                
+        .sort_index(axis=1)          
+        .fillna(-1)
+        .astype(int)
+    )
+    return state_wide

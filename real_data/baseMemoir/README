@@ -1,5 +1,5 @@
-1. Extracting workspace from BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/all_position_summary_workspace.mat.
-
+1. Extracting workspace from BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/all_position_summary_workspace.mat. Work is in `process baseMemoir.ipynb`.
+2. Training densities and sanity checking the dimensions in `baseMemoir densities.ipynb`. Outputs generated to `plots/` for figures and `inputs/` for character matrix and observation matrix for Colonies 2 and 5. 
 
 Notes:
 - dropped cell 19 from Colony 5: centroids_df.
@@ -8,3 +8,27 @@ Notes:
 - translated trees back to before their nexus format relabeling
 - separated into two trees; one with spatial internal labeling, and one with branch lengths.
 
+
+(base) gc3045@COS-T0264KMR6R trees % nw_labels -I /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/inputs/trees/published.baseMemoir.pos2.newick > published.baseMemoir.pos2.cellnames.txt
+(base) gc3045@COS-T0264KMR6R trees % nw_labels -I /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/inputs/trees/published.baseMemoir.pos5.newick > published.baseMemoir.pos5.cellnames.txt
+
+(ete3-py312) gc3045@COS-T0264KMR6R preprocess % ./baseMemoir_trees.sh
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p2_barcs.trees.tree
+Type: Phylogram #nodes: 59 #leaves: 30 #dichotomies: 29 #leaf labels: 30 #inner labels: 0
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p3_barcs.trees.tree
+Type: Phylogram #nodes: 29 #leaves: 15 #dichotomies: 14 #leaf labels: 15 #inner labels: 0
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p4_barcs.trees.tree
+Type: Phylogram #nodes: 35 #leaves: 18 #dichotomies: 17 #leaf labels: 18 #inner labels: 0
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p5_barcs.trees.tree
+Type: Phylogram #nodes: 53 #leaves: 27 #dichotomies: 26 #leaf labels: 27 #inner labels: 0
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p6_barcs.trees.tree
+Type: Phylogram #nodes: 31 #leaves: 16 #dichotomies: 15 #leaf labels: 16 #inner labels: 0
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p78_barcs.trees.tree
+Type: Phylogram #nodes: 99 #leaves: 50 #dichotomies: 49 #leaf labels: 50 #inner labels: 0
+Processing: /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/BaseMEM_Magic/Magic/Figures3_5_and_SupFigures2_4-6/lineage_analysis/BEAST_analysis/Trial4/bigmem_test_all_trees_plus_space_geo-p910_barcs.trees.tree
+Type: Phylogram #nodes: 81 #leaves: 41 #dichotomies: 40 #leaf labels: 41 #inner labels: 0
+
+(base) gc3045@COS-T0264KMR6R inputs % Rscript /Users/gc3045/git/fast-laml/scripts/generate_starting_trees.R -i baseMemoir_colony5_kde_character_matrix.csv -o trees/baseMemoir.colony5/baseMemoir.colony5
+Wrote 10 random addition trees and 1 neighbor joining tree to trees/baseMemoir.colony5/baseMemoir.colony5.*
+(base) gc3045@COS-T0264KMR6R inputs % Rscript /Users/gc3045/git/fast-laml/scripts/generate_starting_trees.R -i baseMemoir_colony2_kde_character_matrix.csv -o trees/baseMemoir.colony2/baseMemoir.colony2
+Wrote 10 random addition trees and 1 neighbor joining tree to trees/baseMemoir.colony2/baseMemoir.colony2.*
