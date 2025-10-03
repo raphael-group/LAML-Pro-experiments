@@ -32,3 +32,25 @@ Type: Phylogram #nodes: 81 #leaves: 41 #dichotomies: 40 #leaf labels: 41 #inner 
 Wrote 10 random addition trees and 1 neighbor joining tree to trees/baseMemoir.colony5/baseMemoir.colony5.*
 (base) gc3045@COS-T0264KMR6R inputs % Rscript /Users/gc3045/git/fast-laml/scripts/generate_starting_trees.R -i baseMemoir_colony2_kde_character_matrix.csv -o trees/baseMemoir.colony2/baseMemoir.colony2
 Wrote 10 random addition trees and 1 neighbor joining tree to trees/baseMemoir.colony2/baseMemoir.colony2.*
+
+(ete3-py312) gc3045@PU-T0264KMR6R analysis % ./run_baseMemoir_spatial_analysis.sh
+LAML-Pro:
+input tree /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/runjobs/outputs_baseMemoir_colony2/fastlaml_baseMemoir.colony2.published_tree.scaled.newick
+Total min square sum: 53.07190450873679
+Total maximum likelihood under Brownian motion migration: -382.9284320484105
+Wrote inferred internal node states to colony2_lp_ancestral_labeling.txt
+baseMemoir:
+input tree /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/inputs//trees/baseMemoir.colony2.published.scaled.newick
+Total min square sum: 94.68602349531953
+Total maximum likelihood under Brownian motion migration: -400.0334905030711
+Wrote inferred internal node states to colony2_bm__ancestral_labeling.txt
+LAML-Pro:
+input tree /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/runjobs/outputs_baseMemoir_colony5/fastlaml_baseMemoir.colony5.stepwise_addition_03_tree.scaled.newick
+Total min square sum: 114.69416747154368
+Total maximum likelihood under Brownian motion migration: -351.29050260962794
+Wrote inferred internal node states to colony5_lp_ancestral_labeling.txt
+baseMemoir:
+input tree /Users/gc3045/git/laml2-experiments/real_data/baseMemoir/inputs//trees/baseMemoir.colony5.published.scaled.newick
+Total min square sum: 91.13278941149107
+Total maximum likelihood under Brownian motion migration: -363.79538391355425
+Wrote inferred internal node states to colony5_bm__ancestral_labeling.txt
