@@ -13,7 +13,7 @@ centroids_fname="${inputs_basename}/colony${colony}_centroids.txt"
 echo "LAML-Pro:"
 python /Users/gc3045/git/fast-laml/scripts/euclidean_solver.py --tree $lp_treefile --leaf_df ${centroids_fname} --output "colony${colony}_lp_ancestral_labeling.txt" --use_branch_length
 echo "baseMemoir:"
-python /Users/gc3045/git/fast-laml/scripts/euclidean_solver.py --tree $bm_treefile --leaf_df ${centroids_fname} --output "colony${colony}_bm__ancestral_labeling.txt" --use_branch_length
+python /Users/gc3045/git/fast-laml/scripts/euclidean_solver.py --tree $bm_treefile --leaf_df ${centroids_fname} --output "colony${colony}_bm_ancestral_labeling.txt" --use_branch_length
 
 ########################################################
 colony=5
@@ -28,5 +28,5 @@ centroids_fname="${inputs_basename}/colony${colony}_centroids.txt"
 echo "LAML-Pro:"
 python /Users/gc3045/git/fast-laml/scripts/euclidean_solver.py --tree $lp_treefile --leaf_df ${centroids_fname} --output "colony${colony}_lp_ancestral_labeling.txt" --use_branch_length
 echo "baseMemoir:"
-python /Users/gc3045/git/fast-laml/scripts/euclidean_solver.py --tree $bm_treefile --leaf_df ${centroids_fname} --output "colony${colony}_bm__ancestral_labeling.txt" --use_branch_length
+python /Users/gc3045/git/fast-laml/scripts/euclidean_solver.py --tree $bm_treefile --leaf_df ${centroids_fname} --output "colony${colony}_bm_ancestral_labeling.txt" --use_branch_length
 

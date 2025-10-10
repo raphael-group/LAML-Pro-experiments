@@ -11,6 +11,11 @@ from scipy.cluster.hierarchy import linkage, leaves_list
 from scipy.spatial.distance import pdist
 from scipy.cluster.hierarchy import fcluster
 import treeswift as ts
+from scipy.spatial.distance import pdist, squareform
+from scipy.stats import pearsonr, spearmanr
+import plotly.graph_objects as go
+import matplotlib.gridspec as gridspec
+
 
 OKABE = ['grey', 'white', '#E69F00','#56B4E9','#009E73','#F0E442',
          '#0072B2','#D55E00','#CC79A7','#000000']
@@ -680,3 +685,524 @@ def save_df_to_pdf(df, filename="table.pdf", title=None, floatfmt="{:.4f}", font
     fig.savefig(filename, bbox_inches="tight")
     plt.close(fig)
     return filename
+
+
+
+def plot_correlation(centroids_df, bm_distmat, lp_distmat,
+                                    title="Colony 2 Leaf-pair distances: phylogenetic vs spatial",
+                                    outfile=None, figsize=(10,4)):
+    # --- spatial distance matrix from cell centroids ---
+    coords = centroids_df.iloc[:, :2].astype(float).copy()
+    coords.columns = ["x", "y"]
+    labels = coords.index.astype(str)
+    spatial = pd.DataFrame(squareform(pdist(coords.values, metric="euclidean")),
+                           index=labels, columns=labels)
+
+    # --- make sure distance matrices use string labels & align all three ---
+    bm = bm_distmat.copy(); lp = lp_distmat.copy()
+    for M in (bm, lp):
+        M.index = M.index.astype(str); M.columns = M.columns.astype(str)
+
+    common = spatial.index.intersection(bm.index).intersection(lp.index)
+    spatial = spatial.loc[common, common]
+    bm = bm.loc[common, common]
+    lp = lp.loc[common, common]
+
+    # use only unique unordered pairs (upper triangle without diagonal)
+    n = len(common)
+    iu = np.triu_indices(n, k=1)
+    y = spatial.to_numpy()[iu]
+    x_bm = bm.to_numpy()[iu]
+    x_lp = lp.to_numpy()[iu]
+
+    # shared limits
+    xs = np.concatenate([x_bm, x_lp]); ys = y
+    lo_x, hi_x = xs.min(), xs.max()
+    lo_y, hi_y = ys.min(), ys.max()
+    pad_x = 0.05*(hi_x-lo_x) if hi_x > lo_x else 0.05
+    pad_y = 0.07*(hi_y-lo_y) if hi_y > lo_y else 0.07
+
+    # --- plotting ---
+    fig, axes = plt.subplots(1, 2, sharex=True, sharey=True, figsize=figsize, dpi=150)
+    for ax, (xvals, subtitle) in zip(axes, [(x_bm, "baseMemoir"), (x_lp, "LAML-Pro")]):
+        sns.regplot(x=xvals, y=y, ax=ax,
+                    scatter_kws=dict(s=22, alpha=0.6),
+                    line_kws=dict(lw=2, alpha=0.9))
+        r, p = pearsonr(xvals, y)
+        rho, ps = spearmanr(xvals, y)
+        ax.text(0.03, 0.97,
+                f"Pearson r = {r:.3f} (p={p:.1e})\n"
+                f"Spearman ρ = {rho:.3f} (p={ps:.1e})",
+                transform=ax.transAxes, va="top", ha="left",
+                bbox=dict(facecolor="white", alpha=0.85, edgecolor="none"))
+        ax.set_title(subtitle)
+        ax.set_xlabel("Phylogenetic distance")
+
+    axes[0].set_ylabel("Spatial distance")
+    axes[0].set_xlim(lo_x - pad_x, hi_x + pad_x)
+    axes[0].set_ylim(lo_y - pad_y, hi_y + pad_y)
+
+    if title:
+        fig.suptitle(title, y=1.02, fontsize=16)
+        plt.tight_layout()
+
+    if outfile:
+        fig.savefig(outfile, bbox_inches="tight", dpi=150)
+    plt.show()
+    return fig, axes
+
+def plot_bl_variance(bm_tree_df, lp_tree_df, title, outfile):
+    fig = plt.figure(figsize=(3.6, 6), dpi=150)
+    gs  = fig.add_gridspec(2, 1, height_ratios=[1, 5], hspace=0.05)
+    ax_hist = fig.add_subplot(gs[0])
+    ax      = fig.add_subplot(gs[1], sharex=ax_hist)
+
+    # scatter (x=branch length, y=cumulative length)
+    ax.scatter(bm_tree_df["branch_len"], bm_tree_df["cum_len"], s=22, color="C0", alpha=0.85,
+               label=f"baseMemoir (var={np.var(bm_tree_df['cum_len']):.4g})")
+    ax.scatter(lp_tree_df["branch_len"], lp_tree_df["cum_len"], s=22, color="C1", alpha=0.85,
+               label=f"LAML-Pro (var={np.var(lp_tree_df['cum_len']):.4g})")
+
+    ax.set_xlabel("Branch length")
+    ax.set_ylabel("Cumulative branch length")
+    ax.legend(loc="lower right", fontsize=8, frameon=False)
+
+    bins = 50
+    ax_hist.hist(bm_tree_df["branch_len"], bins=bins, color="C0", alpha=0.5, edgecolor="none")
+    ax_hist.hist(lp_tree_df["branch_len"], bins=bins, color="C1", alpha=0.5, edgecolor="none")
+    ax_hist.tick_params(axis="x", labelbottom=False)
+    ax_hist.set_ylabel("Count")
+    ax_hist.spines["right"].set_visible(False)
+    ax_hist.spines["top"].set_visible(False)
+
+    # shared x-limits (pad a bit)
+    xmin = min(bm_tree_df["branch_len"].min(), lp_tree_df["branch_len"].min())
+    xmax = max(bm_tree_df["branch_len"].max(), lp_tree_df["branch_len"].max())
+    pad  = 0.05 * (xmax - xmin) if xmax > xmin else 0.5
+    ax.set_xlim(xmin - pad, xmax + pad)
+    if title:
+        fig.suptitle(title, y=1.02, fontsize=16)
+        plt.tight_layout()
+
+    if outfile:
+        fig.savefig(outfile, bbox_inches="tight", dpi=150)
+    return fig
+
+def branch_table(tree):
+    rows = []
+    for u in tree.traverse_preorder():
+        bl = u.get_edge_length()
+        height = tree.distance_between(tree.root, u)
+        rows.append({"node": u.label, "branch_len": bl, "cum_len": height})
+    return pd.DataFrame(rows)
+
+
+def add_internal_labels(tree):
+    i = 0
+    for node in tree.traverse_postorder():
+        if node.label is None:
+            node.label = f"internal_{i}"
+            i += 1
+    return tree
+
+
+
+def plot_tree_3d(ts_tree, merged_df, x_col="x", y_col="y", title="Tree in 3D (x, y, cumulative branch length)",
+                 outfile=None):
+    """
+    ts_tree: a treeswift.Tree object
+    merged_df: pandas DataFrame with index=leaf names, columns [x_col, y_col]
+    """
+
+    # ---- 1) Basic sanity checks
+    if not isinstance(merged_df.index, pd.Index):
+        raise ValueError("merged_df must have an index of leaf names.")
+    for c in (x_col, y_col):
+        if c not in merged_df.columns:
+            raise KeyError(f"Column '{c}' not found in merged_df")
+
+    # ---- 2) Utilities for TreeSwift that are robust to attribute name variants
+    def is_leaf(node):
+        return getattr(node, "is_leaf", lambda: len(get_children(node)) == 0)()
+
+    def get_children(node):
+        return getattr(node, "children", getattr(node, "get_children", lambda: [])()) or []
+
+    def get_parent(node):
+        return getattr(node, "parent", getattr(node, "get_parent", lambda: None)())
+
+    def get_label(node):
+        return getattr(node, "label", getattr(node, "get_label", lambda: None)())
+
+    def get_edge_length(node):
+        # edge length is from node to its parent; root may have None
+        el = getattr(node, "edge_length", getattr(node, "get_edge_length", lambda: None)())
+        return 0.0 if el is None else float(el)
+
+    root = getattr(ts_tree, "root", getattr(ts_tree, "get_root", lambda: None)())
+    if root is None:
+        raise ValueError("Could not determine root of the tree.")
+
+    # ---- 3) Gather leaf coords from merged_df
+    # Allow numeric strings vs ints: coerce index to string for matching
+    leaf_xy = {}
+    df_index_as_str = merged_df.copy()
+    df_index_as_str.index = df_index_as_str.index.map(str)
+    for node in ts_tree.traverse_preorder():
+        if is_leaf(node):
+            lab = get_label(node)
+            if lab is None:
+                continue
+            lab = str(lab)
+            if lab in df_index_as_str.index:
+                x = float(df_index_as_str.loc[lab, x_col])
+                y = float(df_index_as_str.loc[lab, y_col])
+                leaf_xy[node] = (x, y)
+
+    if not leaf_xy:
+        raise ValueError("No leaf labels from the tree matched merged_df.index. "
+                         "Make sure the leaf names equal the DataFrame index.")
+
+    # ---- 4) Compute descendant-leaf means for every node (postorder)
+    # For each node, keep a running sum and count of descendant leaf coords
+    sum_counts = {}  # node -> (sum_x, sum_y, count)
+    for node in ts_tree.traverse_postorder():
+        if is_leaf(node) and node in leaf_xy:
+            x, y = leaf_xy[node]
+            sum_counts[node] = [x, y, 1]
+        else:
+            sx, sy, cnt = 0.0, 0.0, 0
+            for ch in get_children(node):
+                if ch in sum_counts:
+                    sx += sum_counts[ch][0]
+                    sy += sum_counts[ch][1]
+                    cnt += sum_counts[ch][2]
+            # If a clade has no leaves in df, skip (won't plot that node)
+            if cnt > 0:
+                sum_counts[node] = [sx, sy, cnt]
+
+    xy = {}  # node -> (x, y)
+    for node, (sx, sy, cnt) in sum_counts.items():
+        xy[node] = (sx / cnt, sy / cnt)
+
+    # ---- 5) Compute cumulative branch lengths (z) from the root (preorder)
+    z = {root: 0.0}
+    for node in ts_tree.traverse_preorder():
+        for ch in get_children(node):
+            z[ch] = z.get(node, 0.0) + get_edge_length(ch)
+
+    # ---- 6) Build edge segments (lines) and node markers
+    # - one lines trace with NaN separators
+    # - one markers trace for leaves (blue)
+    # - one markers trace for internals (red)
+
+    line_x, line_y, line_z = [], [], []
+    leaf_x, leaf_y, leaf_z = [], [], []
+    internal_x, internal_y, internal_z = [], [], []
+
+    leaf_labels = []
+    for node in ts_tree.traverse_preorder():
+        # skip nodes that don't have xy (e.g., clades with no matching leaves)
+        if node not in xy or node not in z:
+            continue
+
+        node_x, node_y, node_z = xy[node][0], xy[node][1], z[node]
+
+        if is_leaf(node):
+            leaf_x.append(node_x); leaf_y.append(node_y); leaf_z.append(node_z)
+            leaf_labels.append(node.label)
+        else:
+            internal_x.append(node_x); internal_y.append(node_y); internal_z.append(node_z)
+
+        par = get_parent(node)
+        if par is not None and par in xy and par in z:
+            px, py = xy[par]
+            pz = z[par]
+            # segment parent -> child
+            line_x += [px, node_x, None]
+            line_y += [py, node_y, None]
+            line_z += [pz, node_z, None]
+
+    # ---- 7) Create Plotly figure
+    lines = go.Scatter3d(
+        x=line_x, y=line_y, z=line_z,
+        mode="lines",
+        line=dict(width=3),
+        name="Edges",
+        hoverinfo="skip"
+    )
+
+    leaves = go.Scatter3d(
+        x=leaf_x, y=leaf_y, z=leaf_z,
+        text=leaf_labels,
+        textposition="top center",
+        textfont=dict(size=12),
+        mode="markers+text",
+        marker=dict(size=5, color="green"),
+        name="Leaves",
+        hoverinfo="skip"
+    )
+
+    internals = go.Scatter3d(
+        x=internal_x, y=internal_y, z=internal_z,
+        mode="markers",
+        marker=dict(size=5, color="blue"),
+        name="Internal nodes"
+    )
+
+    fig = go.Figure(data=[lines, internals, leaves])
+    fig.update_layout(
+        title=title,
+        scene=dict(
+            xaxis_title=x_col,
+            yaxis_title=y_col,
+            zaxis_title="Cumulative branch length"
+        ),
+        legend=dict(itemsizing="constant")
+    )
+
+    # ---- 8) Open in browser
+    if outfile:
+        from pathlib import Path
+        Path(outfile).parent.mkdir(parents=True, exist_ok=True)
+        fig.write_html(outfile, include_plotlyjs=True, full_html=True)
+        print(f"Saved interactive HTML to: {outfile}")
+    try:
+        from plotly.offline import plot as _offline_plot
+        _offline_plot(fig, auto_open=True)
+    except Exception:
+        # Fallback: display in notebook environments (if applicable)
+        fig.show()
+
+    return fig
+
+def edge_ratio_table(ts_tree, merged_df, x_col="x", y_col="y"):
+    """
+    Build a table with, for every node:
+      - (x,y) position (leaf-based descendant mean for internals)
+      - parent (x,y)
+      - edge length (to parent)
+      - Euclidean distance in (x,y) to parent
+      - ratio = edge_length / xy_distance
+
+    Parameters
+    ----------
+    ts_tree : treeswift.Tree
+    merged_df : pd.DataFrame
+        index = leaf names (string/int ok), columns include x_col, y_col
+    """
+    # ---- helpers for TreeSwift (robust to attribute name variants)
+    def is_leaf(n):       return getattr(n, "is_leaf", lambda: len(get_children(n)) == 0)()
+    def get_children(n):  return getattr(n, "children", getattr(n, "get_children", lambda: [])()) or []
+    def get_parent(n):    return getattr(n, "parent", getattr(n, "get_parent", lambda: None)())
+    def get_label(n):     return getattr(n, "label", getattr(n, "get_label", lambda: None)())
+    def edge_len(n):
+        el = getattr(n, "edge_length", getattr(n, "get_edge_length", lambda: None)())
+        return 0.0 if el is None else float(el)
+    root = getattr(ts_tree, "root", getattr(ts_tree, "get_root", lambda: None)())
+    if root is None:
+        raise ValueError("Cannot determine tree root.")
+
+    # ---- gather leaf coordinates from merged_df (match on stringified labels)
+    df_idx = merged_df.copy()
+    df_idx.index = df_idx.index.map(str)
+    leaf_xy = {}
+    for n in ts_tree.traverse_preorder():
+        if is_leaf(n):
+            lab = get_label(n)
+            if lab is None:
+                continue
+            lab = str(lab)
+            if lab in df_idx.index:
+                leaf_xy[n] = (float(df_idx.loc[lab, x_col]), float(df_idx.loc[lab, y_col]))
+
+    if not leaf_xy:
+        raise ValueError("No leaf labels matched merged_df.index.")
+
+    # ---- descendant-mean (x,y) for every node (postorder)
+    sum_counts = {}
+    for n in ts_tree.traverse_postorder():
+        if is_leaf(n) and n in leaf_xy:
+            x, y = leaf_xy[n]
+            sum_counts[n] = [x, y, 1]
+        else:
+            sx = sy = 0.0
+            cnt = 0
+            for ch in get_children(n):
+                if ch in sum_counts:
+                    sx += sum_counts[ch][0]
+                    sy += sum_counts[ch][1]
+                    cnt += sum_counts[ch][2]
+            if cnt > 0:
+                sum_counts[n] = [sx, sy, cnt]
+
+    xy = {n: (sx / cnt, sy / cnt) for n, (sx, sy, cnt) in sum_counts.items()}
+
+    # ---- cumulative z (not required for the ratio, but handy for debugging/exports)
+    z = {root: 0.0}
+    for n in ts_tree.traverse_preorder():
+        for ch in get_children(n):
+            z[ch] = z.get(n, 0.0) + edge_len(ch)
+
+    # ---- assemble rows
+    rows = []
+    for n in ts_tree.traverse_preorder():
+        lab = get_label(n)
+        lab_str = str(lab) if lab is not None else ""
+        par = get_parent(n)
+
+        if n not in xy:
+            # (subtree had no matched leaves) — skip row entirely
+            continue
+
+        x, y = xy[n]
+        zz = z.get(n, np.nan)
+
+        # parent values
+        if par is not None and par in xy:
+            px, py = xy[par]
+            pz = z.get(par, np.nan)
+            e = edge_len(n)
+            d = math.hypot(x - px, y - py)
+            ratio = (e / d) if d > 0 else (np.nan if e == 0 else np.inf)
+            par_label = get_label(par)
+            par_label_str = str(par_label) if par_label is not None else ""
+        else:
+            px = py = pz = np.nan
+            e = d = ratio = np.nan
+            par_label_str = ""
+
+        rows.append({
+            "node_label": lab_str,
+            "is_leaf": is_leaf(n),
+            "x": x, "y": y, "z": zz,
+            "parent_label": par_label_str,
+            "parent_x": px, "parent_y": py, "parent_z": pz,
+            "edge_length": e,
+            "xy_distance_to_parent": d,
+            "bl_over_xy": ratio
+        })
+
+    df = pd.DataFrame(rows)
+    # (Optional) bring leaves first, then internals
+    df = df.sort_values(by=["is_leaf"], ascending=False).reset_index(drop=True)
+    return df
+
+
+def plot_genotypecall_summary(
+    summary_2x2,
+    merged,
+    *,
+    outfile=None,                          # <── new argument
+    figsize=(12, 4.6),
+    width_ratios=(1.1, 1.3),
+    hspace=0.40,
+    wspace=0.25,
+    bins_unedited=30,
+    bins_edited=30,
+    palette_unedited={"Agree": "#4C72B0", "Disagree": "#DD8452"},
+    palette_edited={
+        "Agree": "#4C72B0",
+        "Disagree: LP unedited": "#DD8452",
+        "Disagree: LP different edit": "#55A868",
+    },
+    heatmap_cmap="Blues",
+    xlim=(0, 1),
+    heatmap_title="Genotype Call Counts",
+    uned_title="baseMemoir unedited calls",
+    ed_title="baseMemoir edit calls",
+    xlabel_bottom="baseMemoir posterior probability",
+    ylabel_hist="proportion of sites",
+    normalize_stat="proportion",
+):
+    """
+    Create a 2×2 layout showing:
+      (A) Heatmap of genotype call counts
+      (B) Histogram of unedited sites (Agreement vs Disagreement)
+      (C) Histogram of edited sites (Agreement vs two Disagreement types)
+
+    If `outfile` is provided, saves the figure to that path.
+
+    Returns (fig, (ax_heat, ax_uned, ax_ed)).
+    """
+
+    # --- Order heatmap ---
+    summary_2x2 = summary_2x2.loc[["Unedited", "Edited"], ["Unedited", "Edited"]]
+
+    # --- Subsets for histograms ---
+    unedited = (
+        merged.query("bm_state != -1 and lp_state != -1 and bM_geno == 0")
+        .assign(agreement=lambda df: df["lp_state"].eq(0).map({True: "Agree", False: "Disagree"}))
+    )
+
+    edited = merged.copy()
+    for col in ["bM_geno", "lp_state", "bm_state"]:
+        edited[col] = pd.to_numeric(edited[col], errors="coerce")
+    edited = edited.query("bM_geno != 0 and bm_state != -1 and lp_state != -1").copy()
+    edited["cmp"] = np.select(
+        [
+            edited["lp_state"].eq(0),
+            edited["lp_state"].ne(0) & edited["lp_state"].ne(edited["bM_geno"]),
+        ],
+        ["Disagree: LP unedited", "Disagree: LP different edit"],
+        default="Agree",
+    )
+    order = ["Agree", "Disagree: LP unedited", "Disagree: LP different edit"]
+    edited["cmp"] = pd.Categorical(edited["cmp"], categories=order, ordered=True)
+
+    # --- Layout ---
+    fig = plt.figure(figsize=figsize)
+    gs = gridspec.GridSpec(
+        nrows=2, ncols=2,
+        width_ratios=width_ratios, height_ratios=[1, 1],
+        wspace=wspace, hspace=hspace
+    )
+    ax_heat = fig.add_subplot(gs[:, 0])
+    ax_uned = fig.add_subplot(gs[0, 1])
+    ax_ed   = fig.add_subplot(gs[1, 1])
+
+    # --- (A) Heatmap ---
+    sns.heatmap(
+        summary_2x2, annot=True, fmt="g", cmap=heatmap_cmap,
+        cbar=False, linewidths=0.5, linecolor="white",
+        square=True, ax=ax_heat
+    )
+    ax_heat.set_title(heatmap_title)
+    ax_heat.set_xlabel("LAML-Pro genotype call")
+    ax_heat.set_ylabel("baseMemoir genotype call")
+
+    # --- (B) Unedited histogram ---
+    sns.histplot(
+        data=unedited, x="bM_pmax", hue="agreement",
+        bins=bins_unedited, element="step", stat=normalize_stat,
+        common_norm=False, multiple="layer", palette=palette_unedited, ax=ax_uned
+    )
+    ax_uned.set_title(uned_title)
+    ax_uned.set_xlabel("")
+    ax_uned.set_ylabel(ylabel_hist)
+    if xlim: ax_uned.set_xlim(*xlim)
+    leg = ax_uned.get_legend()
+    if leg: leg.set_title(None)
+
+    # --- (C) Edited histogram ---
+    sns.histplot(
+        data=edited, x="bM_pmax", hue="cmp", hue_order=order,
+        bins=bins_edited, element="step", stat=normalize_stat,
+        common_norm=False, multiple="layer", palette=palette_edited, ax=ax_ed
+    )
+    ax_ed.set_title(ed_title)
+    ax_ed.set_xlabel(xlabel_bottom)
+    ax_ed.set_ylabel(ylabel_hist)
+    if xlim: ax_ed.set_xlim(*xlim)
+    leg = ax_ed.get_legend()
+    if leg: leg.set_title(None)
+
+    plt.tight_layout()
+
+    # --- Save if outfile is given ---
+    if outfile is not None:
+        fig.savefig(outfile, dpi=300, bbox_inches="tight")
+        print(f"✅ Saved figure to: {outfile}")
+
+    return fig, (ax_heat, ax_uned, ax_ed)
+

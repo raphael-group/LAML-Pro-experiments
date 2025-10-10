@@ -4,7 +4,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from statsmodels.nonparametric.kernel_density import KDEMultivariate
 import pandas as pd
-
+import re
 
 plt.rcParams.update({"font.size": 9})
 
@@ -70,6 +70,7 @@ def score_with_kdes(X_pca, kde_by_class, eps=1e-300):
     scores = pd.DataFrame(logpdf, columns=[f'state{x}_prob' for x in classes])
 
     return preds, scores 
+    
 
 def reshape_to_cmat(tbl):
     # tbl should have columns: target_site, cell_name, pred_label
@@ -86,3 +87,34 @@ def reshape_to_cmat(tbl):
         .astype(int)
     )
     return state_wide
+
+
+def _site_slice(dfw, site, block_idx, id_cols):
+    print("Note this helper function is specific to PEtracer. Assumes the features are r25-r51.")
+    """Extract one site’s row-block with mapped features & labels."""
+    # rows are the same; we just duplicate with a new target_site label
+    out = dfw[id_cols].copy()
+    out["target_site"] = site
+
+    # pet_state from the site’s prediction column (HEK3/EMX1/RNF2)
+    out["pet_state"] = dfw[site]
+
+    # seq_state / brightest_state / prob from the per-site columns
+    if f"{site}_actual" in dfw.columns:
+        out["seq_state"]       = dfw[f"{site}_actual"]
+    if f"{site}_brightest" in dfw.columns:
+        out["brightest_state"] = dfw[f"{site}_brightest"]
+    out["pet_prob"]            = dfw[f"{site}_prob"]
+
+    rcols = [c for c in dfw.columns if re.fullmatch(r"r(?:2[5-9]|3\d|4\d|5[01])", c)]
+    rcols_sorted = sorted(rcols, key=lambda s: int(s[1:]))
+
+    # map the correct 9-of-27 r-features to feature_0..feature_8
+    cols_for_site = rcols_sorted[9*block_idx : 9*(block_idx+1)]
+    print(cols_for_site, [site in dfw.columns for site in cols_for_site])
+    block_vals = dfw[cols_for_site].apply(pd.to_numeric, errors="coerce").to_numpy()
+    for j in range(9):
+        out[f"feature_{j}"] = block_vals[:, j]
+
+    return out
+
