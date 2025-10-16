@@ -88,33 +88,52 @@ def reshape_to_cmat(tbl):
     )
     return state_wide
 
-
-def _site_slice(dfw, site, block_idx, id_cols):
-    print("Note this helper function is specific to PEtracer. Assumes the features are r25-r51.")
-    """Extract one site’s row-block with mapped features & labels."""
-    # rows are the same; we just duplicate with a new target_site label
+def _site_slice(dfw, site, id_cols, codebook_df):
+    """Extract one site's row-block with mapped features & labels using a codebook."""
     out = dfw[id_cols].copy()
     out["target_site"] = site
 
-    # pet_state from the site’s prediction column (HEK3/EMX1/RNF2)
-    out["pet_state"] = dfw[site]
-
-    # seq_state / brightest_state / prob from the per-site columns
+    # Predictions / labels tied to this site (if present)
+    if site in dfw.columns:
+        out["pet_state"] = dfw[site]
     if f"{site}_actual" in dfw.columns:
-        out["seq_state"]       = dfw[f"{site}_actual"]
+        out["seq_state"] = dfw[f"{site}_actual"]
     if f"{site}_brightest" in dfw.columns:
         out["brightest_state"] = dfw[f"{site}_brightest"]
-    out["pet_prob"]            = dfw[f"{site}_prob"]
+    if f"{site}_prob" in dfw.columns:
+        out["pet_prob"] = dfw[f"{site}_prob"]
 
-    rcols = [c for c in dfw.columns if re.fullmatch(r"r(?:2[5-9]|3\d|4\d|5[01])", c)]
-    rcols_sorted = sorted(rcols, key=lambda s: int(s[1:]))
+    # --- Use the codebook to determine the 9 r-bit columns for this site ---
+    cb_site = codebook_df.query("site == @site").copy()
 
-    # map the correct 9-of-27 r-features to feature_0..feature_8
-    cols_for_site = rcols_sorted[9*block_idx : 9*(block_idx+1)]
-    print(cols_for_site, [site in dfw.columns for site in cols_for_site])
+    # Put edits first, then the site's 'unedited' bit last (if present)
+    cb_site["is_unedited"] = (cb_site["edit"].astype(str).str.lower() == "unedited")
+    cb_site = cb_site.sort_values(["is_unedited", "bit"], ascending=[True, True])
+
+    cols_for_site = cb_site["bit"].tolist()
+
+    # Expect exactly 9 bits per site (8 edits + 1 unedited)
+    missing = [c for c in cols_for_site if c not in dfw.columns]
+    if missing:
+        raise ValueError(
+            f"Missing r-bit columns in dfw for site={site}: {missing}. "
+            f"Expected from codebook: {cols_for_site}"
+        )
+    if len(cols_for_site) != 9:
+        raise ValueError(
+            f"Expected 9 bits for site={site} from codebook, got {len(cols_for_site)}: {cols_for_site}"
+        )
+
+    # --- Map to feature_0..feature_8 (numeric) ---
     block_vals = dfw[cols_for_site].apply(pd.to_numeric, errors="coerce").to_numpy()
+
     for j in range(9):
         out[f"feature_{j}"] = block_vals[:, j]
 
-    return out
+    # (Optional but handy) carry the bit names and edit labels for reference
+    # These are constant per site → repeat so they travel with the rows.
+    for j, (bit, edit) in enumerate(zip(cb_site["bit"].tolist(), cb_site["edit"].tolist())):
+        out[f"feature_{j}_bit"] = bit
+        out[f"feature_{j}_edit"] = edit
 
+    return out

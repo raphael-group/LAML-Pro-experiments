@@ -109,8 +109,8 @@ merged = (
     bm_input_geno_df.merge(bm_long, on=["cell_name", "target_site"])
                     .merge(lp_long, on=["cell_name", "target_site"])
 )
-fig, (ax_heat, ax_uned, ax_ed) = plot_genotypecall_summary(
-    summary_2x2, merged, outfile=f"{plotdir}/colony{colony}_genotypecall_summary.pdf"
+fig, ax = plot_genotypecall_summary(
+    counts_trim, merged, y_max=1.0, outfile=f"{plotdir}/colony{colony}_genotypecall_summary.pdf"
 )
 
 stats_df = report_genotype_call_stats(counts)

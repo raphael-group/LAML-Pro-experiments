@@ -253,6 +253,8 @@ def clustermap_genos(
     if outfile:
         fig.savefig(outfile, bbox_inches="tight", dpi=150)
 
+    return fig
+
 def distdict_to_df(distdict):
     # assuming leaf label dict (from treeswift)
     nodes = list(set(distdict.keys()))
@@ -1088,121 +1090,247 @@ def edge_ratio_table(ts_tree, merged_df, x_col="x", y_col="y"):
     df = df.sort_values(by=["is_leaf"], ascending=False).reset_index(drop=True)
     return df
 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+from matplotlib.colors import ListedColormap
+import seaborn as sns
 
 def plot_genotypecall_summary(
-    summary_2x2,
+    counts_trim,
     merged,
     *,
-    outfile=None,                          # <── new argument
-    figsize=(12, 4.6),
+    outfile=None,
+    figsize=(12, 4.8),
     width_ratios=(1.1, 1.3),
     hspace=0.40,
     wspace=0.25,
     bins_unedited=30,
     bins_edited=30,
-    palette_unedited={"Agree": "#4C72B0", "Disagree": "#DD8452"},
-    palette_edited={
-        "Agree": "#4C72B0",
-        "Disagree: LP unedited": "#DD8452",
-        "Disagree: LP different edit": "#55A868",
-    },
-    heatmap_cmap="Blues",
+    bins_shared=None,                   # shared bins (int or array-like). If None, build from xlim+max(...)
+    # distinct colors:
+    color_uned_agree=OKABE[2], 
+    color_uned_disagree=OKABE[3], 
+    color_ed_agree=OKABE[4], 
+    color_ed_dis_u=OKABE[6], 
+    color_ed_dis_d=OKABE[7], 
     xlim=(0, 1),
     heatmap_title="Genotype Call Counts",
     uned_title="baseMemoir unedited calls",
     ed_title="baseMemoir edit calls",
     xlabel_bottom="baseMemoir posterior probability",
-    ylabel_hist="proportion of sites",
-    normalize_stat="proportion",
+    normalize_stat="proportion",        # "proportion" or "count"
+    y_max=0.5,
+    bar_linewidth=1,
 ):
     """
-    Create a 2×2 layout showing:
-      (A) Heatmap of genotype call counts
-      (B) Histogram of unedited sites (Agreement vs Disagreement)
-      (C) Histogram of edited sites (Agreement vs two Disagreement types)
-
-    If `outfile` is provided, saves the figure to that path.
-
-    Returns (fig, (ax_heat, ax_uned, ax_ed)).
+    Seaborn-based:
+      (A) Heatmap with black borders, white cells; dynamic colored text strings.
+      (B) Unedited:  LEFT=Disagree (upright), RIGHT=Agree (mirrored down)
+      (C) Edited:    LEFT=Disagrees (upright, orange/purple), RIGHT=Agree (mirrored down, green)
+    All histograms share the same bin edges (bins_shared).
     """
 
-    # --- Order heatmap ---
-    summary_2x2 = summary_2x2.loc[["Unedited", "Edited"], ["Unedited", "Edited"]]
+    # ---------- helpers ----------
+    def _edges_from_bins(bins, xlim_):
+        if isinstance(bins, int):
+            if xlim_ is None:
+                raise ValueError("xlim must be set to build shared integer bins.")
+            return np.linspace(xlim_[0], xlim_[1], bins + 1)
+        return np.asarray(bins, dtype=float)
 
-    # --- Subsets for histograms ---
-    unedited = (
+    def _mirror_bars_downward(ax):
+        """Flip seaborn hist bars downward from y=0."""
+        for r in ax.patches:
+            h = r.get_height()
+            if h > 0:
+                r.set_height(-h)
+                r.set_y(0)
+
+    # ---------- (prep) 2×2 heatmap table from counts_trim ----------
+    unedited_states = ['AA']
+    edited_states   = ['GG','GA','AG']
+
+    # Totals
+    uu = counts_trim.loc[unedited_states, unedited_states].to_numpy().sum()  # Unedited→Unedited
+    ue = counts_trim.loc[unedited_states, edited_states].to_numpy().sum()    # Unedited→Edited
+    eu = counts_trim.loc[edited_states, unedited_states].to_numpy().sum()    # Edited→Unedited
+    ee = counts_trim.loc[edited_states, edited_states].to_numpy().sum()      # Edited→Edited
+
+    # Split EE into agree vs disagree (agree = diagonal sum across edited states)
+    same_edited = int(sum(counts_trim.loc[[s], [s]].to_numpy().sum() for s in edited_states))
+    diff_edited = int(ee - same_edited)
+
+    summary_2x2 = pd.DataFrame(
+        [[uu, ue],
+         [eu, ee]],
+        index=pd.Index(['Unedited','Edited'], name=''),
+        columns=pd.Index(['Unedited','Edited'])
+    )
+
+    # ---------- (prep) unedited & edited dataframes ----------
+    unedited_df = (
         merged.query("bm_state != -1 and lp_state != -1 and bM_geno == 0")
         .assign(agreement=lambda df: df["lp_state"].eq(0).map({True: "Agree", False: "Disagree"}))
     )
 
-    edited = merged.copy()
+    edited_df = merged.copy()
     for col in ["bM_geno", "lp_state", "bm_state"]:
-        edited[col] = pd.to_numeric(edited[col], errors="coerce")
-    edited = edited.query("bM_geno != 0 and bm_state != -1 and lp_state != -1").copy()
-    edited["cmp"] = np.select(
+        edited_df[col] = pd.to_numeric(edited_df[col], errors="coerce")
+    edited_df = edited_df.query("bM_geno != 0 and bm_state != -1 and lp_state != -1").copy()
+    edited_df["cmp"] = np.select(
         [
-            edited["lp_state"].eq(0),
-            edited["lp_state"].ne(0) & edited["lp_state"].ne(edited["bM_geno"]),
+            edited_df["lp_state"].eq(0),
+            edited_df["lp_state"].ne(0) & edited_df["lp_state"].ne(edited_df["bM_geno"]),
         ],
         ["Disagree: LP unedited", "Disagree: LP different edit"],
         default="Agree",
     )
     order = ["Agree", "Disagree: LP unedited", "Disagree: LP different edit"]
-    edited["cmp"] = pd.Categorical(edited["cmp"], categories=order, ordered=True)
+    edited_df["cmp"] = pd.Categorical(edited_df["cmp"], categories=order, ordered=True)
 
-    # --- Layout ---
-    fig = plt.figure(figsize=figsize)
+    # ---------- shared bin edges for all hists ----------
+    if bins_shared is None:
+        n_bins_shared = max(int(bins_unedited), int(bins_edited))
+        edges_shared = _edges_from_bins(n_bins_shared, xlim)
+    else:
+        edges_shared = _edges_from_bins(bins_shared, xlim)
+
+    # ---------- layout ----------
+    fig = plt.figure(figsize=figsize, constrained_layout=True)
     gs = gridspec.GridSpec(
         nrows=2, ncols=2,
         width_ratios=width_ratios, height_ratios=[1, 1],
         wspace=wspace, hspace=hspace
     )
     ax_heat = fig.add_subplot(gs[:, 0])
-    ax_uned = fig.add_subplot(gs[0, 1])
-    ax_ed   = fig.add_subplot(gs[1, 1])
+    #ax_uned_left  = fig.add_subplot(gs[0, 1])   # LEFT axes = Disagree upright
+    #ax_uned_right = ax_uned_left.twinx()        # RIGHT axes = Agree mirrored down
+    #ax_ed_left    = fig.add_subplot(gs[1, 1])   # LEFT axes = Disagrees upright
+    #ax_ed_right   = ax_ed_left.twinx()          # RIGHT axes = Agree mirrored down
+    
+    gs_right = gs[:, 1].subgridspec(2, 1, hspace=0.1)  # ↓ shrink this number to reduce the gap
+    ax_uned_left  = fig.add_subplot(gs_right[0])
+    ax_ed_left    = fig.add_subplot(gs_right[1], sharex=ax_uned_left)
 
-    # --- (A) Heatmap ---
+    ax_uned_right = ax_uned_left.twinx()
+    ax_ed_right   = ax_ed_left.twinx()
+
+    # ---------- (A) Heatmap: seaborn with white cells, black borders, dynamic custom text ----------
     sns.heatmap(
-        summary_2x2, annot=True, fmt="g", cmap=heatmap_cmap,
-        cbar=False, linewidths=0.5, linecolor="white",
+        summary_2x2.astype(float),
+        cmap=ListedColormap(["white"]), vmin=0, vmax=1,
+        cbar=False, annot=False,
+        linewidths=1.8, linecolor="black",
         square=True, ax=ax_heat
     )
-    ax_heat.set_title(heatmap_title)
-    ax_heat.set_xlabel("LAML-Pro genotype call")
-    ax_heat.set_ylabel("baseMemoir genotype call")
+    # ax_heat.set_title(heatmap_title, color="black")
+    ax_heat.set_xlabel("LAML-Pro genotype call", color="black")
+    ax_heat.set_ylabel("baseMemoir genotype call", color="black")
+    ax_heat.tick_params(colors="black")
 
-    # --- (B) Unedited histogram ---
-    sns.histplot(
-        data=unedited, x="bM_pmax", hue="agreement",
-        bins=bins_unedited, element="step", stat=normalize_stat,
-        common_norm=False, multiple="layer", palette=palette_unedited, ax=ax_uned
+    # Diagonal split in Edited/Edited cell
+    i = list(summary_2x2.index).index("Edited")
+    j = list(summary_2x2.columns).index("Edited")
+    ax_heat.plot([j, j+1], [i+1, i], color="black", lw=1.8, zorder=5)
+
+    # Helper to annotate cell centers with colored text (default font)
+    def _cell_text(row, col, s, color, ha="center", va="center", dx=0.0, dy=0.0, fontsize=14):
+        ax_heat.text(col + 0.5 + dx, row + 0.5 + dy, s,
+                     ha=ha, va=va, color=color, fontsize=fontsize)
+
+    # Dynamic strings with thousands separators:
+    _cell_text(0, 0, f"Agree:\n{uu:,}",        color=color_uned_agree)    # Unedited–Unedited
+    _cell_text(0, 1, f"Disagree:\n{ue:,}",     color=color_uned_disagree) # Unedited–Edited
+    _cell_text(1, 0, f"Disagree:\n{eu:,}",     color=color_ed_dis_u)      # Edited–Unedited
+    # Edited–Edited split (place inside the same cell, split by the diagonal)
+    _cell_text(1, 1, f"Disagree:\n{diff_edited:,}",      color=color_ed_dis_d, ha="left",  va="top",    dx=-0.02, dy=0.15) # disagree
+    _cell_text(1, 1, f"Agree:\n{same_edited:,}", color=color_ed_agree,  ha="right", va="bottom", dx=+0.02, dy=-0.15) # agree
+
+    for label in ax_heat.get_xticklabels() + ax_heat.get_yticklabels():
+        label.set_color("black")
+
+    # ---------- common y config (fixed symmetric range) ----------
+    ticks = np.linspace(0, y_max, 6)
+    def _apply_y_format(left_ax, right_ax):
+        # LEFT (Disagree upright): 0..y_max
+        left_ax.set_ylim(0.0, y_max)
+        left_ax.set_yticks(ticks)
+        left_ax.set_yticklabels([f"{t:g}" for t in ticks])
+        # RIGHT (Agree mirrored down): -y_max..0, labeled as positive
+        right_ax.set_ylim(-y_max, 0.0)
+        right_ax.set_yticks(-ticks)
+        right_ax.set_yticklabels([f"{t:g}" for t in ticks])
+
+    # --------- seaborn histogram common kwargs (use shared edges) ---------
+    common_hist_kws = dict(
+        bins=edges_shared, stat=normalize_stat, common_norm=False,
+        element="bars", fill=True, alpha=0.15, linewidth=bar_linewidth
     )
-    ax_uned.set_title(uned_title)
-    ax_uned.set_xlabel("")
-    ax_uned.set_ylabel(ylabel_hist)
-    if xlim: ax_uned.set_xlim(*xlim)
-    leg = ax_uned.get_legend()
-    if leg: leg.set_title(None)
 
-    # --- (C) Edited histogram ---
+    # ---------- (B) Unedited ----------
     sns.histplot(
-        data=edited, x="bM_pmax", hue="cmp", hue_order=order,
-        bins=bins_edited, element="step", stat=normalize_stat,
-        common_norm=False, multiple="layer", palette=palette_edited, ax=ax_ed
+        data=unedited_df.query("agreement == 'Disagree'"),
+        x="bM_pmax", ax=ax_uned_left, color=color_uned_disagree, **common_hist_kws
     )
-    ax_ed.set_title(ed_title)
-    ax_ed.set_xlabel(xlabel_bottom)
-    ax_ed.set_ylabel(ylabel_hist)
-    if xlim: ax_ed.set_xlim(*xlim)
-    leg = ax_ed.get_legend()
-    if leg: leg.set_title(None)
+    sns.histplot(
+        data=unedited_df.query("agreement == 'Agree'"),
+        x="bM_pmax", ax=ax_uned_right, color=color_uned_agree, **common_hist_kws
+    )
+    _mirror_bars_downward(ax_uned_right)
 
-    plt.tight_layout()
+    if xlim:
+        ax_uned_left.set_xlim(*xlim); ax_uned_right.set_xlim(*xlim)
+    _apply_y_format(ax_uned_left, ax_uned_right)
+    ax_uned_left.axhline(0, color="black", lw=0.8)
 
-    # --- Save if outfile is given ---
-    if outfile is not None:
+    # Labels per spec: left y only, no legends, no top x-label
+    ax_uned_left.set_ylabel("prop. of sites")
+    ax_uned_right.set_ylabel("")
+    ax_uned_right.set_xlabel("")
+    ax_uned_left.set_xlabel("")
+    # ax_uned_left.set_title(uned_title)
+    ax_uned_left.tick_params(axis="x", labelbottom=False)
+    ax_uned_right.tick_params(axis="x", labelbottom=False)
+    # No legends
+    if getattr(ax_uned_left, "legend_", None): ax_uned_left.legend_.remove()
+
+    # ---------- (C) Edited ----------
+    sns.histplot(
+        data=edited_df.query("cmp == 'Disagree: LP unedited'"),
+        x="bM_pmax", ax=ax_ed_left, color=color_ed_dis_u, **common_hist_kws
+    )
+    sns.histplot(
+        data=edited_df.query("cmp == 'Disagree: LP different edit'"),
+        x="bM_pmax", ax=ax_ed_left, color=color_ed_dis_d, **common_hist_kws
+    )
+    sns.histplot(
+        data=edited_df.query("cmp == 'Agree'"),
+        x="bM_pmax", ax=ax_ed_right, color=color_ed_agree, **common_hist_kws
+    )
+    _mirror_bars_downward(ax_ed_right)
+
+    if xlim:
+        ax_ed_left.set_xlim(*xlim); ax_ed_right.set_xlim(*xlim)
+    _apply_y_format(ax_ed_left, ax_ed_right)
+    ax_ed_left.axhline(0, color="black", lw=0.8)
+
+    ax_ed_left.set_xlabel(xlabel_bottom)  # x-label once (bottom-left)
+    ax_ed_left.set_ylabel("prop. of sites")
+    ax_ed_right.set_ylabel("")
+    # ax_ed_left.set_title(ed_title)
+
+    # Remove legends if any
+    if getattr(ax_ed_left, "legend_", None): ax_ed_left.legend_.remove()
+
+    # ---------- layout + save ----------
+    #plt.tight_layout()
+    fig.set_constrained_layout_pads(w_pad=0.02, h_pad=0.02, wspace=wspace, hspace=hspace)
+
+    if outfile:
         fig.savefig(outfile, dpi=300, bbox_inches="tight")
         print(f"✅ Saved figure to: {outfile}")
 
-    return fig, (ax_heat, ax_uned, ax_ed)
+    return fig, (ax_heat, ax_uned_left, ax_uned_right, ax_ed_left, ax_ed_right)
 
