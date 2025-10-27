@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 import subprocess
-from helpers.utils import build_summary_df, plot_genotype_confidence, clustermap_genos, plot_genotypecall_summary
+from helpers.utils import build_summary_df, plot_genotype_confidence, clustermap_genos
+#plot_genotypecall_summary
 
 from helpers.utils import distdict_to_df, leaf_pairs, get_geno_dict
 from helpers.utils import im_ehd, empirical_site_dists, ehd, sm_ehd, pair_metrics
@@ -61,7 +62,12 @@ plot_genotype_confidence(summary_df, title=f"Colony {colony}: baseMemoir probabi
                          outfile=f"{plotdir}/colony{colony}_genotype_probabilities.pdf",
                          bins=100)
 
+#mask = bm_input_geno_df['bM_pmax'] >= 0.70
+#bm_input_geno_df_masked = bm_input_geno_df.loc[mask]
+#bm_geno_df = bm_input_geno_df_masked[['cell_name', 'target_site', 'bM_geno']]
+print("Not filtering for baseMemoir >= 0.70")
 bm_geno_df = bm_input_geno_df[['cell_name', 'target_site', 'bM_geno']]
+
 bm_geno_df = bm_geno_df.pivot(
     index="cell_name",
     columns="target_site",
@@ -73,7 +79,8 @@ lp_map_geno_df = lp_map_geno_df.loc[[x for x in lp_map_geno_df.index if not x.st
 lp_map_geno_df.index = [int(x) for x in lp_map_geno_df.index]
 bm_geno_df.index = [int(x) for x in bm_geno_df.index]
 
-clustermap_genos(bm_geno_df, lp_map_geno_df, metric='hamming', method='complete', title=f"Colony {colony}", outfile=f"{plotdir}/colony{colony}_genotype_comparison.pdf")
+clustermap_genos(bm_geno_df, lp_map_geno_df, metric='hamming', method='single', title=f"Colony {colony}", outfile=f"{plotdir}/colony{colony}_genotype_comparison.pdf")
+#clustermap_genos(bm_geno_df, lp_map_geno_df, metric='hamming', method='complete', title=f"Colony {colony}", outfile=f"{plotdir}/colony{colony}_genotype_comparison.pdf")
 
 counts = plot_state_counts(bm_geno_df, lp_map_geno_df, title=f"Colony {colony}: BaseMemoir vs. LAML-Pro",
                            outfile=f"{plotdir}/colony{colony}_genotype_counts.pdf")
@@ -109,9 +116,17 @@ merged = (
     bm_input_geno_df.merge(bm_long, on=["cell_name", "target_site"])
                     .merge(lp_long, on=["cell_name", "target_site"])
 )
-fig, ax = plot_genotypecall_summary(
-    counts_trim, merged, y_max=1.0, outfile=f"{plotdir}/colony{colony}_genotypecall_summary.pdf"
-)
+
+summary_path = f"{plotdir}/colony{colony}_merged_summary.csv"
+merged.to_csv(summary_path)
+
+# plot genotype call summary
+output = subprocess.run([
+    "Rscript", "/Users/gc3045/git/laml2-experiments/real_data/r_plotting/plot_genotypecall_summary.R",
+    "--path", summary_path, 
+    "--outfile", f"{plotdir}/colony_{colony}_genotypecall_summary.pdf" 
+])
+print("Genotype summary path printed to", f"{plotdir}/colony_{colony}_genotypecall_summary.pdf")
 
 stats_df = report_genotype_call_stats(counts)
 save_df_to_pdf(stats_df, filename=f"{plotdir}/colony{colony}_genotype_call_stats.pdf", title=None, floatfmt="{:.4f}", fontsize=10)

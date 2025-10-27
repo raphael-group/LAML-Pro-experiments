@@ -17,8 +17,17 @@ import plotly.graph_objects as go
 import matplotlib.gridspec as gridspec
 
 
-OKABE = ['grey', 'white', '#E69F00','#56B4E9','#009E73','#F0E442',
-         '#0072B2','#D55E00','#CC79A7','#000000']
+OKABE = ['grey', 'white',
+    '#D55E00',  # reddish one (vermillion)
+    '#E69F00',  # orange one
+    '#F0E442',  # yellow one
+    '#009E73',  # green/turquoise
+    '#56B4E9',  # light blue
+    '#0072B2',  # dark blue
+    '#882255',  # deep magenta,
+    '#CC79A7',   # light purple (magenta),
+    '#332288',  # dark blue
+]
 
 sns.set_palette("deep")
 plt.rcParams.update({"font.size": 14})
@@ -29,13 +38,13 @@ def build_summary_df(bm_geno_df: pd.DataFrame, lp_map_df: pd.DataFrame,
     lp = lp_map_df.copy()
 
     # Ensure numeric keys for matching
-    bm["cell_name"] = pd.to_numeric(bm["cell_name"], errors="coerce").astype("Int64")
+    bm["cell_name"] = bm["cell_name"].astype("str").str.strip()
     bm["target_site"] = pd.to_numeric(bm["target_site"], errors="coerce").astype("Int64")
 
     col_map = {c: int(re.search(r"\d+", str(c)).group()) for c in lp_map_df.columns}
     lp_wide = lp_map_df.rename(columns=col_map)
     lp_wide = lp_wide.copy()
-    lp_wide.index = pd.to_numeric(lp_wide.index, errors="coerce").astype("Int64")
+    lp_wide.index = lp_wide.index.astype("str").str.strip()
     lp_wide.index.name = "cell_name"
     lp_long = (
         lp_wide
@@ -82,7 +91,8 @@ def plot_genotype_confidence(
     bins=40,
     auto_range=True,
     pad_frac=0.03,
-    clamp01=True
+    clamp01=True,
+    stat="count"
 ):
     # Split values
     agree_vals    = summary_df.loc[summary_df["agree"],         "bM_pmax"].dropna().to_numpy()
@@ -122,27 +132,28 @@ def plot_genotype_confidence(
     # Hist with gray borders; suppress default legend
     sns.histplot(
         data=df_plot, x="bM_pmax", hue="Status", ax=ax,
-        bins=bins, binrange=rng, stat="count", common_bins=True,
+        bins=bins, binrange=rng, stat=stat, common_bins=True,
         multiple="layer", palette=palette, alpha=0.5,
         edgecolor="gray", linewidth=0.7, legend=False
     )
 
     # KDE lines scaled to counts
-    if all_vals.size:
-        if rng is None:
-            xlim = ax.get_xlim()
-            binwidth = (xlim[1] - xlim[0]) / bins
-            xs = np.linspace(*xlim, 400)
-        else:
-            binwidth = (rng[1] - rng[0]) / bins
-            xs = np.linspace(*rng, 400)
+    if stat == "counts":
+        if all_vals.size:
+            if rng is None:
+                xlim = ax.get_xlim()
+                binwidth = (xlim[1] - xlim[0]) / bins
+                xs = np.linspace(*xlim, 400)
+            else:
+                binwidth = (rng[1] - rng[0]) / bins
+                xs = np.linspace(*rng, 400)
 
-        if agree_vals.size > 1:
-            kde_a = gaussian_kde(agree_vals)
-            ax.plot(xs, kde_a(xs) * agree_vals.size * binwidth, color=palette["Agree"], linewidth=2)
-        if disagree_vals.size > 1:
-            kde_d = gaussian_kde(disagree_vals)
-            ax.plot(xs, kde_d(xs) * disagree_vals.size * binwidth, color=palette["Disagree"], linewidth=2)
+            if agree_vals.size > 1:
+                kde_a = gaussian_kde(agree_vals)
+                ax.plot(xs, kde_a(xs) * agree_vals.size * binwidth, color=palette["Agree"], linewidth=2)
+            if disagree_vals.size > 1:
+                kde_d = gaussian_kde(disagree_vals)
+                ax.plot(xs, kde_d(xs) * disagree_vals.size * binwidth, color=palette["Disagree"], linewidth=2)
 
     # Mean markers (dashed)
     if not np.isnan(mean_agree):
@@ -162,7 +173,7 @@ def plot_genotype_confidence(
     ax.legend(handles, labels, loc="upper left", title=None, frameon=True)
 
     ax.set_xlabel("baseMemoir probabilities")
-    ax.set_ylabel("Count")
+    #ax.set_ylabel("Count")
     ax.set_title(title)
 
     if rng is not None:
@@ -179,11 +190,13 @@ def clustermap_genos(
     lp_chars: pd.DataFrame,
     metric: str = "hamming",
     method: str = "average",
-    title: str = "baseMemoir", 
+    title: str = "Colony", 
+    other: str = "baseMemoir",
     vmin: int = -1, vmax: int = 3,
     outfile: str | None = None,
     n_col_clusters: int = 6,          # how many column clusters to group to the left
     group_blocks_left: bool = True,   # turn grouping on/off
+    show_cell_names: bool = True
 ):
     # 1) align rows/cols
     common_rows = bm_chars.index.intersection(lp_chars.index)
@@ -207,6 +220,7 @@ def clustermap_genos(
     bm_ord = bm.iloc[row_order, :].iloc[:, col_order]
 
     categories = np.arange(vmin, vmax + 1)
+    print("Num categories:", categories)
     cmap   = ListedColormap(OKABE[:len(categories)])
     cmap.set_bad(OKABE[0])  # manually set this to grey                   
     bounds = np.arange(vmin - 0.5, vmax + 1.5, 1.0)
@@ -215,25 +229,37 @@ def clustermap_genos(
     # side-by-side heatmaps 
     fig, axes = plt.subplots(1, 2, figsize=(8, 4.5), dpi=150, constrained_layout=True)
     # BaseMemoir (left)
-    sns.heatmap(
-        bm_ord, mask=bm_ord==-1, ax=axes[0], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,
-        xticklabels=False, yticklabels=True, cbar=False, rasterized=False,
-        # linewidths=0.05, linecolor="white"  
-    )
-    axes[0].set_title(f"{title}: BaseMemoir genotypes", fontsize=16)
-    axes[0].set_xlabel("Target sites", fontsize=13)
-    axes[0].set_ylabel("Cell names", fontsize=13)
-    axes[0].tick_params(axis="both", labelsize=11)
+    if show_cell_names:
+        sns.heatmap(
+            bm_ord, ax=axes[1], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,
+            #bm_ord, mask=bm_ord==-1, ax=axes[0], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,
+            xticklabels=False, yticklabels=True, cbar=False, rasterized=False,
+            # linewidths=0.05, linecolor="white"  
+        )
+    else:
+        sns.heatmap(
+            bm_ord, ax=axes[1], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,
+            #bm_ord, mask=bm_ord==-1, ax=axes[0], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,
+            xticklabels=False, yticklabels=False, cbar=False, rasterized=False,
+            # linewidths=0.05, linecolor="white"  
+        )
+
+    axes[1].set_title(f"{title}: {other} genotypes", fontsize=16)
+    axes[1].set_xlabel("Target sites", fontsize=13)
+    axes[1].set_ylabel("Cell names", fontsize=13)
+    axes[1].tick_params(axis="both", labelsize=11)
 
     # LAML-Pro (right) 
     sns.heatmap(
-        lp_ord, mask=lp_ord==-1, ax=axes[1], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,   # CHANGED: lp_ord -> lp_plot
+        lp_ord, ax=axes[0], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,   
+        #lp_ord, mask=lp_ord==-1, ax=axes[1], cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,   
         xticklabels=False, yticklabels=False, cbar=False, rasterized=False,
         # linewidths=0.05, linecolor="white"
     )
-    axes[1].set_title(f"{title}: LAML-Pro genotypes", fontsize=16)
-    axes[1].set_xlabel("Target sites", fontsize=13)
-    axes[1].tick_params(axis="both", labelsize=11)
+    axes[0].set_title(f"{title}: LAML-Pro genotypes", fontsize=16)
+    axes[0].set_xlabel("Target sites", fontsize=13)
+    axes[0].set_ylabel("") 
+    axes[0].tick_params(axis="both", labelsize=11)
 
     # Black border around each heatmap
     for ax in axes:
@@ -247,8 +273,9 @@ def clustermap_genos(
         plt.cm.ScalarMappable(norm=norm, cmap=cmap),
         ax=axes, orientation="horizontal", fraction=0.08, pad=0.05
     )
-    cbar.set_ticks(categories)
-    cbar.set_ticklabels(["?/-1", "0", "1", "2", "3"])
+    cbar.set_ticks(categories) #["?/-1"] + [str(x) for x in categories[1:]))
+    ticklabels = ["?/-1" if x == -1 else str(x) for x in categories]
+    cbar.set_ticklabels(ticklabels)
 
     if outfile:
         fig.savefig(outfile, bbox_inches="tight", dpi=150)
@@ -566,7 +593,7 @@ def plot_concordance_scatterplot(bm_concordance, lp_concordance, figsize=(12,4),
 STATE_ORDER  = [-1, 0, 1, 2, 3]
 STATE_LABELS = ['-1', 'AA', 'GG', 'GA', 'AG']
 
-def plot_state_counts(geno_matrix, lp_map_geno_df, title="BaseMemoir vs. LAML-Pro", outfile=None):
+def plot_state_counts(geno_matrix, lp_map_geno_df, title="BaseMemoir vs. LAML-Pro", ylabel="baseMemoir state", outfile=None, use_state_labels=True):
     # 1) align rows/cols
     rows = geno_matrix.index.intersection(lp_map_geno_df.index)
     cols = geno_matrix.columns.intersection(lp_map_geno_df.columns)
@@ -582,11 +609,13 @@ def plot_state_counts(geno_matrix, lp_map_geno_df, title="BaseMemoir vs. LAML-Pr
     pairs["lp"] = pairs["lp"].astype(int)
 
     # 3) counts table with fixed order
-    bm_cat = pd.Categorical(pairs["bm"], categories=STATE_ORDER, ordered=True)
-    lp_cat = pd.Categorical(pairs["lp"], categories=STATE_ORDER, ordered=True)
-    counts = pd.crosstab(bm_cat, lp_cat).reindex(index=STATE_ORDER, columns=STATE_ORDER, fill_value=0)
-    counts.index   = STATE_LABELS
-    counts.columns = STATE_LABELS
+    bm_cat = pd.Categorical(pairs["bm"], ordered=True) #categories=STATE_ORDER, ordered=True)
+    lp_cat = pd.Categorical(pairs["lp"], ordered=True) #categories=STATE_ORDER, ordered=True)
+    counts = pd.crosstab(bm_cat, lp_cat)
+    #counts = pd.crosstab(bm_cat, lp_cat).reindex(index=STATE_ORDER, columns=STATE_ORDER, fill_value=0)
+    if use_state_labels:
+        counts.index   = STATE_LABELS
+        counts.columns = STATE_LABELS
 
     # 4) number of "changes" (off-diagonal, both present)
     true_changes = pairs[(pairs["bm"] != pairs["lp"]) & (pairs["bm"] != -1) & (pairs["lp"] != -1)].shape[0]
@@ -594,10 +623,10 @@ def plot_state_counts(geno_matrix, lp_map_geno_df, title="BaseMemoir vs. LAML-Pr
     # 5) plot
     plt.figure(figsize=(6.5, 6), dpi=150)
     ax = sns.heatmap(counts, annot=True, fmt='g', cmap=sns.color_palette("ch:s=.25,rot=-.25", as_cmap=True), cbar=True,
-                     linewidths=.5, linecolor='white')
+                     linewidths=.5, linecolor='white', annot_kws={"fontsize": 8})
     ax.set_title(title, pad=12)
     ax.set_xlabel("LAML-Pro state")
-    ax.set_ylabel("baseMemoir state")
+    ax.set_ylabel(ylabel)
     plt.tight_layout()
 
     if outfile:
@@ -607,8 +636,7 @@ def plot_state_counts(geno_matrix, lp_map_geno_df, title="BaseMemoir vs. LAML-Pr
     return counts
 
 
-def report_genotype_call_stats(counts, colony=None):
-    states = ['-1','AA','GG','GA','AG']
+def report_genotype_call_stats(counts, states=['-1','AA','GG','GA','AG'], other_method="baseMemoir", colony=None, report_pretty=True):
     C = counts.reindex(index=states, columns=states, fill_value=0).astype(float)
 
     N_total = C.values.sum()
@@ -640,19 +668,21 @@ def report_genotype_call_stats(counts, colony=None):
     rows = pd.DataFrame([
         bm_all, lp_obs_all, lp_imp_all, lp_obs_over_obs, lp_imp_over_miss
     ], index=[
-        "baseMemoir",
-        "LAML-Pro (obs) over all sites",
-        "LAML-Pro (impute) over all sites",
-        "LAML-Pro (obs) over observed sites",
-        "LAML-Pro (impute) over missing sites",
+        other_method,
+        "LAML-Pro (obs) prop. over all sites",
+        "LAML-Pro (impute) prop. over all sites",
+        "LAML-Pro (obs) prop. over observed sites",
+        "LAML-Pro (impute) prop. over missing sites",
     ])
 
-    cols_pretty = {
-        '-1': "Missing/\nSilenced",
-        'AA': "Unedited\n(AA)",
-        'GG': "GG", 'GA': "GA", 'AG': "AG"
-    }
-    rows = rows.rename(columns=cols_pretty)
+    if report_pretty:
+
+        cols_pretty = {
+            '-1': "Missing/\nSilenced",
+            'AA': "Unedited\n(AA)",
+            'GG': "GG", 'GA': "GA", 'AG': "AG"
+        }
+        rows = rows.rename(columns=cols_pretty)
 
     rows["Total"] = rows.sum(axis=1, skipna=True)
 
@@ -692,7 +722,7 @@ def save_df_to_pdf(df, filename="table.pdf", title=None, floatfmt="{:.4f}", font
 
 def plot_correlation(centroids_df, bm_distmat, lp_distmat,
                                     title="Colony 2 Leaf-pair distances: phylogenetic vs spatial",
-                                    outfile=None, figsize=(10,4)):
+                                    outfile=None, figsize=(10,4), titles=["baseMemoir", "LAML-Pro"]):
     # --- spatial distance matrix from cell centroids ---
     coords = centroids_df.iloc[:, :2].astype(float).copy()
     coords.columns = ["x", "y"]
@@ -726,7 +756,7 @@ def plot_correlation(centroids_df, bm_distmat, lp_distmat,
 
     # --- plotting ---
     fig, axes = plt.subplots(1, 2, sharex=True, sharey=True, figsize=figsize, dpi=150)
-    for ax, (xvals, subtitle) in zip(axes, [(x_bm, "baseMemoir"), (x_lp, "LAML-Pro")]):
+    for ax, (xvals, subtitle) in zip(axes, [(x_bm, titles[0]), (x_lp, titles[1])]):
         sns.regplot(x=xvals, y=y, ax=ax,
                     scatter_kws=dict(s=22, alpha=0.6),
                     line_kws=dict(lw=2, alpha=0.9))
@@ -1093,244 +1123,144 @@ def edge_ratio_table(ts_tree, merged_df, x_col="x", y_col="y"):
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-from matplotlib.colors import ListedColormap
+from matplotlib.colors import ListedColormap, BoundaryNorm
 import seaborn as sns
 
-def plot_genotypecall_summary(
-    counts_trim,
-    merged,
-    *,
+def _palette_for(n, base=None):
+    """
+    Build a list of at least n distinct colors, starting with Okabe–Ito,
+    then topping up from matplotlib's tab20 if needed.
+    """
+    base = list(base) if base is not None else _OKABE_ITO
+    if len(base) >= n:
+        return base[:n]
+    # top up with tab20
+    import matplotlib.cm as cm
+    tab20 = [cm.get_cmap("tab20")(i) for i in range(20)]
+    # convert RGBA to hex
+    def rgba2hex(rgba):
+        r,g,b,a = rgba
+        return "#{:02X}{:02X}{:02X}".format(int(r*255), int(g*255), int(b*255))
+    extras = [rgba2hex(c) for c in tab20]
+    out = base + extras
+    if len(out) < n:  # if still short, repeat extras
+        reps = (n - len(out) + len(extras) - 1) // len(extras)
+        out += (extras * reps)
+    return out[:n]
+
+def plot_genotype_panels(
+    mats,
+    labels=None,
+    title=None,
     outfile=None,
-    figsize=(12, 4.8),
-    width_ratios=(1.1, 1.3),
-    hspace=0.40,
-    wspace=0.25,
-    bins_unedited=30,
-    bins_edited=30,
-    bins_shared=None,                   # shared bins (int or array-like). If None, build from xlim+max(...)
-    # distinct colors:
-    color_uned_agree=OKABE[2], 
-    color_uned_disagree=OKABE[3], 
-    color_ed_agree=OKABE[4], 
-    color_ed_dis_u=OKABE[6], 
-    color_ed_dis_d=OKABE[7], 
-    xlim=(0, 1),
-    heatmap_title="Genotype Call Counts",
-    uned_title="baseMemoir unedited calls",
-    ed_title="baseMemoir edit calls",
-    xlabel_bottom="baseMemoir posterior probability",
-    normalize_stat="proportion",        # "proportion" or "count"
-    y_max=0.5,
-    bar_linewidth=1,
+    row_order=None,
+    col_order=None,
+    vmin=-1,
+    vmax=8,
+    missing_code=-1,
+    okabe_colors=None,
+    figsize_per_panel=(4.0, 4.5),
+    dpi=150,
+    show_ticks=False,
+    rasterized=False,
 ):
     """
-    Seaborn-based:
-      (A) Heatmap with black borders, white cells; dynamic colored text strings.
-      (B) Unedited:  LEFT=Disagree (upright), RIGHT=Agree (mirrored down)
-      (C) Edited:    LEFT=Disagrees (upright, orange/purple), RIGHT=Agree (mirrored down, green)
-    All histograms share the same bin edges (bins_shared).
+    Plot multiple genotype matrices as side-by-side heatmaps with a shared discrete colorbar.
+
+    Parameters
+    ----------
+    matrices : list[pd.DataFrame]
+        Each matrix is cells (rows) x target sites (cols). Values are integers in [vmin, vmax]
+        with `missing_code` (default -1) indicating missing and will be masked.
+        All matrices should be aligned to the same index/columns or be alignable via reindex.
+    labels : list[str] | None
+        Panel titles (one per matrix). If None, panels are named 'Matrix 1', 'Matrix 2', ...
+    title : str | None
+        Figure-level title prefix. If provided, each panel title is f"{title}: {labels[i]}".
+    outfile : str | None
+        If provided, the figure is saved to this path.
+    row_order, col_order : array-like | None
+        Optional explicit ordering of rows/cols to apply to all matrices.
+        If provided, they are used to reindex (dropping absent items).
+    vmin, vmax : int
+        Minimum and maximum *coded* state values (inclusive). Typically -1..8.
+    missing_code : int
+        Value to treat as missing and mask out of the heatmap (default: -1).
+    okabe_colors : list[str] | None
+        Custom color list to use (falls back to Okabe–Ito + extras).
+        Colors are mapped to integer categories from vmin..vmax (inclusive).
+    figsize_per_panel : tuple(float, float)
+        Size of each panel; overall width scales with number of matrices.
+    dpi : int
+        Figure DPI.
+    show_ticks : bool
+        If True, show axis tick labels; otherwise hide them (default False).
+    rasterized : bool
+        If True, rasterize the heatmap artists (useful for PDF size).
+
+    Returns
+    -------
+    (fig, axes)
     """
+    n_panels = len(mats)
 
-    # ---------- helpers ----------
-    def _edges_from_bins(bins, xlim_):
-        if isinstance(bins, int):
-            if xlim_ is None:
-                raise ValueError("xlim must be set to build shared integer bins.")
-            return np.linspace(xlim_[0], xlim_[1], bins + 1)
-        return np.asarray(bins, dtype=float)
+    reordered_mats = [M.iloc[row_order, :].iloc[:, col_order] for M in mats]
+    mats = reordered_mats
 
-    def _mirror_bars_downward(ax):
-        """Flip seaborn hist bars downward from y=0."""
-        for r in ax.patches:
-            h = r.get_height()
-            if h > 0:
-                r.set_height(-h)
-                r.set_y(0)
+    # Build discrete categories & colormap
+    categories = np.arange(vmin, vmax + 1, dtype=int)  # includes -1 if vmin=-1
+    colors = _palette_for(len(categories), base=OKABE)
+    cmap = ListedColormap(colors)
+    # Make missing cells transparent via mask; but keep a "bad" color for safety
+    cmap.set_bad(colors[0])  # first color (often used for -1) in case any NaNs slip through
 
-    # ---------- (prep) 2×2 heatmap table from counts_trim ----------
-    unedited_states = ['AA']
-    edited_states   = ['GG','GA','AG']
+    bounds = np.arange(vmin - 0.5, vmax + 1.5, 1.0)  # bin edges centered on ints
+    norm = BoundaryNorm(bounds, cmap.N)
 
-    # Totals
-    uu = counts_trim.loc[unedited_states, unedited_states].to_numpy().sum()  # Unedited→Unedited
-    ue = counts_trim.loc[unedited_states, edited_states].to_numpy().sum()    # Unedited→Edited
-    eu = counts_trim.loc[edited_states, unedited_states].to_numpy().sum()    # Edited→Unedited
-    ee = counts_trim.loc[edited_states, edited_states].to_numpy().sum()      # Edited→Edited
+    # Figure & axes
+    fig_w = figsize_per_panel[0] * n_panels
+    fig_h = figsize_per_panel[1]
+    fig, axes = plt.subplots(1, n_panels, figsize=(fig_w, fig_h), dpi=dpi, constrained_layout=True)
+    if n_panels == 1:
+        axes = [axes]
 
-    # Split EE into agree vs disagree (agree = diagonal sum across edited states)
-    same_edited = int(sum(counts_trim.loc[[s], [s]].to_numpy().sum() for s in edited_states))
-    diff_edited = int(ee - same_edited)
+    # Plot each panel
+    for i, (ax, M) in enumerate(zip(axes, mats)):
+        # mask = (M.values == missing_code) | np.isnan(M.values)
+        sns.heatmap(
+            M,  ax=ax, # mask=mask,
+            cmap=cmap, norm=norm, vmin=vmin, vmax=vmax,
+            xticklabels=show_ticks, yticklabels=show_ticks, cbar=False,
+            rasterized=rasterized
+        )
+        # Titles/labels
+        panel_title = labels[i]
+        if title:
+            ax.set_title(f"{title}: {panel_title}", fontsize=16)
+        else:
+            ax.set_title(panel_title, fontsize=16)
 
-    summary_2x2 = pd.DataFrame(
-        [[uu, ue],
-         [eu, ee]],
-        index=pd.Index(['Unedited','Edited'], name=''),
-        columns=pd.Index(['Unedited','Edited'])
+        ax.set_xlabel("Target sites", fontsize=13)
+        ax.set_ylabel("Cell names" if i == 0 else "", fontsize=13)
+        ax.tick_params(axis="both", labelsize=11)
+
+        # Draw a clean box around each panel
+        for side in ("left", "right", "top", "bottom"):
+            ax.spines[side].set_visible(True)
+            ax.spines[side].set_linewidth(1.5)
+            ax.spines[side].set_edgecolor("black")
+
+    # Shared colorbar
+    cbar = fig.colorbar(
+        plt.cm.ScalarMappable(norm=norm, cmap=cmap),
+        ax=axes, orientation="horizontal", fraction=0.08, pad=0.05
     )
-
-    # ---------- (prep) unedited & edited dataframes ----------
-    unedited_df = (
-        merged.query("bm_state != -1 and lp_state != -1 and bM_geno == 0")
-        .assign(agreement=lambda df: df["lp_state"].eq(0).map({True: "Agree", False: "Disagree"}))
-    )
-
-    edited_df = merged.copy()
-    for col in ["bM_geno", "lp_state", "bm_state"]:
-        edited_df[col] = pd.to_numeric(edited_df[col], errors="coerce")
-    edited_df = edited_df.query("bM_geno != 0 and bm_state != -1 and lp_state != -1").copy()
-    edited_df["cmp"] = np.select(
-        [
-            edited_df["lp_state"].eq(0),
-            edited_df["lp_state"].ne(0) & edited_df["lp_state"].ne(edited_df["bM_geno"]),
-        ],
-        ["Disagree: LP unedited", "Disagree: LP different edit"],
-        default="Agree",
-    )
-    order = ["Agree", "Disagree: LP unedited", "Disagree: LP different edit"]
-    edited_df["cmp"] = pd.Categorical(edited_df["cmp"], categories=order, ordered=True)
-
-    # ---------- shared bin edges for all hists ----------
-    if bins_shared is None:
-        n_bins_shared = max(int(bins_unedited), int(bins_edited))
-        edges_shared = _edges_from_bins(n_bins_shared, xlim)
-    else:
-        edges_shared = _edges_from_bins(bins_shared, xlim)
-
-    # ---------- layout ----------
-    fig = plt.figure(figsize=figsize, constrained_layout=True)
-    gs = gridspec.GridSpec(
-        nrows=2, ncols=2,
-        width_ratios=width_ratios, height_ratios=[1, 1],
-        wspace=wspace, hspace=hspace
-    )
-    ax_heat = fig.add_subplot(gs[:, 0])
-    #ax_uned_left  = fig.add_subplot(gs[0, 1])   # LEFT axes = Disagree upright
-    #ax_uned_right = ax_uned_left.twinx()        # RIGHT axes = Agree mirrored down
-    #ax_ed_left    = fig.add_subplot(gs[1, 1])   # LEFT axes = Disagrees upright
-    #ax_ed_right   = ax_ed_left.twinx()          # RIGHT axes = Agree mirrored down
-    
-    gs_right = gs[:, 1].subgridspec(2, 1, hspace=0.1)  # ↓ shrink this number to reduce the gap
-    ax_uned_left  = fig.add_subplot(gs_right[0])
-    ax_ed_left    = fig.add_subplot(gs_right[1], sharex=ax_uned_left)
-
-    ax_uned_right = ax_uned_left.twinx()
-    ax_ed_right   = ax_ed_left.twinx()
-
-    # ---------- (A) Heatmap: seaborn with white cells, black borders, dynamic custom text ----------
-    sns.heatmap(
-        summary_2x2.astype(float),
-        cmap=ListedColormap(["white"]), vmin=0, vmax=1,
-        cbar=False, annot=False,
-        linewidths=1.8, linecolor="black",
-        square=True, ax=ax_heat
-    )
-    # ax_heat.set_title(heatmap_title, color="black")
-    ax_heat.set_xlabel("LAML-Pro genotype call", color="black")
-    ax_heat.set_ylabel("baseMemoir genotype call", color="black")
-    ax_heat.tick_params(colors="black")
-
-    # Diagonal split in Edited/Edited cell
-    i = list(summary_2x2.index).index("Edited")
-    j = list(summary_2x2.columns).index("Edited")
-    ax_heat.plot([j, j+1], [i+1, i], color="black", lw=1.8, zorder=5)
-
-    # Helper to annotate cell centers with colored text (default font)
-    def _cell_text(row, col, s, color, ha="center", va="center", dx=0.0, dy=0.0, fontsize=14):
-        ax_heat.text(col + 0.5 + dx, row + 0.5 + dy, s,
-                     ha=ha, va=va, color=color, fontsize=fontsize)
-
-    # Dynamic strings with thousands separators:
-    _cell_text(0, 0, f"Agree:\n{uu:,}",        color=color_uned_agree)    # Unedited–Unedited
-    _cell_text(0, 1, f"Disagree:\n{ue:,}",     color=color_uned_disagree) # Unedited–Edited
-    _cell_text(1, 0, f"Disagree:\n{eu:,}",     color=color_ed_dis_u)      # Edited–Unedited
-    # Edited–Edited split (place inside the same cell, split by the diagonal)
-    _cell_text(1, 1, f"Disagree:\n{diff_edited:,}",      color=color_ed_dis_d, ha="left",  va="top",    dx=-0.02, dy=0.15) # disagree
-    _cell_text(1, 1, f"Agree:\n{same_edited:,}", color=color_ed_agree,  ha="right", va="bottom", dx=+0.02, dy=-0.15) # agree
-
-    for label in ax_heat.get_xticklabels() + ax_heat.get_yticklabels():
-        label.set_color("black")
-
-    # ---------- common y config (fixed symmetric range) ----------
-    ticks = np.linspace(0, y_max, 6)
-    def _apply_y_format(left_ax, right_ax):
-        # LEFT (Disagree upright): 0..y_max
-        left_ax.set_ylim(0.0, y_max)
-        left_ax.set_yticks(ticks)
-        left_ax.set_yticklabels([f"{t:g}" for t in ticks])
-        # RIGHT (Agree mirrored down): -y_max..0, labeled as positive
-        right_ax.set_ylim(-y_max, 0.0)
-        right_ax.set_yticks(-ticks)
-        right_ax.set_yticklabels([f"{t:g}" for t in ticks])
-
-    # --------- seaborn histogram common kwargs (use shared edges) ---------
-    common_hist_kws = dict(
-        bins=edges_shared, stat=normalize_stat, common_norm=False,
-        element="bars", fill=True, alpha=0.15, linewidth=bar_linewidth
-    )
-
-    # ---------- (B) Unedited ----------
-    sns.histplot(
-        data=unedited_df.query("agreement == 'Disagree'"),
-        x="bM_pmax", ax=ax_uned_left, color=color_uned_disagree, **common_hist_kws
-    )
-    sns.histplot(
-        data=unedited_df.query("agreement == 'Agree'"),
-        x="bM_pmax", ax=ax_uned_right, color=color_uned_agree, **common_hist_kws
-    )
-    _mirror_bars_downward(ax_uned_right)
-
-    if xlim:
-        ax_uned_left.set_xlim(*xlim); ax_uned_right.set_xlim(*xlim)
-    _apply_y_format(ax_uned_left, ax_uned_right)
-    ax_uned_left.axhline(0, color="black", lw=0.8)
-
-    # Labels per spec: left y only, no legends, no top x-label
-    ax_uned_left.set_ylabel("prop. of sites")
-    ax_uned_right.set_ylabel("")
-    ax_uned_right.set_xlabel("")
-    ax_uned_left.set_xlabel("")
-    # ax_uned_left.set_title(uned_title)
-    ax_uned_left.tick_params(axis="x", labelbottom=False)
-    ax_uned_right.tick_params(axis="x", labelbottom=False)
-    # No legends
-    if getattr(ax_uned_left, "legend_", None): ax_uned_left.legend_.remove()
-
-    # ---------- (C) Edited ----------
-    sns.histplot(
-        data=edited_df.query("cmp == 'Disagree: LP unedited'"),
-        x="bM_pmax", ax=ax_ed_left, color=color_ed_dis_u, **common_hist_kws
-    )
-    sns.histplot(
-        data=edited_df.query("cmp == 'Disagree: LP different edit'"),
-        x="bM_pmax", ax=ax_ed_left, color=color_ed_dis_d, **common_hist_kws
-    )
-    sns.histplot(
-        data=edited_df.query("cmp == 'Agree'"),
-        x="bM_pmax", ax=ax_ed_right, color=color_ed_agree, **common_hist_kws
-    )
-    _mirror_bars_downward(ax_ed_right)
-
-    if xlim:
-        ax_ed_left.set_xlim(*xlim); ax_ed_right.set_xlim(*xlim)
-    _apply_y_format(ax_ed_left, ax_ed_right)
-    ax_ed_left.axhline(0, color="black", lw=0.8)
-
-    ax_ed_left.set_xlabel(xlabel_bottom)  # x-label once (bottom-left)
-    ax_ed_left.set_ylabel("prop. of sites")
-    ax_ed_right.set_ylabel("")
-    # ax_ed_left.set_title(ed_title)
-
-    # Remove legends if any
-    if getattr(ax_ed_left, "legend_", None): ax_ed_left.legend_.remove()
-
-    # ---------- layout + save ----------
-    #plt.tight_layout()
-    fig.set_constrained_layout_pads(w_pad=0.02, h_pad=0.02, wspace=wspace, hspace=hspace)
+    cbar.set_ticks(categories)
+    ticklabels = [f"?/{missing_code}" if x == missing_code else str(x) for x in categories]
+    cbar.set_ticklabels(ticklabels)
+    cbar.ax.tick_params(labelsize=11)
 
     if outfile:
-        fig.savefig(outfile, dpi=300, bbox_inches="tight")
-        print(f"✅ Saved figure to: {outfile}")
-
-    return fig, (ax_heat, ax_uned_left, ax_uned_right, ax_ed_left, ax_ed_right)
+        fig.savefig(outfile, bbox_inches="tight", dpi=dpi)
+    return fig, axes
 

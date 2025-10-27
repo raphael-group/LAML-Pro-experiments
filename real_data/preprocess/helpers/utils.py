@@ -23,7 +23,7 @@ def _qq_stats_text(x):
     #rej5  = A.statistic > crit5 if np.isfinite(crit5) else False
     return f"SW W={W:.3f}, p={p_sw:.1e}\nKS D={D:.3f}, p={p_ks:.1e}\nAD A²={A.statistic:.3f}, 5%>{crit5:.3f}" #[{ 'rej' if rej5 else 'ok' }]"
 
-def scree(X, out=None, target=0.90):
+def scree(X, out=None, target=0.90, title="basememoir over all states and colonies"):
     # PCA
     vr = PCA().fit(X).explained_variance_ratio_
     cv = np.cumsum(vr); k = np.arange(1, cv.size + 1)
@@ -32,7 +32,7 @@ def scree(X, out=None, target=0.90):
     plt.figure(figsize=(8, 4.5), dpi=150)
     plt.plot(k, cv, marker='o', linewidth=2.5)
     plt.axhline(target, ls='--', color='red', linewidth=1.5, label=f'{int(target*100)}% variance')
-    plt.title('baseMemoir over all states and colonies', fontsize=16)
+    plt.title(title, fontsize=16)
     plt.xlabel('Number of Principal Components', fontsize=14)
     plt.ylabel('Cumulative Explained Variance', fontsize=14)
     plt.xticks(k, fontsize=12); plt.yticks(fontsize=12)
@@ -132,8 +132,8 @@ def _site_slice(dfw, site, id_cols, codebook_df):
 
     # (Optional but handy) carry the bit names and edit labels for reference
     # These are constant per site → repeat so they travel with the rows.
-    for j, (bit, edit) in enumerate(zip(cb_site["bit"].tolist(), cb_site["edit"].tolist())):
-        out[f"feature_{j}_bit"] = bit
-        out[f"feature_{j}_edit"] = edit
+    #for j, (bit, edit) in enumerate(zip(cb_site["bit"].tolist(), cb_site["edit"].tolist())):
+    #    out[f"feature_{j}_bit"] = bit
+    #    out[f"feature_{j}_edit"] = edit
 
     return out

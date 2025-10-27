@@ -35,6 +35,7 @@ class Square_Parsimony():
         self.leaf_states = leaf_states
         # Infer the dimension (assume all state vectors have the same length).
         self.dim = len(next(iter(leaf_states.values())))
+        print("Dimension:", self.dim)
         self.epsilon = epsilon
         if not self.use_branch_length:
             for node in self.tree.traverse():
@@ -88,8 +89,10 @@ class Square_Parsimony():
         # Process nodes in postorder (children before parent)
         nodes = list(self.tree.traverse(strategy="postorder"))
         var_penalty = 0
+
         for i in range(self.dim):
             # Initialize leaf nodes.
+            num_edges = 0
             for node in self.tree.get_leaves():
                 vp = node.dist + self.epsilon
                 p_val = self.leaf_states[node.name][i]
@@ -98,6 +101,7 @@ class Square_Parsimony():
                 node.p_array[i] = np.array([1/vp, -2*p_val/vp, (p_val**2)/vp])
             # Process each internal node.
             for node in nodes:
+                num_edges += 1
                 vp = node.dist + self.epsilon
                 var_penalty += np.log(1/math.sqrt(2 * math.pi * vp))
                 if node.is_leaf():
@@ -125,6 +129,8 @@ class Square_Parsimony():
                         self.min_square_sum_total += min_sq
         print("Total min square sum:", self.min_square_sum_total)
         print("Total maximum likelihood under Brownian motion:", var_penalty - 0.5 * self.min_square_sum_total)
+        print("Avg. min square sum (over branches):", self.min_square_sum_total /num_edges)
+        print("Avg. maximum likelihood under Brownian motion (over branches):", (var_penalty - 0.5 * self.min_square_sum_total)/num_edges)
         
 
     def infer_ancestral(self):

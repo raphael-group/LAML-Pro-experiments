@@ -1,5 +1,5 @@
 clone=3
-params.matrix = "/Users/gc3045/git/laml2-experiments/real_data/PEtracer/inputs/petracer_colonies_clone${clone}_kde_scores.csv"
+params.matrix = "/Users/gc3045/git/laml2-experiments/real_data/PEtracer/inputs/colonies_clone${clone}_kde_scores.csv"
 params.matrix_type = "observation-matrix"
 params.fastlaml_bin = "/Users/gc3045/git/fast-laml/build/src/fastlaml"
 params.seed = 0

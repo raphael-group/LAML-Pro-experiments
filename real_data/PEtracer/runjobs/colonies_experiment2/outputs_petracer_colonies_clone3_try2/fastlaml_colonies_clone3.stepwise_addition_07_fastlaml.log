@@ -1,0 +1,946 @@
+[2025-10-20 13:24:24.620] [multi_logger] [info] Logger initialized
+[2025-10-20 13:24:24.621] [multi_logger] [info] Command: /Users/gc3045/git/fast-laml/build/src/fastlaml --matrix /Users/gc3045/git/laml2-experiments/real_data/PEtracer/inputs/colonies_clone3_kde_scores.csv --tree clone3.stepwise_addition_07.nwk --output fastlaml_colonies_clone3.stepwise_addition_07 --mode search --seed 0 --max-iterations 5000 --ultrametric -d observation-matrix -v
+[2025-10-20 13:24:24.621] [multi_logger] [info] Loading tree from Newick file...
+[2025-10-20 13:24:24.622] [multi_logger] [info] Processing matrix and mutation priors...
+[2025-10-20 13:24:24.683] [multi_logger] [info] Found 832 taxa and 48 characters
+[2025-10-20 13:24:24.683] [multi_logger] [info] No mutation priors provided. Assuming uniform priors.
+[2025-10-20 13:24:24.683] [multi_logger] [info] Generating uniform priors for observation matrix w 8 states...
+[2025-10-20 13:24:24.695] [multi_logger] [info] === END OF IO SUMMARY ===
+[2025-10-20 13:24:24.695] [multi_logger] [info] Number of characters: 48
+[2025-10-20 13:24:24.695] [multi_logger] [info] Max alphabet size: 8
+[2025-10-20 13:24:24.695] [multi_logger] [info] Data type: observation-matrix
+
+[2025-10-20 13:24:24.698] [multi_logger] [info] Searching for optimal tree...
+[2025-10-20 13:24:24.702] [multi_logger] [info] Num missing entries: 9846 Num not missing entries: 30090
+[2025-10-20 13:24:24.772] [multi_logger] [info] EM iteration: 0 Log likelihood: -2065298.6125128958
+[2025-10-20 13:24:24.772] [multi_logger] [info] Nu: 0.5439321398735046 Phi: 0.5835601091384888
+[2025-10-20 13:24:24.999] [multi_logger] [info] EM iteration: 1 Log likelihood: -2036116.3476298903
+[2025-10-20 13:24:24.999] [multi_logger] [info] Nu: 0.010358462262475804 Phi: 0.23801293508320032
+[2025-10-20 13:24:25.176] [multi_logger] [info] EM iteration: 2 Log likelihood: -2035240.2096303958
+[2025-10-20 13:24:25.176] [multi_logger] [info] Nu: 0.020474940674502718 Phi: 0.22128493374638944
+[2025-10-20 13:24:25.331] [multi_logger] [info] EM iteration: 3 Log likelihood: -2034872.1517921323
+[2025-10-20 13:24:25.331] [multi_logger] [info] Nu: 0.03764967290325581 Phi: 0.20752390131286064
+[2025-10-20 13:24:25.478] [multi_logger] [info] EM iteration: 4 Log likelihood: -2034574.4426472136
+[2025-10-20 13:24:25.478] [multi_logger] [info] Nu: 0.060342257442464776 Phi: 0.19276566014228425
+[2025-10-20 13:24:25.637] [multi_logger] [info] EM iteration: 5 Log likelihood: -2034321.687146917
+[2025-10-20 13:24:25.637] [multi_logger] [info] Nu: 0.08662922258556426 Phi: 0.17754716909013749
+[2025-10-20 13:24:25.787] [multi_logger] [info] EM iteration: 6 Log likelihood: -2034111.3110249494
+[2025-10-20 13:24:25.787] [multi_logger] [info] Nu: 0.11444577820849554 Phi: 0.16263430855826855
+[2025-10-20 13:24:25.971] [multi_logger] [info] EM iteration: 7 Log likelihood: -2033938.7570275972
+[2025-10-20 13:24:25.971] [multi_logger] [info] Nu: 0.14207207272985245 Phi: 0.14835059929032987
+[2025-10-20 13:24:26.137] [multi_logger] [info] EM iteration: 8 Log likelihood: -2033800.0550602616
+[2025-10-20 13:24:26.138] [multi_logger] [info] Nu: 0.16825772223531243 Phi: 0.13510696979741052
+[2025-10-20 13:24:26.311] [multi_logger] [info] EM iteration: 9 Log likelihood: -2033689.340149038
+[2025-10-20 13:24:26.311] [multi_logger] [info] Nu: 0.19223141736510588 Phi: 0.12313517193869947
+[2025-10-20 13:24:26.553] [multi_logger] [info] EM iteration: 10 Log likelihood: -2033599.9700669134
+[2025-10-20 13:24:26.553] [multi_logger] [info] Nu: 0.2136817065548063 Phi: 0.11246129743322994
+[2025-10-20 13:24:26.723] [multi_logger] [info] EM iteration: 11 Log likelihood: -2033527.8128853422
+[2025-10-20 13:24:26.723] [multi_logger] [info] Nu: 0.23262038620264688 Phi: 0.10300651790711417
+[2025-10-20 13:24:26.902] [multi_logger] [info] EM iteration: 12 Log likelihood: -2033470.1933092624
+[2025-10-20 13:24:26.902] [multi_logger] [info] Nu: 0.24922778191836997 Phi: 0.09470135328787692
+[2025-10-20 13:24:27.096] [multi_logger] [info] EM iteration: 13 Log likelihood: -2033424.6911297794
+[2025-10-20 13:24:27.096] [multi_logger] [info] Nu: 0.26372324885871895 Phi: 0.08744196096610488
+[2025-10-20 13:24:27.288] [multi_logger] [info] EM iteration: 14 Log likelihood: -2033388.4497026426
+[2025-10-20 13:24:27.288] [multi_logger] [info] Nu: 0.27634540815463643 Phi: 0.08112617469312906
+[2025-10-20 13:24:27.461] [multi_logger] [info] EM iteration: 15 Log likelihood: -2033359.4185241456
+[2025-10-20 13:24:27.461] [multi_logger] [info] Nu: 0.2873179354244617 Phi: 0.07562146770120504
+[2025-10-20 13:24:27.658] [multi_logger] [info] EM iteration: 16 Log likelihood: -2033336.3449228965
+[2025-10-20 13:24:27.658] [multi_logger] [info] Nu: 0.2968922047102096 Phi: 0.07082079139059043
+[2025-10-20 13:24:28.005] [multi_logger] [info] Starting simulated annealing with initial log likelihood: -2033317.5685421955
+[2025-10-20 13:24:28.594] [multi_logger] [info] Iteration 0: Applied NNI move (25, 17), no. accepts: 0, new log likelihood: -2033294.706701721, current phi: 0.3192268720540662, current nu: 0.05962228953122694
+[2025-10-20 13:24:29.216] [multi_logger] [info] Iteration 1: Applied NNI move (920, 918), no. accepts: 1, new log likelihood: -2033290.9956010138, current phi: 0.33017049138693905, current nu: 0.05426312674479143
+[2025-10-20 13:24:29.806] [multi_logger] [info] Iteration 2: Applied NNI move (305, 300), no. accepts: 2, new log likelihood: -2033275.1565589306, current phi: 0.33909264309092046, current nu: 0.04983444232747086
+[2025-10-20 13:24:30.433] [multi_logger] [info] Iteration 3: Applied NNI move (960, 903), no. accepts: 3, new log likelihood: -2033256.4581476024, current phi: 0.3469176109579954, current nu: 0.04596437048579772
+[2025-10-20 13:24:31.057] [multi_logger] [info] Iteration 4: Applied NNI move (1253, 1252), no. accepts: 4, new log likelihood: -2033239.8925499434, current phi: 0.3544902153130061, current nu: 0.04227806035239267
+[2025-10-20 13:24:31.691] [multi_logger] [info] Iteration 5: Applied NNI move (305, 290), no. accepts: 5, new log likelihood: -2033228.1954593598, current phi: 0.36158829384364416, current nu: 0.038852813411314
+[2025-10-20 13:24:32.306] [multi_logger] [info] Iteration 6: Applied NNI move (701, 699), no. accepts: 6, new log likelihood: -2033217.4550072034, current phi: 0.3679099267498241, current nu: 0.035745779968120825
+[2025-10-20 13:24:32.914] [multi_logger] [info] Iteration 7: Applied NNI move (116, 121), no. accepts: 7, new log likelihood: -2033208.7067137738, current phi: 0.3737673536745395, current nu: 0.03288927837361514
+[2025-10-20 13:24:33.554] [multi_logger] [info] Iteration 8: Applied NNI move (1578, 1585), no. accepts: 8, new log likelihood: -2033206.3309454904, current phi: 0.3793062236725157, current nu: 0.030293324914798803
+[2025-10-20 13:24:34.176] [multi_logger] [info] Iteration 9: Applied NNI move (25, 19), no. accepts: 9, new log likelihood: -2033200.4704799685, current phi: 0.3841476500478751, current nu: 0.027891404947090945
+[2025-10-20 13:24:34.801] [multi_logger] [info] Iteration 10: Rejected NNI move (546, 552), proposed log likelihood: -2033200.4704799685
+[2025-10-20 13:24:35.415] [multi_logger] [info] Iteration 11: Applied NNI move (911, 918), no. accepts: 10, new log likelihood: -2033191.059120209, current phi: 0.3884914130075256, current nu: 0.025707933253326376
+[2025-10-20 13:24:36.039] [multi_logger] [info] Iteration 12: Applied NNI move (108, 102), no. accepts: 11, new log likelihood: -2033183.1289312693, current phi: 0.39237442441940273, current nu: 0.023708041805710536
+[2025-10-20 13:24:36.652] [multi_logger] [info] Iteration 13: Applied NNI move (164, 229), no. accepts: 12, new log likelihood: -2033178.8222298787, current phi: 0.39617738469540426, current nu: 0.021858596608597392
+[2025-10-20 13:24:37.271] [multi_logger] [info] Iteration 14: Rejected NNI move (294, 296), proposed log likelihood: -2033178.8222298787
+[2025-10-20 13:24:37.935] [multi_logger] [info] Iteration 15: Applied NNI move (733, 849), no. accepts: 13, new log likelihood: -2033173.061578301, current phi: 0.3996599548419874, current nu: 0.02016626550616288
+[2025-10-20 13:24:38.559] [multi_logger] [info] Iteration 16: Rejected NNI move (238, 264), proposed log likelihood: -2033173.061578301
+[2025-10-20 13:24:39.387] [multi_logger] [info] Iteration 17: Rejected NNI move (38, 10), proposed log likelihood: -2033173.061578301
+[2025-10-20 13:24:40.030] [multi_logger] [info] Iteration 18: Applied NNI move (554, 541), no. accepts: 14, new log likelihood: -2033170.6200649843, current phi: 0.4027513169335657, current nu: 0.018647299135099344
+[2025-10-20 13:24:40.658] [multi_logger] [info] Iteration 19: Applied NNI move (503, 535), no. accepts: 15, new log likelihood: -2033167.8696444444, current phi: 0.40618573321370893, current nu: 0.017305850301988755
+[2025-10-20 13:24:41.312] [multi_logger] [info] Iteration 20: Applied NNI move (1186, 1180), no. accepts: 16, new log likelihood: -2033164.8006105106, current phi: 0.4085529805363307, current nu: 0.01607264239288311
+[2025-10-20 13:24:41.934] [multi_logger] [info] Iteration 21: Applied NNI move (843, 842), no. accepts: 17, new log likelihood: -2033163.218477948, current phi: 0.41072687246150025, current nu: 0.014972657100457355
+[2025-10-20 13:24:42.601] [multi_logger] [info] Iteration 22: Rejected NNI move (261, 259), proposed log likelihood: -2033163.218477948
+[2025-10-20 13:24:43.239] [multi_logger] [info] Iteration 23: Applied NNI move (1536, 1555), no. accepts: 18, new log likelihood: -2033161.7673028088, current phi: 0.4127078488857466, current nu: 0.013981879187199061
+[2025-10-20 13:24:43.886] [multi_logger] [info] Iteration 24: Applied NNI move (1656, 1648), no. accepts: 19, new log likelihood: -2033159.1125328615, current phi: 0.41457316481039586, current nu: 0.013086041297606444
+[2025-10-20 13:24:44.511] [multi_logger] [info] Iteration 25: Rejected NNI move (67, 66), proposed log likelihood: -2033159.1125328615
+[2025-10-20 13:24:45.140] [multi_logger] [info] Iteration 26: Rejected NNI move (1092, 1099), proposed log likelihood: -2033159.1125328615
+[2025-10-20 13:24:45.759] [multi_logger] [info] Iteration 27: Rejected NNI move (668, 682), proposed log likelihood: -2033159.1125328615
+[2025-10-20 13:24:46.393] [multi_logger] [info] Iteration 28: Applied NNI move (1041, 1045), no. accepts: 20, new log likelihood: -2033157.1228298787, current phi: 0.4162647663293865, current nu: 0.012268745102026078
+[2025-10-20 13:24:47.018] [multi_logger] [info] Iteration 29: Rejected NNI move (990, 982), proposed log likelihood: -2033157.1228298787
+[2025-10-20 13:24:47.636] [multi_logger] [info] Iteration 30: Applied NNI move (1155, 1153), no. accepts: 21, new log likelihood: -2033155.581895343, current phi: 0.4177982164392514, current nu: 0.011527590538708873
+[2025-10-20 13:24:48.292] [multi_logger] [info] Iteration 31: Rejected NNI move (325, 351), proposed log likelihood: -2033155.581895343
+[2025-10-20 13:24:48.925] [multi_logger] [info] Iteration 32: Rejected NNI move (1040, 1053), proposed log likelihood: -2033155.581895343
+[2025-10-20 13:24:49.539] [multi_logger] [info] Iteration 33: Applied NNI move (1607, 725), no. accepts: 22, new log likelihood: -2033152.6003974357, current phi: 0.4192506228396248, current nu: 0.010805931892173095
+[2025-10-20 13:24:50.181] [multi_logger] [info] Iteration 34: Applied NNI move (278, 277), no. accepts: 23, new log likelihood: -2033142.0702620945, current phi: 0.4211830606316619, current nu: 0.010149760354148222
+[2025-10-20 13:24:50.781] [multi_logger] [info] Iteration 35: Applied NNI move (872, 870), no. accepts: 24, new log likelihood: -2033141.0286477958, current phi: 0.4227649771557978, current nu: 0.009507183713667215
+[2025-10-20 13:24:51.394] [multi_logger] [info] Iteration 36: Applied NNI move (1656, 1655), no. accepts: 25, new log likelihood: -2033140.3913316075, current phi: 0.4239976813537774, current nu: 0.008909599283238116
+[2025-10-20 13:24:52.011] [multi_logger] [info] Iteration 37: Applied NNI move (765, 768), no. accepts: 26, new log likelihood: -2033139.817362586, current phi: 0.4251191343865274, current nu: 0.008356281357902503
+[2025-10-20 13:24:52.632] [multi_logger] [info] Iteration 38: Rejected NNI move (272, 271), proposed log likelihood: -2033139.817362586
+[2025-10-20 13:24:53.271] [multi_logger] [info] Iteration 39: Rejected NNI move (461, 460), proposed log likelihood: -2033139.817362586
+[2025-10-20 13:24:53.866] [multi_logger] [info] Iteration 40: Rejected NNI move (1485, 1484), proposed log likelihood: -2033139.817362586
+[2025-10-20 13:24:54.505] [multi_logger] [info] Iteration 41: Applied NNI move (74, 40), no. accepts: 27, new log likelihood: -2033139.2939156794, current phi: 0.4261551925010859, current nu: 0.007843592725109825
+[2025-10-20 13:24:55.163] [multi_logger] [info] Iteration 42: Applied NNI move (1340, 1282), no. accepts: 28, new log likelihood: -2033138.2765304456, current phi: 0.4271166013712068, current nu: 0.007367910938264715
+[2025-10-20 13:24:55.805] [multi_logger] [info] Iteration 43: Applied NNI move (617, 615), no. accepts: 29, new log likelihood: -2033119.102318074, current phi: 0.42826172198249496, current nu: 0.006925854755753377
+[2025-10-20 13:24:56.454] [multi_logger] [info] Iteration 44: Rejected NNI move (1359, 1362), proposed log likelihood: -2033119.102318074
+[2025-10-20 13:24:57.071] [multi_logger] [info] Iteration 45: Rejected NNI move (1258, 1269), proposed log likelihood: -2033119.102318074
+[2025-10-20 13:24:57.707] [multi_logger] [info] Iteration 46: Applied NNI move (355, 350), no. accepts: 30, new log likelihood: -2033116.4284504866, current phi: 0.42924881817972893, current nu: 0.006514492238508918
+[2025-10-20 13:24:58.383] [multi_logger] [info] Iteration 47: Rejected NNI move (1117, 1137), proposed log likelihood: -2033116.4284504866
+[2025-10-20 13:24:59.040] [multi_logger] [info] Iteration 48: Applied NNI move (1194, 1213), no. accepts: 31, new log likelihood: -2033111.6565611956, current phi: 0.43003358755028376, current nu: 0.0061310802292260875
+[2025-10-20 13:24:59.849] [multi_logger] [info] Iteration 49: Applied NNI move (153, 151), no. accepts: 32, new log likelihood: -2033105.879548303, current phi: 0.4308415282700204, current nu: 0.005785282600500544
+[2025-10-20 13:25:00.519] [multi_logger] [info] Iteration 50: Applied NNI move (1472, 1465), no. accepts: 33, new log likelihood: -2033099.708847649, current phi: 0.4309137188459877, current nu: 0.0054489851798045965
+[2025-10-20 13:25:01.223] [multi_logger] [info] Iteration 51: Rejected NNI move (1455, 1457), proposed log likelihood: -2033099.708847649
+[2025-10-20 13:25:01.837] [multi_logger] [info] Iteration 52: Applied NNI move (321, 163), no. accepts: 34, new log likelihood: -2033093.952021152, current phi: 0.4314464510310198, current nu: 0.005141307998369373
+[2025-10-20 13:25:02.509] [multi_logger] [info] Iteration 53: Rejected NNI move (1434, 1439), proposed log likelihood: -2033093.952021152
+[2025-10-20 13:25:03.148] [multi_logger] [info] Iteration 54: Rejected NNI move (1522, 1521), proposed log likelihood: -2033093.952021152
+[2025-10-20 13:25:03.804] [multi_logger] [info] Iteration 55: Rejected NNI move (764, 779), proposed log likelihood: -2033093.952021152
+[2025-10-20 13:25:04.425] [multi_logger] [info] Iteration 56: Applied NNI move (35, 11), no. accepts: 35, new log likelihood: -2033089.554744782, current phi: 0.43206395824124016, current nu: 0.004854198976315124
+[2025-10-20 13:25:05.054] [multi_logger] [info] Iteration 57: Rejected NNI move (1461, 1466), proposed log likelihood: -2033089.554744782
+[2025-10-20 13:25:05.685] [multi_logger] [info] Iteration 58: Applied NNI move (841, 835), no. accepts: 36, new log likelihood: -2033087.9529801677, current phi: 0.4326024847391779, current nu: 0.0045851466977089245
+[2025-10-20 13:25:06.280] [multi_logger] [info] Iteration 59: Rejected NNI move (618, 610), proposed log likelihood: -2033087.9529801677
+[2025-10-20 13:25:06.832] [multi_logger] [info] Iteration 60: Rejected NNI move (1379, 1377), proposed log likelihood: -2033087.9529801677
+[2025-10-20 13:25:07.429] [multi_logger] [info] Iteration 61: Applied NNI move (1632, 725), no. accepts: 37, new log likelihood: -2033085.1837355997, current phi: 0.4331822513539943, current nu: 0.00433329612459741
+[2025-10-20 13:25:08.045] [multi_logger] [info] Iteration 62: Rejected NNI move (1143, 1164), proposed log likelihood: -2033085.1837355997
+[2025-10-20 13:25:08.652] [multi_logger] [info] Iteration 63: Applied NNI move (163, 321), no. accepts: 38, new log likelihood: -2033079.0507431354, current phi: 0.4338109601927774, current nu: 0.004097479537876012
+[2025-10-20 13:25:09.267] [multi_logger] [info] Iteration 64: Rejected NNI move (790, 805), proposed log likelihood: -2033079.0507431354
+[2025-10-20 13:25:09.900] [multi_logger] [info] Iteration 65: Rejected NNI move (999, 998), proposed log likelihood: -2033079.0507431354
+[2025-10-20 13:25:10.519] [multi_logger] [info] Iteration 66: Rejected NNI move (114, 126), proposed log likelihood: -2033079.0507431354
+[2025-10-20 13:25:11.140] [multi_logger] [info] Iteration 67: Applied NNI move (754, 746), no. accepts: 39, new log likelihood: -2033077.4333011804, current phi: 0.43435299830046936, current nu: 0.003873933023003397
+[2025-10-20 13:25:11.765] [multi_logger] [info] Iteration 68: Rejected NNI move (725, 724), proposed log likelihood: -2033077.4333011804
+[2025-10-20 13:25:12.385] [multi_logger] [info] Iteration 69: Applied NNI move (12, 33), no. accepts: 40, new log likelihood: -2033077.218222828, current phi: 0.43477494249607385, current nu: 0.0036634883125581277
+[2025-10-20 13:25:13.007] [multi_logger] [info] Iteration 70: Rejected NNI move (1205, 1214), proposed log likelihood: -2033077.218222828
+[2025-10-20 13:25:13.626] [multi_logger] [info] Iteration 71: Rejected NNI move (530, 526), proposed log likelihood: -2033077.218222828
+[2025-10-20 13:25:14.253] [multi_logger] [info] Iteration 72: Applied NNI move (703, 694), no. accepts: 41, new log likelihood: -2033077.008153464, current phi: 0.43516971610091076, current nu: 0.0034655861573045237
+[2025-10-20 13:25:14.914] [multi_logger] [info] Iteration 73: Rejected NNI move (156, 159), proposed log likelihood: -2033077.008153464
+[2025-10-20 13:25:15.657] [multi_logger] [info] Iteration 74: Rejected NNI move (518, 522), proposed log likelihood: -2033077.008153464
+[2025-10-20 13:25:16.311] [multi_logger] [info] Iteration 75: Applied NNI move (827, 812), no. accepts: 42, new log likelihood: -2033076.776233655, current phi: 0.4355384417154369, current nu: 0.0032793517383849723
+[2025-10-20 13:25:16.981] [multi_logger] [info] Iteration 76: Applied NNI move (33, 12), no. accepts: 43, new log likelihood: -2033076.4728375375, current phi: 0.43587937075459404, current nu: 0.0031039689609144473
+[2025-10-20 13:25:17.614] [multi_logger] [info] Iteration 77: Rejected NNI move (724, 1633), proposed log likelihood: -2033076.4728375375
+[2025-10-20 13:25:18.301] [multi_logger] [info] Iteration 78: Rejected NNI move (1328, 1332), proposed log likelihood: -2033076.4728375375
+[2025-10-20 13:25:18.988] [multi_logger] [info] Iteration 79: Applied NNI move (1358, 1367), no. accepts: 44, new log likelihood: -2033069.3907814287, current phi: 0.436518519557781, current nu: 0.0029408486222240625
+[2025-10-20 13:25:19.621] [multi_logger] [info] Iteration 80: Rejected NNI move (1481, 1480), proposed log likelihood: -2033069.3907814287
+[2025-10-20 13:25:20.245] [multi_logger] [info] Iteration 81: Rejected NNI move (1017, 1024), proposed log likelihood: -2033069.3907814287
+[2025-10-20 13:25:20.884] [multi_logger] [info] Iteration 82: Rejected NNI move (172, 179), proposed log likelihood: -2033069.3907814287
+[2025-10-20 13:25:21.530] [multi_logger] [info] Iteration 83: Applied NNI move (771, 778), no. accepts: 45, new log likelihood: -2033065.2735755513, current phi: 0.43681533047092136, current nu: 0.002785148820001641
+[2025-10-20 13:25:22.189] [multi_logger] [info] Iteration 84: Rejected NNI move (747, 755), proposed log likelihood: -2033065.2735755513
+[2025-10-20 13:25:22.815] [multi_logger] [info] Iteration 85: Applied NNI move (17, 19), no. accepts: 46, new log likelihood: -2033064.39454245, current phi: 0.4370359673940911, current nu: 0.0026381772037932906
+[2025-10-20 13:25:23.447] [multi_logger] [info] Iteration 86: Rejected NNI move (643, 649), proposed log likelihood: -2033064.39454245
+[2025-10-20 13:25:24.108] [multi_logger] [info] Iteration 87: Rejected NNI move (1124, 1132), proposed log likelihood: -2033064.39454245
+[2025-10-20 13:25:24.753] [multi_logger] [info] Iteration 88: Rejected NNI move (999, 998), proposed log likelihood: -2033064.39454245
+[2025-10-20 13:25:25.408] [multi_logger] [info] Iteration 89: Applied NNI move (43, 48), no. accepts: 47, new log likelihood: -2033063.6275708084, current phi: 0.43717691808207354, current nu: 0.0024991716412273847
+[2025-10-20 13:25:26.119] [multi_logger] [info] Iteration 90: Rejected NNI move (1623, 1628), proposed log likelihood: -2033063.6275708084
+[2025-10-20 13:25:26.757] [multi_logger] [info] Iteration 91: Applied NNI move (1312, 1311), no. accepts: 48, new log likelihood: -2033047.6795035265, current phi: 0.4378721285552416, current nu: 0.0023746535995102544
+[2025-10-20 13:25:27.397] [multi_logger] [info] Iteration 92: Rejected NNI move (11, 35), proposed log likelihood: -2033047.6795035265
+[2025-10-20 13:25:28.029] [multi_logger] [info] Iteration 93: Rejected NNI move (1051, 1044), proposed log likelihood: -2033047.6795035265
+[2025-10-20 13:25:28.638] [multi_logger] [info] Iteration 94: Applied NNI move (590, 576), no. accepts: 49, new log likelihood: -2033047.4416624326, current phi: 0.43808783307362753, current nu: 0.002257633016203766
+[2025-10-20 13:25:29.243] [multi_logger] [info] Iteration 95: Applied NNI move (799, 791), no. accepts: 50, new log likelihood: -2033047.2813929874, current phi: 0.43829550928728267, current nu: 0.002146820067936187
+[2025-10-20 13:25:29.844] [multi_logger] [info] Iteration 96: Rejected NNI move (1077, 1079), proposed log likelihood: -2033047.2813929874
+[2025-10-20 13:25:30.478] [multi_logger] [info] Iteration 97: Rejected NNI move (1654, 1652), proposed log likelihood: -2033047.2813929874
+[2025-10-20 13:25:31.142] [multi_logger] [info] Iteration 98: Rejected NNI move (1051, 1044), proposed log likelihood: -2033047.2813929874
+[2025-10-20 13:25:31.802] [multi_logger] [info] Iteration 99: Applied NNI move (635, 637), no. accepts: 51, new log likelihood: -2033047.1916484707, current phi: 0.4383948754937177, current nu: 0.0020409335220687073
+[2025-10-20 13:25:32.409] [multi_logger] [info] Iteration 100: Applied NNI move (1499, 1487), no. accepts: 52, new log likelihood: -2033045.8669691742, current phi: 0.4385894286102132, current nu: 0.001941171700698009
+[2025-10-20 13:25:33.044] [multi_logger] [info] Iteration 101: Applied NNI move (1338, 1284), no. accepts: 53, new log likelihood: -2033039.6094166443, current phi: 0.4387696768734887, current nu: 0.001846358053336566
+[2025-10-20 13:25:33.694] [multi_logger] [info] Iteration 102: Applied NNI move (113, 129), no. accepts: 54, new log likelihood: -2033016.978303465, current phi: 0.43901741798424576, current nu: 0.0017558635646746064
+[2025-10-20 13:25:34.330] [multi_logger] [info] Iteration 103: Rejected NNI move (1364, 1359), proposed log likelihood: -2033016.978303465
+[2025-10-20 13:25:34.957] [multi_logger] [info] Iteration 104: Applied NNI move (1252, 1253), no. accepts: 55, new log likelihood: -2033013.9548130906, current phi: 0.4391546981303378, current nu: 0.001670642136253603
+[2025-10-20 13:25:35.576] [multi_logger] [info] Iteration 105: Applied NNI move (540, 504), no. accepts: 56, new log likelihood: -2033013.8138191958, current phi: 0.43930665377809675, current nu: 0.0015900696777784277
+[2025-10-20 13:25:36.212] [multi_logger] [info] Iteration 106: Rejected NNI move (1122, 1121), proposed log likelihood: -2033013.8138191958
+[2025-10-20 13:25:36.825] [multi_logger] [info] Iteration 107: Applied NNI move (1286, 1294), no. accepts: 57, new log likelihood: -2033013.703935637, current phi: 0.4394598203736222, current nu: 0.0015135485138860606
+[2025-10-20 13:25:37.457] [multi_logger] [info] Iteration 108: Rejected NNI move (1471, 1469), proposed log likelihood: -2033013.703935637
+[2025-10-20 13:25:38.135] [multi_logger] [info] Iteration 109: Rejected NNI move (95, 89), proposed log likelihood: -2033013.703935637
+[2025-10-20 13:25:38.837] [multi_logger] [info] Iteration 110: Applied NNI move (656, 653), no. accepts: 58, new log likelihood: -2033012.4021959403, current phi: 0.4396251629297234, current nu: 0.0014408679637538705
+[2025-10-20 13:25:39.457] [multi_logger] [info] Iteration 111: Applied NNI move (992, 999), no. accepts: 59, new log likelihood: -2033012.0443451824, current phi: 0.4397924919168465, current nu: 0.0013717140416992658
+[2025-10-20 13:25:40.079] [multi_logger] [info] Iteration 112: Rejected NNI move (582, 585), proposed log likelihood: -2033012.0443451824
+[2025-10-20 13:25:40.724] [multi_logger] [info] Iteration 113: Rejected NNI move (668, 682), proposed log likelihood: -2033012.0443451824
+[2025-10-20 13:25:41.358] [multi_logger] [info] Iteration 114: Applied NNI move (812, 827), no. accepts: 60, new log likelihood: -2033011.9865384977, current phi: 0.43992408042708775, current nu: 0.0013059541189570016
+[2025-10-20 13:25:41.998] [multi_logger] [info] Iteration 115: Rejected NNI move (381, 442), proposed log likelihood: -2033011.9865384977
+[2025-10-20 13:25:42.663] [multi_logger] [info] Iteration 116: Rejected NNI move (740, 828), proposed log likelihood: -2033011.9865384977
+[2025-10-20 13:25:43.286] [multi_logger] [info] Iteration 117: Rejected NNI move (1105, 1035), proposed log likelihood: -2033011.9865384977
+[2025-10-20 13:25:43.915] [multi_logger] [info] Iteration 118: Rejected NNI move (1658, 722), proposed log likelihood: -2033011.9865384977
+[2025-10-20 13:25:44.561] [multi_logger] [info] Iteration 119: Rejected NNI move (168, 166), proposed log likelihood: -2033011.9865384977
+[2025-10-20 13:25:45.221] [multi_logger] [info] Iteration 120: Applied NNI move (109, 102), no. accepts: 61, new log likelihood: -2033011.901469091, current phi: 0.4400477475106583, current nu: 0.0012434750097798574
+[2025-10-20 13:25:45.860] [multi_logger] [info] Iteration 121: Applied NNI move (1176, 1173), no. accepts: 62, new log likelihood: -2033011.6716746064, current phi: 0.4401588170803299, current nu: 0.0011840914285978577
+[2025-10-20 13:25:46.498] [multi_logger] [info] Iteration 122: Rejected NNI move (1320, 1313), proposed log likelihood: -2033011.6716746064
+[2025-10-20 13:25:47.139] [multi_logger] [info] Iteration 123: Rejected NNI move (546, 553), proposed log likelihood: -2033011.6716746064
+[2025-10-20 13:25:47.782] [multi_logger] [info] Iteration 124: Applied NNI move (1476, 1459), no. accepts: 63, new log likelihood: -2033010.616690344, current phi: 0.4402358948276118, current nu: 0.0011276027823197256
+[2025-10-20 13:25:48.427] [multi_logger] [info] Iteration 125: Rejected NNI move (381, 441), proposed log likelihood: -2033010.616690344
+[2025-10-20 13:25:49.072] [multi_logger] [info] Iteration 126: Rejected NNI move (720, 569), proposed log likelihood: -2033010.616690344
+[2025-10-20 13:25:49.748] [multi_logger] [info] Iteration 127: Rejected NNI move (618, 611), proposed log likelihood: -2033010.616690344
+[2025-10-20 13:25:50.434] [multi_logger] [info] Iteration 128: Applied NNI move (1459, 1452), no. accepts: 64, new log likelihood: -2032997.488554228, current phi: 0.4403919538292013, current nu: 0.001073759471793898
+[2025-10-20 13:25:51.100] [multi_logger] [info] Iteration 129: Rejected NNI move (648, 644), proposed log likelihood: -2032997.488554228
+[2025-10-20 13:25:52.072] [multi_logger] [info] Iteration 130: Applied NNI move (643, 653), no. accepts: 65, new log likelihood: -2032995.5502497638, current phi: 0.44016114542560725, current nu: 0.0010220860928852108
+[2025-10-20 13:25:52.745] [multi_logger] [info] Iteration 131: Applied NNI move (116, 120), no. accepts: 66, new log likelihood: -2032994.0840508624, current phi: 0.4401008894308068, current nu: 0.0009733211906204347
+[2025-10-20 13:25:53.466] [multi_logger] [info] Iteration 132: Applied NNI move (1604, 1603), no. accepts: 67, new log likelihood: -2032993.8599433068, current phi: 0.4401529200199244, current nu: 0.000927335050095278
+[2025-10-20 13:25:54.149] [multi_logger] [info] Iteration 133: Applied NNI move (1319, 1315), no. accepts: 68, new log likelihood: -2032993.7197168665, current phi: 0.4402306362992411, current nu: 0.0008836528625346484
+[2025-10-20 13:25:54.807] [multi_logger] [info] Iteration 134: Rejected NNI move (309, 287), proposed log likelihood: -2032993.7197168665
+[2025-10-20 13:25:55.458] [multi_logger] [info] Iteration 135: Rejected NNI move (43, 47), proposed log likelihood: -2032993.7197168665
+[2025-10-20 13:25:56.101] [multi_logger] [info] Iteration 136: Rejected NNI move (1305, 1287), proposed log likelihood: -2032993.7197168665
+[2025-10-20 13:25:56.719] [multi_logger] [info] Iteration 137: Applied NNI move (342, 337), no. accepts: 69, new log likelihood: -2032993.0380831538, current phi: 0.44032817830657245, current nu: 0.0008421042700183131
+[2025-10-20 13:25:57.335] [multi_logger] [info] Iteration 138: Applied NNI move (231, 235), no. accepts: 70, new log likelihood: -2032992.0829968809, current phi: 0.440442272164167, current nu: 0.0008026764249002228
+[2025-10-20 13:25:57.962] [multi_logger] [info] Iteration 139: Applied NNI move (1607, 1449), no. accepts: 71, new log likelihood: -2032983.170486282, current phi: 0.44065415181821843, current nu: 0.0007653096317159566
+[2025-10-20 13:25:58.589] [multi_logger] [info] Iteration 140: Rejected NNI move (1165, 1160), proposed log likelihood: -2032983.170486282
+[2025-10-20 13:25:59.211] [multi_logger] [info] Iteration 141: Applied NNI move (591, 594), no. accepts: 72, new log likelihood: -2032981.6462442651, current phi: 0.44108070077987654, current nu: 0.0007308379675461291
+[2025-10-20 13:25:59.834] [multi_logger] [info] Iteration 142: Rejected NNI move (668, 682), proposed log likelihood: -2032981.6462442651
+[2025-10-20 13:26:00.459] [multi_logger] [info] Iteration 143: Rejected NNI move (114, 127), proposed log likelihood: -2032981.6462442651
+[2025-10-20 13:26:01.102] [multi_logger] [info] Iteration 144: Applied NNI move (1350, 1280), no. accepts: 73, new log likelihood: -2032980.9131023157, current phi: 0.44116046704152795, current nu: 0.0006971110568126922
+[2025-10-20 13:26:01.726] [multi_logger] [info] Iteration 145: Applied NNI move (220, 188), no. accepts: 74, new log likelihood: -2032956.2976019843, current phi: 0.44148360545467263, current nu: 0.0006649382040973422
+[2025-10-20 13:26:02.367] [multi_logger] [info] Iteration 146: Applied NNI move (615, 616), no. accepts: 75, new log likelihood: -2032952.3435824283, current phi: 0.44178154190180086, current nu: 0.0006339464211833063
+[2025-10-20 13:26:02.993] [multi_logger] [info] Iteration 147: Rejected NNI move (1367, 1358), proposed log likelihood: -2032952.3435824283
+[2025-10-20 13:26:03.661] [multi_logger] [info] Iteration 148: Rejected NNI move (474, 473), proposed log likelihood: -2032952.3435824283
+[2025-10-20 13:26:04.280] [multi_logger] [info] Iteration 149: Rejected NNI move (1046, 1043), proposed log likelihood: -2032952.3435824283
+[2025-10-20 13:26:04.933] [multi_logger] [info] Iteration 150: Rejected NNI move (1000, 1008), proposed log likelihood: -2032952.3435824283
+[2025-10-20 13:26:05.566] [multi_logger] [info] Iteration 151: Applied NNI move (1014, 1189), no. accepts: 76, new log likelihood: -2032952.233394152, current phi: 0.44184511221592443, current nu: 0.0006042006919468177
+[2025-10-20 13:26:06.204] [multi_logger] [info] Iteration 152: Rejected NNI move (1380, 1376), proposed log likelihood: -2032952.233394152
+[2025-10-20 13:26:06.847] [multi_logger] [info] Iteration 153: Rejected NNI move (144, 143), proposed log likelihood: -2032952.233394152
+[2025-10-20 13:26:07.481] [multi_logger] [info] Iteration 154: Rejected NNI move (186, 168), proposed log likelihood: -2032952.233394152
+[2025-10-20 13:26:08.110] [multi_logger] [info] Iteration 155: Applied NNI move (957, 908), no. accepts: 77, new log likelihood: -2032952.1585722629, current phi: 0.44190130772019964, current nu: 0.0005758427112482538
+[2025-10-20 13:26:08.726] [multi_logger] [info] Iteration 156: Applied NNI move (200, 199), no. accepts: 78, new log likelihood: -2032951.4392454359, current phi: 0.4417673545064137, current nu: 0.0005486101891600218
+[2025-10-20 13:26:09.353] [multi_logger] [info] Iteration 157: Rejected NNI move (208, 212), proposed log likelihood: -2032951.4392454359
+[2025-10-20 13:26:09.982] [multi_logger] [info] Iteration 158: Applied NNI move (1294, 1286), no. accepts: 79, new log likelihood: -2032945.2546101068, current phi: 0.4418516551447376, current nu: 0.0005228079161513247
+[2025-10-20 13:26:10.634] [multi_logger] [info] Iteration 159: Rejected NNI move (939, 941), proposed log likelihood: -2032945.2546101068
+[2025-10-20 13:26:11.258] [multi_logger] [info] Iteration 160: Applied NNI move (170, 172), no. accepts: 80, new log likelihood: -2032943.4727603872, current phi: 0.4418535571958362, current nu: 0.0004980183156625635
+[2025-10-20 13:26:11.894] [multi_logger] [info] Iteration 161: Applied NNI move (809, 758), no. accepts: 81, new log likelihood: -2032942.3918435131, current phi: 0.4418636005084612, current nu: 0.00047428526457783736
+[2025-10-20 13:26:12.512] [multi_logger] [info] Iteration 162: Applied NNI move (627, 631), no. accepts: 82, new log likelihood: -2032934.8004286354, current phi: 0.4420261849828568, current nu: 0.00045174720461874486
+[2025-10-20 13:26:13.135] [multi_logger] [info] Iteration 163: Applied NNI move (799, 796), no. accepts: 83, new log likelihood: -2032927.1579654147, current phi: 0.44242440454591414, current nu: 0.0004302860979012363
+[2025-10-20 13:26:13.767] [multi_logger] [info] Iteration 164: Rejected NNI move (234, 236), proposed log likelihood: -2032927.1579654147
+[2025-10-20 13:26:14.382] [multi_logger] [info] Iteration 165: Applied NNI move (1406, 1408), no. accepts: 84, new log likelihood: -2032927.080847289, current phi: 0.4424759876337847, current nu: 0.0004096514602123083
+[2025-10-20 13:26:15.009] [multi_logger] [info] Iteration 166: Applied NNI move (595, 576), no. accepts: 85, new log likelihood: -2032926.9572641207, current phi: 0.4425142096655434, current nu: 0.0003900027503518911
+[2025-10-20 13:26:15.638] [multi_logger] [info] Iteration 167: Applied NNI move (1499, 1497), no. accepts: 86, new log likelihood: -2032919.8993847987, current phi: 0.44282057865089625, current nu: 0.0003722983326340613
+[2025-10-20 13:26:16.266] [multi_logger] [info] Iteration 168: Applied NNI move (1086, 1080), no. accepts: 87, new log likelihood: -2032919.2699534874, current phi: 0.4428202821054938, current nu: 0.00035486841746317014
+[2025-10-20 13:26:16.900] [multi_logger] [info] Iteration 169: Applied NNI move (1353, 731), no. accepts: 88, new log likelihood: -2032918.618264681, current phi: 0.442819293047842, current nu: 0.0003382668182325037
+[2025-10-20 13:26:17.527] [multi_logger] [info] Iteration 170: Rejected NNI move (1313, 1309), proposed log likelihood: -2032918.618264681
+[2025-10-20 13:26:18.175] [multi_logger] [info] Iteration 171: Applied NNI move (52, 56), no. accepts: 89, new log likelihood: -2032916.2871596594, current phi: 0.4428410028787998, current nu: 0.0003224617761509715
+[2025-10-20 13:26:18.804] [multi_logger] [info] Iteration 172: Applied NNI move (1648, 1655), no. accepts: 90, new log likelihood: -2032913.7308856999, current phi: 0.4428455709670115, current nu: 0.0003073749208348518
+[2025-10-20 13:26:19.440] [multi_logger] [info] Iteration 173: Applied NNI move (1539, 1554), no. accepts: 91, new log likelihood: -2032912.7887758208, current phi: 0.4428776063957675, current nu: 0.00029306447036060203
+[2025-10-20 13:26:20.077] [multi_logger] [info] Iteration 174: Rejected NNI move (793, 805), proposed log likelihood: -2032912.7887758208
+[2025-10-20 13:26:20.703] [multi_logger] [info] Iteration 175: Applied NNI move (1498, 1501), no. accepts: 92, new log likelihood: -2032912.5411926685, current phi: 0.4428568378368678, current nu: 0.0002793875757442979
+[2025-10-20 13:26:21.337] [multi_logger] [info] Iteration 176: Applied NNI move (1501, 1498), no. accepts: 93, new log likelihood: -2032912.5110314013, current phi: 0.4428668276031342, current nu: 0.0002663691860158155
+[2025-10-20 13:26:21.978] [multi_logger] [info] Iteration 177: Applied NNI move (1086, 1085), no. accepts: 94, new log likelihood: -2032912.492333382, current phi: 0.4428862248339394, current nu: 0.00025396616554776056
+[2025-10-20 13:26:22.584] [multi_logger] [info] Iteration 178: Applied NNI move (902, 961), no. accepts: 95, new log likelihood: -2032909.5051533906, current phi: 0.4431086692393369, current nu: 0.00024215395381566197
+[2025-10-20 13:26:23.197] [multi_logger] [info] Iteration 179: Applied NNI move (901, 908), no. accepts: 96, new log likelihood: -2032908.4998455523, current phi: 0.443148572232546, current nu: 0.00023090967169615278
+[2025-10-20 13:26:23.825] [multi_logger] [info] Iteration 180: Rejected NNI move (1576, 1596), proposed log likelihood: -2032908.4998455523
+[2025-10-20 13:26:24.447] [multi_logger] [info] Iteration 181: Rejected NNI move (65, 63), proposed log likelihood: -2032908.4998455523
+[2025-10-20 13:26:25.074] [multi_logger] [info] Iteration 182: Rejected NNI move (1384, 1389), proposed log likelihood: -2032908.4998455523
+[2025-10-20 13:26:25.702] [multi_logger] [info] Iteration 183: Rejected NNI move (474, 446), proposed log likelihood: -2032908.4998455523
+[2025-10-20 13:26:26.356] [multi_logger] [info] Iteration 184: Rejected NNI move (571, 704), proposed log likelihood: -2032908.4998455523
+[2025-10-20 13:26:26.964] [multi_logger] [info] Iteration 185: Applied NNI move (609, 619), no. accepts: 97, new log likelihood: -2032906.840412992, current phi: 0.44323801088003956, current nu: 0.0002202794718351118
+[2025-10-20 13:26:27.562] [multi_logger] [info] Iteration 186: Rejected NNI move (1399, 1402), proposed log likelihood: -2032906.840412992
+[2025-10-20 13:26:28.208] [multi_logger] [info] Iteration 187: Rejected NNI move (1439, 1437), proposed log likelihood: -2032906.840412992
+[2025-10-20 13:26:28.830] [multi_logger] [info] Iteration 188: Applied NNI move (1606, 1534), no. accepts: 98, new log likelihood: -2032906.6769464596, current phi: 0.44328609452459145, current nu: 0.00021016540607638238
+[2025-10-20 13:26:29.458] [multi_logger] [info] Iteration 189: Applied NNI move (1534, 1606), no. accepts: 99, new log likelihood: -2032905.5923006632, current phi: 0.4433071867789654, current nu: 0.0002005122000898129
+[2025-10-20 13:26:30.099] [multi_logger] [info] Iteration 190: Applied NNI move (917, 912), no. accepts: 100, new log likelihood: -2032903.085014428, current phi: 0.4431663045845092, current nu: 0.00019126307092341986
+[2025-10-20 13:26:30.732] [multi_logger] [info] Iteration 191: Applied NNI move (1226, 1220), no. accepts: 101, new log likelihood: -2032900.6484819185, current phi: 0.4430415810563154, current nu: 0.00018240239354338816
+[2025-10-20 13:26:31.349] [multi_logger] [info] Iteration 192: Applied NNI move (347, 328), no. accepts: 102, new log likelihood: -2032890.1981143258, current phi: 0.442916796977866, current nu: 0.00017390944960053427
+[2025-10-20 13:26:31.969] [multi_logger] [info] Iteration 193: Applied NNI move (1061, 1063), no. accepts: 103, new log likelihood: -2032885.719400086, current phi: 0.4428446026897829, current nu: 0.00016578385937756327
+[2025-10-20 13:26:32.590] [multi_logger] [info] Iteration 194: Rejected NNI move (1322, 1293), proposed log likelihood: -2032885.719400086
+[2025-10-20 13:26:33.243] [multi_logger] [info] Iteration 195: Applied NNI move (73, 75), no. accepts: 104, new log likelihood: -2032885.567628698, current phi: 0.44288284118041443, current nu: 0.0001580889248009358
+[2025-10-20 13:26:33.854] [multi_logger] [info] Iteration 196: Applied NNI move (1007, 1002), no. accepts: 105, new log likelihood: -2032885.552386719, current phi: 0.4429005898974672, current nu: 0.00015075658638001748
+[2025-10-20 13:26:34.473] [multi_logger] [info] Iteration 197: Applied NNI move (1111, 1113), no. accepts: 106, new log likelihood: -2032885.3385064814, current phi: 0.4429177236284188, current nu: 0.00014376575608784562
+[2025-10-20 13:26:35.083] [multi_logger] [info] Iteration 198: Applied NNI move (533, 524), no. accepts: 107, new log likelihood: -2032883.1345553761, current phi: 0.44297768861136166, current nu: 0.00013710274492924367
+[2025-10-20 13:26:35.704] [multi_logger] [info] Iteration 199: Applied NNI move (473, 447), no. accepts: 108, new log likelihood: -2032881.723714475, current phi: 0.4430764323021094, current nu: 0.0001307719207953949
+[2025-10-20 13:26:36.335] [multi_logger] [info] Iteration 200: Applied NNI move (1313, 1309), no. accepts: 109, new log likelihood: -2032881.749781686, current phi: 0.4431966108894151, current nu: 0.00012486925259362725
+[2025-10-20 13:26:36.944] [multi_logger] [info] Iteration 201: Rejected NNI move (1248, 1246), proposed log likelihood: -2032881.749781686
+[2025-10-20 13:26:37.534] [multi_logger] [info] Iteration 202: Applied NNI move (1011, 1013), no. accepts: 110, new log likelihood: -2032877.6311561873, current phi: 0.4431393757196736, current nu: 0.00011916833767249006
+[2025-10-20 13:26:38.179] [multi_logger] [info] Iteration 203: Applied NNI move (469, 457), no. accepts: 111, new log likelihood: -2032868.80980427, current phi: 0.44315665437413476, current nu: 0.00011376101981629621
+[2025-10-20 13:26:38.997] [multi_logger] [info] Iteration 204: Applied NNI move (740, 842), no. accepts: 112, new log likelihood: -2032851.683179791, current phi: 0.44350694373446503, current nu: 0.00010611803543073104
+[2025-10-20 13:26:39.605] [multi_logger] [info] Iteration 205: Rejected NNI move (238, 264), proposed log likelihood: -2032851.683179791
+[2025-10-20 13:26:40.235] [multi_logger] [info] Iteration 206: Applied NNI move (1603, 1604), no. accepts: 113, new log likelihood: -2032851.610971539, current phi: 0.44347588898691215, current nu: 0.00010129998345321103
+[2025-10-20 13:26:40.862] [multi_logger] [info] Iteration 207: Applied NNI move (1557, 1568), no. accepts: 114, new log likelihood: -2032849.5251330105, current phi: 0.44338624559669043, current nu: 0.00010000305214231317
+[2025-10-20 13:26:41.485] [multi_logger] [info] Iteration 208: Rejected NNI move (1206, 1202), proposed log likelihood: -2032849.5251330105
+[2025-10-20 13:26:42.112] [multi_logger] [info] Iteration 209: Applied NNI move (10, 12), no. accepts: 115, new log likelihood: -2032848.3593971531, current phi: 0.44335670441277086, current nu: 0.00010000300203457474
+[2025-10-20 13:26:42.728] [multi_logger] [info] Iteration 210: Applied NNI move (415, 414), no. accepts: 116, new log likelihood: -2032848.254895521, current phi: 0.44334665990764344, current nu: 0.00010000302821720624
+[2025-10-20 13:26:43.373] [multi_logger] [info] Iteration 211: Rejected NNI move (962, 965), proposed log likelihood: -2032848.254895521
+[2025-10-20 13:26:44.007] [multi_logger] [info] Iteration 212: Applied NNI move (306, 300), no. accepts: 117, new log likelihood: -2032846.2508585178, current phi: 0.44334923409917865, current nu: 0.00010000303309275404
+[2025-10-20 13:26:44.626] [multi_logger] [info] Iteration 213: Rejected NNI move (1565, 1559), proposed log likelihood: -2032846.2508585178
+[2025-10-20 13:26:45.245] [multi_logger] [info] Iteration 214: Rejected NNI move (1210, 1208), proposed log likelihood: -2032846.2508585178
+[2025-10-20 13:26:45.877] [multi_logger] [info] Iteration 215: Applied NNI move (10, 33), no. accepts: 118, new log likelihood: -2032840.955693767, current phi: 0.44345901716646363, current nu: 0.0001000030170832917
+[2025-10-20 13:26:46.575] [multi_logger] [info] Iteration 216: Rejected NNI move (665, 664), proposed log likelihood: -2032840.955693767
+[2025-10-20 13:26:47.193] [multi_logger] [info] Iteration 217: Rejected NNI move (1054, 1051), proposed log likelihood: -2032840.955693767
+[2025-10-20 13:26:47.809] [multi_logger] [info] Iteration 218: Rejected NNI move (154, 151), proposed log likelihood: -2032840.955693767
+[2025-10-20 13:26:48.425] [multi_logger] [info] Iteration 219: Rejected NNI move (1504, 1530), proposed log likelihood: -2032840.955693767
+[2025-10-20 13:26:49.052] [multi_logger] [info] Iteration 220: Applied NNI move (995, 1000), no. accepts: 119, new log likelihood: -2032840.905569493, current phi: 0.443466942776592, current nu: 0.00010000298769660234
+[2025-10-20 13:26:49.688] [multi_logger] [info] Iteration 221: Applied NNI move (1351, 1280), no. accepts: 120, new log likelihood: -2032831.5570025328, current phi: 0.4437566015578364, current nu: 0.00010000301693334196
+[2025-10-20 13:26:50.297] [multi_logger] [info] Iteration 222: Applied NNI move (79, 82), no. accepts: 121, new log likelihood: -2032825.451720822, current phi: 0.44357719787893085, current nu: 0.00010000301388014267
+[2025-10-20 13:26:50.920] [multi_logger] [info] Iteration 223: Rejected NNI move (363, 357), proposed log likelihood: -2032825.451720822
+[2025-10-20 13:26:51.555] [multi_logger] [info] Iteration 224: Rejected NNI move (759, 807), proposed log likelihood: -2032825.451720822
+[2025-10-20 13:26:52.163] [multi_logger] [info] Iteration 225: Rejected NNI move (616, 615), proposed log likelihood: -2032825.451720822
+[2025-10-20 13:26:52.792] [multi_logger] [info] Iteration 226: Rejected NNI move (456, 461), proposed log likelihood: -2032825.451720822
+[2025-10-20 13:26:53.421] [multi_logger] [info] Iteration 227: Applied NNI move (66, 62), no. accepts: 122, new log likelihood: -2032823.6995293193, current phi: 0.4435091150687354, current nu: 0.00010000314415961117
+[2025-10-20 13:26:54.048] [multi_logger] [info] Iteration 228: Applied NNI move (623, 626), no. accepts: 123, new log likelihood: -2032822.0659114986, current phi: 0.4435078834677962, current nu: 0.00010000313420313271
+[2025-10-20 13:26:54.673] [multi_logger] [info] Iteration 229: Applied NNI move (1158, 1153), no. accepts: 124, new log likelihood: -2032819.412989679, current phi: 0.4434139175674858, current nu: 0.00010000312449021139
+[2025-10-20 13:26:55.306] [multi_logger] [info] Iteration 230: Rejected NNI move (269, 273), proposed log likelihood: -2032819.412989679
+[2025-10-20 13:26:55.915] [multi_logger] [info] Iteration 231: Rejected NNI move (1000, 1002), proposed log likelihood: -2032819.412989679
+[2025-10-20 13:26:56.528] [multi_logger] [info] Iteration 232: Applied NNI move (1607, 1532), no. accepts: 125, new log likelihood: -2032815.6957196887, current phi: 0.44327131843217993, current nu: 0.00010000317000311388
+[2025-10-20 13:26:57.155] [multi_logger] [info] Iteration 233: Applied NNI move (1206, 1195), no. accepts: 126, new log likelihood: -2032813.7714276775, current phi: 0.4428933601591181, current nu: 0.00010000304823974065
+[2025-10-20 13:26:57.790] [multi_logger] [info] Iteration 234: Applied NNI move (426, 428), no. accepts: 127, new log likelihood: -2032807.0686476943, current phi: 0.44250833505570547, current nu: 0.0001000033630230909
+[2025-10-20 13:26:58.394] [multi_logger] [info] Iteration 235: Rejected NNI move (908, 901), proposed log likelihood: -2032807.0686476943
+[2025-10-20 13:26:59.009] [multi_logger] [info] Iteration 236: Rejected NNI move (267, 237), proposed log likelihood: -2032807.0686476943
+[2025-10-20 13:26:59.629] [multi_logger] [info] Iteration 237: Rejected NNI move (1471, 1469), proposed log likelihood: -2032807.0686476943
+[2025-10-20 13:27:00.237] [multi_logger] [info] Iteration 238: Applied NNI move (72, 49), no. accepts: 128, new log likelihood: -2032806.8386067916, current phi: 0.4425008237810899, current nu: 0.00010000349882316365
+[2025-10-20 13:27:00.852] [multi_logger] [info] Iteration 239: Rejected NNI move (1041, 1047), proposed log likelihood: -2032806.8386067916
+[2025-10-20 13:27:01.498] [multi_logger] [info] Iteration 240: Applied NNI move (1408, 1406), no. accepts: 129, new log likelihood: -2032806.821462019, current phi: 0.4424953851564876, current nu: 0.00010000346895874725
+[2025-10-20 13:27:02.145] [multi_logger] [info] Iteration 241: Rejected NNI move (1623, 1628), proposed log likelihood: -2032806.821462019
+[2025-10-20 13:27:02.780] [multi_logger] [info] Iteration 242: Applied NNI move (898, 890), no. accepts: 130, new log likelihood: -2032806.7356873988, current phi: 0.4424933966939201, current nu: 0.00010000346240892369
+[2025-10-20 13:27:03.383] [multi_logger] [info] Iteration 243: Applied NNI move (88, 96), no. accepts: 131, new log likelihood: -2032803.2106010513, current phi: 0.442562050309821, current nu: 0.00010000344241139057
+[2025-10-20 13:27:04.021] [multi_logger] [info] Iteration 244: Applied NNI move (424, 427), no. accepts: 132, new log likelihood: -2032799.0676701672, current phi: 0.4426831371761707, current nu: 0.0001000035623983611
+[2025-10-20 13:27:04.639] [multi_logger] [info] Iteration 245: Rejected NNI move (261, 259), proposed log likelihood: -2032799.0676701672
+[2025-10-20 13:27:05.311] [multi_logger] [info] Iteration 246: Rejected NNI move (732, 866), proposed log likelihood: -2032799.0676701672
+[2025-10-20 13:27:05.931] [multi_logger] [info] Iteration 247: Applied NNI move (344, 343), no. accepts: 133, new log likelihood: -2032795.1016547065, current phi: 0.4426850608262855, current nu: 0.00010000359508431711
+[2025-10-20 13:27:06.546] [multi_logger] [info] Iteration 248: Rejected NNI move (1248, 1246), proposed log likelihood: -2032795.1016547065
+[2025-10-20 13:27:07.170] [multi_logger] [info] Iteration 249: Rejected NNI move (1046, 1043), proposed log likelihood: -2032795.1016547065
+[2025-10-20 13:27:07.786] [multi_logger] [info] Iteration 250: Applied NNI move (1023, 1022), no. accepts: 134, new log likelihood: -2032792.127999865, current phi: 0.44239369122301153, current nu: 0.00010000324768038445
+[2025-10-20 13:27:08.403] [multi_logger] [info] Iteration 251: Applied NNI move (660, 665), no. accepts: 135, new log likelihood: -2032790.8207766525, current phi: 0.4423070632424026, current nu: 0.00010000334160494564
+[2025-10-20 13:27:09.017] [multi_logger] [info] Iteration 252: Applied NNI move (33, 14), no. accepts: 136, new log likelihood: -2032785.7958332144, current phi: 0.44231963266877716, current nu: 0.00010000338576023295
+[2025-10-20 13:27:09.647] [multi_logger] [info] Iteration 253: Applied NNI move (1302, 1300), no. accepts: 137, new log likelihood: -2032782.837264736, current phi: 0.4424179167704953, current nu: 0.00010000344657282688
+[2025-10-20 13:27:10.271] [multi_logger] [info] Iteration 254: Rejected NNI move (409, 408), proposed log likelihood: -2032782.837264736
+[2025-10-20 13:27:10.885] [multi_logger] [info] Iteration 255: Applied NNI move (262, 248), no. accepts: 138, new log likelihood: -2032782.7145779885, current phi: 0.44240789581877105, current nu: 0.00010000347450046423
+[2025-10-20 13:27:11.468] [multi_logger] [info] Iteration 256: Rejected NNI move (1097, 1093), proposed log likelihood: -2032782.7145779885
+[2025-10-20 13:27:12.084] [multi_logger] [info] Iteration 257: Applied NNI move (1421, 1415), no. accepts: 139, new log likelihood: -2032780.243953099, current phi: 0.4423115404206619, current nu: 0.00010000350110194887
+[2025-10-20 13:27:12.713] [multi_logger] [info] Iteration 258: Rejected NNI move (1569, 1568), proposed log likelihood: -2032780.243953099
+[2025-10-20 13:27:13.327] [multi_logger] [info] Iteration 259: Rejected NNI move (1198, 1201), proposed log likelihood: -2032780.243953099
+[2025-10-20 13:27:13.939] [multi_logger] [info] Iteration 260: Rejected NNI move (570, 695), proposed log likelihood: -2032780.243953099
+[2025-10-20 13:27:14.567] [multi_logger] [info] Iteration 261: Applied NNI move (703, 572), no. accepts: 140, new log likelihood: -2032773.810945156, current phi: 0.44232556159890335, current nu: 0.00010000343296006075
+[2025-10-20 13:27:15.186] [multi_logger] [info] Iteration 262: Rejected NNI move (1434, 1439), proposed log likelihood: -2032773.810945156
+[2025-10-20 13:27:15.800] [multi_logger] [info] Iteration 263: Applied NNI move (1486, 1488), no. accepts: 141, new log likelihood: -2032767.1937444087, current phi: 0.44236001580171935, current nu: 0.0001000033455416717
+[2025-10-20 13:27:16.372] [multi_logger] [info] Iteration 264: Applied NNI move (1358, 1365), no. accepts: 142, new log likelihood: -2032764.557836952, current phi: 0.4423809372994663, current nu: 0.00010000337063260577
+[2025-10-20 13:27:16.987] [multi_logger] [info] Iteration 265: Applied NNI move (868, 879), no. accepts: 143, new log likelihood: -2032756.5435718265, current phi: 0.4420513781962348, current nu: 0.0001000033948561823
+[2025-10-20 13:27:17.598] [multi_logger] [info] Iteration 266: Rejected NNI move (930, 944), proposed log likelihood: -2032756.5435718265
+[2025-10-20 13:27:18.233] [multi_logger] [info] Iteration 267: Rejected NNI move (1472, 1464), proposed log likelihood: -2032756.5435718265
+[2025-10-20 13:27:18.850] [multi_logger] [info] Iteration 268: Rejected NNI move (249, 256), proposed log likelihood: -2032756.5435718265
+[2025-10-20 13:27:19.479] [multi_logger] [info] Iteration 269: Rejected NNI move (309, 300), proposed log likelihood: -2032756.5435718265
+[2025-10-20 13:27:20.092] [multi_logger] [info] Iteration 270: Applied NNI move (856, 734), no. accepts: 144, new log likelihood: -2032756.1171446939, current phi: 0.4420236251961398, current nu: 0.00010000344665126725
+[2025-10-20 13:27:20.746] [multi_logger] [info] Iteration 271: Rejected NNI move (848, 851), proposed log likelihood: -2032756.1171446939
+[2025-10-20 13:27:21.344] [multi_logger] [info] Iteration 272: Rejected NNI move (395, 419), proposed log likelihood: -2032756.1171446939
+[2025-10-20 13:27:21.959] [multi_logger] [info] Iteration 273: Rejected NNI move (243, 242), proposed log likelihood: -2032756.1171446939
+[2025-10-20 13:27:22.566] [multi_logger] [info] Iteration 274: Applied NNI move (610, 613), no. accepts: 145, new log likelihood: -2032755.9360862924, current phi: 0.44200480771637113, current nu: 0.00010000347531902616
+[2025-10-20 13:27:23.187] [multi_logger] [info] Iteration 275: Rejected NNI move (8, 78), proposed log likelihood: -2032755.9360862924
+[2025-10-20 13:27:23.830] [multi_logger] [info] Iteration 276: Rejected NNI move (622, 640), proposed log likelihood: -2032755.9360862924
+[2025-10-20 13:27:24.444] [multi_logger] [info] Iteration 277: Rejected NNI move (106, 105), proposed log likelihood: -2032755.9360862924
+[2025-10-20 13:27:25.108] [multi_logger] [info] Iteration 278: Rejected NNI move (1517, 1520), proposed log likelihood: -2032755.9360862924
+[2025-10-20 13:27:25.733] [multi_logger] [info] Iteration 279: Rejected NNI move (1303, 1299), proposed log likelihood: -2032755.9360862924
+[2025-10-20 13:27:26.306] [multi_logger] [info] Iteration 280: Applied NNI move (931, 933), no. accepts: 146, new log likelihood: -2032755.8692015652, current phi: 0.4419956046368711, current nu: 0.00010000349688453472
+[2025-10-20 13:27:26.920] [multi_logger] [info] Iteration 281: Rejected NNI move (1369, 1357), proposed log likelihood: -2032755.8692015652
+[2025-10-20 13:27:27.539] [multi_logger] [info] Iteration 282: Applied NNI move (979, 884), no. accepts: 147, new log likelihood: -2032741.4876256767, current phi: 0.4421954688821281, current nu: 0.00010000346350548674
+[2025-10-20 13:27:28.150] [multi_logger] [info] Iteration 283: Applied NNI move (666, 665), no. accepts: 148, new log likelihood: -2032736.4976333757, current phi: 0.4420240273128278, current nu: 0.00010000324636517214
+[2025-10-20 13:27:28.810] [multi_logger] [info] Iteration 284: Applied NNI move (1517, 1519), no. accepts: 149, new log likelihood: -2032730.856297323, current phi: 0.4420503798132416, current nu: 0.0001000036747790376
+[2025-10-20 13:27:29.434] [multi_logger] [info] Iteration 285: Applied NNI move (919, 921), no. accepts: 150, new log likelihood: -2032727.7506077646, current phi: 0.441869453873969, current nu: 0.00010000369402243175
+[2025-10-20 13:27:30.078] [multi_logger] [info] Iteration 286: Applied NNI move (1522, 1514), no. accepts: 151, new log likelihood: -2032724.6402971754, current phi: 0.44200206131137343, current nu: 0.00010000331871225538
+[2025-10-20 13:27:30.702] [multi_logger] [info] Iteration 287: Rejected NNI move (1067, 1063), proposed log likelihood: -2032724.6402971754
+[2025-10-20 13:27:31.344] [multi_logger] [info] Iteration 288: Rejected NNI move (1413, 1427), proposed log likelihood: -2032724.6402971754
+[2025-10-20 13:27:31.967] [multi_logger] [info] Iteration 289: Rejected NNI move (1581, 1587), proposed log likelihood: -2032724.6402971754
+[2025-10-20 13:27:32.579] [multi_logger] [info] Iteration 290: Rejected NNI move (900, 899), proposed log likelihood: -2032724.6402971754
+[2025-10-20 13:27:33.170] [multi_logger] [info] Iteration 291: Rejected NNI move (89, 91), proposed log likelihood: -2032724.6402971754
+[2025-10-20 13:27:33.800] [multi_logger] [info] Iteration 292: Applied NNI move (240, 245), no. accepts: 152, new log likelihood: -2032724.2004561017, current phi: 0.4419899106395707, current nu: 0.00010000388943920619
+[2025-10-20 13:27:34.447] [multi_logger] [info] Iteration 293: Applied NNI move (219, 205), no. accepts: 153, new log likelihood: -2032722.2001108197, current phi: 0.44197499288325603, current nu: 0.00010000395455398368
+[2025-10-20 13:27:35.052] [multi_logger] [info] Iteration 294: Applied NNI move (746, 754), no. accepts: 154, new log likelihood: -2032709.3421904433, current phi: 0.44198163725044237, current nu: 0.00010000387099115616
+[2025-10-20 13:27:35.680] [multi_logger] [info] Iteration 295: Rejected NNI move (786, 785), proposed log likelihood: -2032709.3421904433
+[2025-10-20 13:27:36.306] [multi_logger] [info] Iteration 296: Applied NNI move (284, 229), no. accepts: 155, new log likelihood: -2032696.6511922996, current phi: 0.44225302978641085, current nu: 0.0001000041247019283
+[2025-10-20 13:27:36.922] [multi_logger] [info] Iteration 297: Applied NNI move (299, 298), no. accepts: 156, new log likelihood: -2032696.416508459, current phi: 0.44224677555335457, current nu: 0.00010000453636253304
+[2025-10-20 13:27:37.551] [multi_logger] [info] Iteration 298: Rejected NNI move (1284, 1338), proposed log likelihood: -2032696.416508459
+[2025-10-20 13:27:38.168] [multi_logger] [info] Iteration 299: Applied NNI move (777, 775), no. accepts: 157, new log likelihood: -2032692.0115241718, current phi: 0.44231287377659484, current nu: 0.00010000451144137281
+[2025-10-20 13:27:38.791] [multi_logger] [info] Iteration 300: Applied NNI move (287, 304), no. accepts: 158, new log likelihood: -2032692.0292623541, current phi: 0.44246352601363204, current nu: 0.00010000463125620776
+[2025-10-20 13:27:39.416] [multi_logger] [info] Iteration 301: Applied NNI move (499, 501), no. accepts: 159, new log likelihood: -2032691.9793168958, current phi: 0.44245140827440427, current nu: 0.00010000472921426307
+[2025-10-20 13:27:40.033] [multi_logger] [info] Iteration 302: Rejected NNI move (144, 143), proposed log likelihood: -2032691.9793168958
+[2025-10-20 13:27:40.647] [multi_logger] [info] Iteration 303: Rejected NNI move (1096, 1094), proposed log likelihood: -2032691.9793168958
+[2025-10-20 13:27:41.265] [multi_logger] [info] Iteration 304: Rejected NNI move (1367, 1364), proposed log likelihood: -2032691.9793168958
+[2025-10-20 13:27:41.863] [multi_logger] [info] Iteration 305: Applied NNI move (867, 980), no. accepts: 160, new log likelihood: -2032691.9413774642, current phi: 0.4424218850524876, current nu: 0.0001000047577663487
+[2025-10-20 13:27:42.492] [multi_logger] [info] Iteration 306: Rejected NNI move (1051, 1044), proposed log likelihood: -2032691.9413774642
+[2025-10-20 13:27:43.120] [multi_logger] [info] Iteration 307: Rejected NNI move (822, 816), proposed log likelihood: -2032691.9413774642
+[2025-10-20 13:27:43.753] [multi_logger] [info] Iteration 308: Applied NNI move (903, 956), no. accepts: 161, new log likelihood: -2032688.4354886566, current phi: 0.4425960249988703, current nu: 0.00010000471752980494
+[2025-10-20 13:27:44.382] [multi_logger] [info] Iteration 309: Applied NNI move (785, 784), no. accepts: 162, new log likelihood: -2032684.847247566, current phi: 0.4427661816047755, current nu: 0.00010000478330118784
+[2025-10-20 13:27:45.029] [multi_logger] [info] Iteration 310: Rejected NNI move (445, 475), proposed log likelihood: -2032684.847247566
+[2025-10-20 13:27:45.642] [multi_logger] [info] Iteration 311: Rejected NNI move (154, 151), proposed log likelihood: -2032684.847247566
+[2025-10-20 13:27:46.269] [multi_logger] [info] Iteration 312: Applied NNI move (639, 624), no. accepts: 163, new log likelihood: -2032683.773317615, current phi: 0.4427543124386291, current nu: 0.0001000047817171692
+[2025-10-20 13:27:46.874] [multi_logger] [info] Iteration 313: Rejected NNI move (185, 320), proposed log likelihood: -2032683.773317615
+[2025-10-20 13:27:47.504] [multi_logger] [info] Iteration 314: Applied NNI move (250, 252), no. accepts: 164, new log likelihood: -2032679.7142559132, current phi: 0.44307526829591737, current nu: 0.00010000534879518006
+[2025-10-20 13:27:48.128] [multi_logger] [info] Iteration 315: Rejected NNI move (68, 71), proposed log likelihood: -2032679.7142559132
+[2025-10-20 13:27:48.782] [multi_logger] [info] Iteration 316: Rejected NNI move (1578, 1584), proposed log likelihood: -2032679.7142559132
+[2025-10-20 13:27:49.411] [multi_logger] [info] Iteration 317: Applied NNI move (1622, 1613), no. accepts: 165, new log likelihood: -2032672.669932255, current phi: 0.44271269674242114, current nu: 0.00010000519046857954
+[2025-10-20 13:27:50.006] [multi_logger] [info] Iteration 318: Rejected NNI move (140, 147), proposed log likelihood: -2032672.669932255
+[2025-10-20 13:27:50.611] [multi_logger] [info] Iteration 319: Rejected NNI move (1344, 1342), proposed log likelihood: -2032672.669932255
+[2025-10-20 13:27:51.237] [multi_logger] [info] Iteration 320: Rejected NNI move (570, 695), proposed log likelihood: -2032672.669932255
+[2025-10-20 13:27:51.856] [multi_logger] [info] Iteration 321: Applied NNI move (48, 43), no. accepts: 166, new log likelihood: -2032672.2881330922, current phi: 0.44281219348166906, current nu: 0.00010000527800983823
+[2025-10-20 13:27:52.469] [multi_logger] [info] Iteration 322: Rejected NNI move (1001, 1008), proposed log likelihood: -2032672.2881330922
+[2025-10-20 13:27:53.098] [multi_logger] [info] Iteration 323: Applied NNI move (351, 353), no. accepts: 167, new log likelihood: -2032671.5854567229, current phi: 0.4428065693320356, current nu: 0.00010000509048811855
+[2025-10-20 13:27:53.703] [multi_logger] [info] Iteration 324: Rejected NNI move (279, 272), proposed log likelihood: -2032671.5854567229
+[2025-10-20 13:27:54.373] [multi_logger] [info] Iteration 325: Applied NNI move (490, 492), no. accepts: 168, new log likelihood: -2032670.725570033, current phi: 0.4428812320814097, current nu: 0.00010000501089890484
+[2025-10-20 13:27:54.994] [multi_logger] [info] Iteration 326: Rejected NNI move (1059, 1057), proposed log likelihood: -2032670.725570033
+[2025-10-20 13:27:55.596] [multi_logger] [info] Iteration 327: Rejected NNI move (1539, 1553), proposed log likelihood: -2032670.725570033
+[2025-10-20 13:27:56.233] [multi_logger] [info] Iteration 328: Applied NNI move (329, 331), no. accepts: 169, new log likelihood: -2032670.6658862599, current phi: 0.4428688027278016, current nu: 0.0001000050728311085
+[2025-10-20 13:27:56.846] [multi_logger] [info] Iteration 329: Applied NNI move (569, 482), no. accepts: 170, new log likelihood: -2032670.631738104, current phi: 0.442865761997153, current nu: 0.00010000508731727695
+[2025-10-20 13:27:57.472] [multi_logger] [info] Iteration 330: Rejected NNI move (622, 623), proposed log likelihood: -2032670.631738104
+[2025-10-20 13:27:58.084] [multi_logger] [info] Iteration 331: Rejected NNI move (498, 489), proposed log likelihood: -2032670.631738104
+[2025-10-20 13:27:58.684] [multi_logger] [info] Iteration 332: Applied NNI move (596, 576), no. accepts: 171, new log likelihood: -2032670.236052522, current phi: 0.44285836821813046, current nu: 0.00010000508178128711
+[2025-10-20 13:27:59.307] [multi_logger] [info] Iteration 333: Rejected NNI move (1090, 1103), proposed log likelihood: -2032670.236052522
+[2025-10-20 13:27:59.917] [multi_logger] [info] Iteration 334: Applied NNI move (1519, 1517), no. accepts: 172, new log likelihood: -2032670.167890297, current phi: 0.4428257563236957, current nu: 0.00010000472080758263
+[2025-10-20 13:28:00.515] [multi_logger] [info] Iteration 335: Applied NNI move (22, 27), no. accepts: 173, new log likelihood: -2032668.7986066733, current phi: 0.4428719304896795, current nu: 0.00010000468839794832
+[2025-10-20 13:28:01.134] [multi_logger] [info] Iteration 336: Rejected NNI move (228, 222), proposed log likelihood: -2032668.7986066733
+[2025-10-20 13:28:01.748] [multi_logger] [info] Iteration 337: Applied NNI move (415, 413), no. accepts: 174, new log likelihood: -2032667.946680047, current phi: 0.4428839847272219, current nu: 0.00010000460063048538
+[2025-10-20 13:28:02.372] [multi_logger] [info] Iteration 338: Applied NNI move (443, 380), no. accepts: 175, new log likelihood: -2032667.7832971667, current phi: 0.44288001362529844, current nu: 0.00010000457499072716
+[2025-10-20 13:28:03.007] [multi_logger] [info] Iteration 339: Rejected NNI move (1059, 1058), proposed log likelihood: -2032667.7832971667
+[2025-10-20 13:28:03.635] [multi_logger] [info] Iteration 340: Applied NNI move (1405, 1400), no. accepts: 176, new log likelihood: -2032663.2254334982, current phi: 0.4427784192041595, current nu: 0.00010000446242579907
+[2025-10-20 13:28:04.282] [multi_logger] [info] Iteration 341: Rejected NNI move (1527, 1525), proposed log likelihood: -2032663.2254334982
+[2025-10-20 13:28:04.923] [multi_logger] [info] Iteration 342: Applied NNI move (660, 664), no. accepts: 177, new log likelihood: -2032659.5145520796, current phi: 0.4424487918854864, current nu: 0.00010000389806913887
+[2025-10-20 13:28:05.550] [multi_logger] [info] Iteration 343: Rejected NNI move (1595, 1588), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:06.199] [multi_logger] [info] Iteration 344: Rejected NNI move (1381, 1375), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:06.801] [multi_logger] [info] Iteration 345: Rejected NNI move (457, 469), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:07.414] [multi_logger] [info] Iteration 346: Rejected NNI move (1346, 1349), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:08.041] [multi_logger] [info] Iteration 347: Rejected NNI move (1511, 1507), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:08.654] [multi_logger] [info] Iteration 348: Rejected NNI move (95, 97), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:09.273] [multi_logger] [info] Iteration 349: Rejected NNI move (1492, 1495), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:09.902] [multi_logger] [info] Iteration 350: Rejected NNI move (930, 947), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:10.526] [multi_logger] [info] Iteration 351: Rejected NNI move (201, 195), proposed log likelihood: -2032659.5145520796
+[2025-10-20 13:28:11.143] [multi_logger] [info] Iteration 352: Applied NNI move (266, 263), no. accepts: 178, new log likelihood: -2032659.2508383468, current phi: 0.4424060679372657, current nu: 0.00010000391909269382
+[2025-10-20 13:28:11.769] [multi_logger] [info] Iteration 353: Applied NNI move (1399, 1406), no. accepts: 179, new log likelihood: -2032659.189578653, current phi: 0.4423992432826719, current nu: 0.00010000392902682164
+[2025-10-20 13:28:12.398] [multi_logger] [info] Iteration 354: Applied NNI move (637, 635), no. accepts: 180, new log likelihood: -2032659.031221713, current phi: 0.4425224332018825, current nu: 0.00010000395342040817
+[2025-10-20 13:28:13.065] [multi_logger] [info] Iteration 355: Rejected NNI move (668, 682), proposed log likelihood: -2032659.031221713
+[2025-10-20 13:28:13.727] [multi_logger] [info] Iteration 356: Applied NNI move (812, 742), no. accepts: 181, new log likelihood: -2032659.0145926923, current phi: 0.44251994321012805, current nu: 0.00010000393716827901
+[2025-10-20 13:28:14.356] [multi_logger] [info] Iteration 357: Applied NNI move (98, 100), no. accepts: 182, new log likelihood: -2032658.9943910104, current phi: 0.44251805246874876, current nu: 0.00010000393601312333
+[2025-10-20 13:28:15.000] [multi_logger] [info] Iteration 358: Applied NNI move (202, 191), no. accepts: 183, new log likelihood: -2032656.3338215959, current phi: 0.4426819534014036, current nu: 0.00010000374513708121
+[2025-10-20 13:28:15.683] [multi_logger] [info] Iteration 359: Applied NNI move (639, 631), no. accepts: 184, new log likelihood: -2032651.4866919878, current phi: 0.44262728685008706, current nu: 0.00010000375800145296
+[2025-10-20 13:28:16.280] [multi_logger] [info] Iteration 360: Rejected NNI move (1373, 1397), proposed log likelihood: -2032651.4866919878
+[2025-10-20 13:28:16.906] [multi_logger] [info] Iteration 361: Rejected NNI move (1303, 1300), proposed log likelihood: -2032651.4866919878
+[2025-10-20 13:28:17.540] [multi_logger] [info] Iteration 362: Applied NNI move (72, 43), no. accepts: 185, new log likelihood: -2032649.0640473943, current phi: 0.44250183270087246, current nu: 0.00010000385459745855
+[2025-10-20 13:28:18.174] [multi_logger] [info] Iteration 363: Rejected NNI move (52, 60), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:18.803] [multi_logger] [info] Iteration 364: Rejected NNI move (865, 849), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:19.433] [multi_logger] [info] Iteration 365: Rejected NNI move (162, 322), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:20.058] [multi_logger] [info] Iteration 366: Rejected NNI move (287, 302), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:20.679] [multi_logger] [info] Iteration 367: Rejected NNI move (857, 859), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:21.329] [multi_logger] [info] Iteration 368: Rejected NNI move (1219, 1221), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:21.948] [multi_logger] [info] Iteration 369: Rejected NNI move (1186, 1182), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:22.585] [multi_logger] [info] Iteration 370: Rejected NNI move (138, 137), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:23.206] [multi_logger] [info] Iteration 371: Rejected NNI move (1638, 1640), proposed log likelihood: -2032649.0640473943
+[2025-10-20 13:28:23.840] [multi_logger] [info] Iteration 372: Applied NNI move (371, 373), no. accepts: 186, new log likelihood: -2032648.4739542273, current phi: 0.4424812521894215, current nu: 0.00010000398787915182
+[2025-10-20 13:28:24.462] [multi_logger] [info] Iteration 373: Applied NNI move (356, 364), no. accepts: 187, new log likelihood: -2032648.3722321135, current phi: 0.44247865934222336, current nu: 0.00010000400944173904
+[2025-10-20 13:28:25.079] [multi_logger] [info] Iteration 374: Rejected NNI move (1582, 1580), proposed log likelihood: -2032648.3722321135
+[2025-10-20 13:28:25.709] [multi_logger] [info] Iteration 375: Applied NNI move (9, 40), no. accepts: 188, new log likelihood: -2032648.1527295813, current phi: 0.44247873475068017, current nu: 0.00010000401372570879
+[2025-10-20 13:28:26.369] [multi_logger] [info] Iteration 376: Applied NNI move (1486, 1491), no. accepts: 189, new log likelihood: -2032644.6120704575, current phi: 0.442596259960758, current nu: 0.00010000405453328929
+[2025-10-20 13:28:27.005] [multi_logger] [info] Iteration 377: Rejected NNI move (1305, 1296), proposed log likelihood: -2032644.6120704575
+[2025-10-20 13:28:27.638] [multi_logger] [info] Iteration 378: Applied NNI move (1256, 1280), no. accepts: 190, new log likelihood: -2032609.2226461694, current phi: 0.44334715285634635, current nu: 0.00010000377846478313
+[2025-10-20 13:28:28.267] [multi_logger] [info] Iteration 379: Applied NNI move (892, 895), no. accepts: 191, new log likelihood: -2032602.5658681402, current phi: 0.4435373145166895, current nu: 0.00010000443868305672
+[2025-10-20 13:28:28.901] [multi_logger] [info] Iteration 380: Rejected NNI move (1100, 1097), proposed log likelihood: -2032602.5658681402
+[2025-10-20 13:28:29.516] [multi_logger] [info] Iteration 381: Applied NNI move (568, 559), no. accepts: 192, new log likelihood: -2032594.7484776916, current phi: 0.4433110494790714, current nu: 0.00010000404369633907
+[2025-10-20 13:28:30.150] [multi_logger] [info] Iteration 382: Applied NNI move (1309, 1311), no. accepts: 193, new log likelihood: -2032592.0870361363, current phi: 0.443206699393541, current nu: 0.0001000039978481811
+[2025-10-20 13:28:30.780] [multi_logger] [info] Iteration 383: Applied NNI move (514, 516), no. accepts: 194, new log likelihood: -2032579.557090022, current phi: 0.4435486384740424, current nu: 0.00010000390816686762
+[2025-10-20 13:28:31.398] [multi_logger] [info] Iteration 384: Rejected NNI move (34, 36), proposed log likelihood: -2032579.557090022
+[2025-10-20 13:28:32.029] [multi_logger] [info] Iteration 385: Applied NNI move (17, 25), no. accepts: 195, new log likelihood: -2032578.33025438, current phi: 0.44355875336328937, current nu: 0.00010000383485330469
+[2025-10-20 13:28:32.645] [multi_logger] [info] Iteration 386: Rejected NNI move (582, 584), proposed log likelihood: -2032578.33025438
+[2025-10-20 13:28:33.298] [multi_logger] [info] Iteration 387: Rejected NNI move (735, 857), proposed log likelihood: -2032578.33025438
+[2025-10-20 13:28:33.946] [multi_logger] [info] Iteration 388: Applied NNI move (791, 792), no. accepts: 196, new log likelihood: -2032577.621542802, current phi: 0.44352225761700564, current nu: 0.00010000376093079996
+[2025-10-20 13:28:34.545] [multi_logger] [info] Iteration 389: Applied NNI move (13, 30), no. accepts: 197, new log likelihood: -2032573.8946339625, current phi: 0.4435208822613613, current nu: 0.00010000368534869843
+[2025-10-20 13:28:35.186] [multi_logger] [info] Iteration 390: Applied NNI move (1287, 1291), no. accepts: 198, new log likelihood: -2032562.1581273482, current phi: 0.444121857085832, current nu: 0.00010000411559911211
+[2025-10-20 13:28:35.822] [multi_logger] [info] Iteration 391: Applied NNI move (915, 920), no. accepts: 199, new log likelihood: -2032559.9187888163, current phi: 0.4441135152363834, current nu: 0.00010000395960798828
+[2025-10-20 13:28:36.416] [multi_logger] [info] Iteration 392: Applied NNI move (657, 621), no. accepts: 200, new log likelihood: -2032559.7831380155, current phi: 0.4441046569704169, current nu: 0.00010000400106652052
+[2025-10-20 13:28:37.049] [multi_logger] [info] Iteration 393: Rejected NNI move (1031, 1174), proposed log likelihood: -2032559.7831380155
+[2025-10-20 13:28:37.681] [multi_logger] [info] Iteration 394: Rejected NNI move (1036, 1070), proposed log likelihood: -2032559.7831380155
+[2025-10-20 13:28:38.316] [multi_logger] [info] Iteration 395: Rejected NNI move (1284, 1338), proposed log likelihood: -2032559.7831380155
+[2025-10-20 13:28:38.954] [multi_logger] [info] Iteration 396: Rejected NNI move (1229, 1232), proposed log likelihood: -2032559.7831380155
+[2025-10-20 13:28:39.606] [multi_logger] [info] Iteration 397: Rejected NNI move (1272, 1275), proposed log likelihood: -2032559.7831380155
+[2025-10-20 13:28:40.238] [multi_logger] [info] Iteration 398: Applied NNI move (1109, 1113), no. accepts: 201, new log likelihood: -2032559.744427693, current phi: 0.444105884733527, current nu: 0.000100003998832922
+[2025-10-20 13:28:40.882] [multi_logger] [info] Iteration 399: Applied NNI move (889, 896), no. accepts: 202, new log likelihood: -2032553.9064492458, current phi: 0.4441317577526364, current nu: 0.00010000392172703642
+[2025-10-20 13:28:41.506] [multi_logger] [info] Iteration 400: Applied NNI move (87, 7), no. accepts: 203, new log likelihood: -2032551.8010631474, current phi: 0.4440649541834131, current nu: 0.00010000371654456165
+[2025-10-20 13:28:42.132] [multi_logger] [info] Iteration 401: Applied NNI move (830, 834), no. accepts: 204, new log likelihood: -2032543.898389324, current phi: 0.44400136494468273, current nu: 0.00010000361740605098
+[2025-10-20 13:28:42.774] [multi_logger] [info] Iteration 402: Rejected NNI move (735, 857), proposed log likelihood: -2032543.898389324
+[2025-10-20 13:28:43.425] [multi_logger] [info] Iteration 403: Applied NNI move (856, 847), no. accepts: 205, new log likelihood: -2032540.7342652127, current phi: 0.44411464115418425, current nu: 0.00010000367036630805
+[2025-10-20 13:28:44.055] [multi_logger] [info] Iteration 404: Applied NNI move (1315, 1318), no. accepts: 206, new log likelihood: -2032539.3474133438, current phi: 0.44409674902596863, current nu: 0.00010000365868989778
+[2025-10-20 13:28:44.684] [multi_logger] [info] Iteration 405: Applied NNI move (887, 956), no. accepts: 207, new log likelihood: -2032535.82902977, current phi: 0.44410902781176315, current nu: 0.00010000379634152892
+[2025-10-20 13:28:45.313] [multi_logger] [info] Iteration 406: Applied NNI move (757, 754), no. accepts: 208, new log likelihood: -2032535.0036800778, current phi: 0.44419141792796785, current nu: 0.00010000385725124461
+[2025-10-20 13:28:45.955] [multi_logger] [info] Iteration 407: Rejected NNI move (865, 848), proposed log likelihood: -2032535.0036800778
+[2025-10-20 13:28:46.780] [multi_logger] [info] Iteration 408: Rejected NNI move (726, 1412), proposed log likelihood: -2032535.0036800778
+[2025-10-20 13:28:47.394] [multi_logger] [info] Iteration 409: Applied NNI move (920, 915), no. accepts: 209, new log likelihood: -2032534.937882749, current phi: 0.4441844765265132, current nu: 0.00010000386355932268
+[2025-10-20 13:28:48.059] [multi_logger] [info] Iteration 410: Applied NNI move (1645, 1655), no. accepts: 210, new log likelihood: -2032534.9405395112, current phi: 0.44416699023920225, current nu: 0.00010000385435220064
+[2025-10-20 13:28:48.688] [multi_logger] [info] Iteration 411: Rejected NNI move (905, 959), proposed log likelihood: -2032534.9405395112
+[2025-10-20 13:28:49.319] [multi_logger] [info] Iteration 412: Applied NNI move (950, 930), no. accepts: 211, new log likelihood: -2032534.896028134, current phi: 0.44414563856796757, current nu: 0.00010000385775827336
+[2025-10-20 13:28:49.939] [multi_logger] [info] Iteration 413: Applied NNI move (1266, 1265), no. accepts: 212, new log likelihood: -2032534.8688738192, current phi: 0.44412420065326097, current nu: 0.00010000386236604656
+[2025-10-20 13:28:50.547] [multi_logger] [info] Iteration 414: Rejected NNI move (145, 144), proposed log likelihood: -2032534.8688738192
+[2025-10-20 13:28:51.182] [multi_logger] [info] Iteration 415: Rejected NNI move (1277, 1281), proposed log likelihood: -2032534.8688738192
+[2025-10-20 13:28:51.809] [multi_logger] [info] Iteration 416: Rejected NNI move (1565, 1559), proposed log likelihood: -2032534.8688738192
+[2025-10-20 13:28:52.426] [multi_logger] [info] Iteration 417: Applied NNI move (768, 767), no. accepts: 213, new log likelihood: -2032534.8472597704, current phi: 0.4441098992206313, current nu: 0.0001000038654960562
+[2025-10-20 13:28:53.039] [multi_logger] [info] Iteration 418: Applied NNI move (1523, 1514), no. accepts: 214, new log likelihood: -2032534.6986277488, current phi: 0.44410256135508935, current nu: 0.00010000385829501026
+[2025-10-20 13:28:53.666] [multi_logger] [info] Iteration 419: Applied NNI move (188, 203), no. accepts: 215, new log likelihood: -2032530.3024299266, current phi: 0.4441776411859119, current nu: 0.00010000376899625425
+[2025-10-20 13:28:54.300] [multi_logger] [info] Iteration 420: Applied NNI move (301, 288), no. accepts: 216, new log likelihood: -2032528.716293255, current phi: 0.4438460307741977, current nu: 0.00010000319281387455
+[2025-10-20 13:28:54.947] [multi_logger] [info] Iteration 421: Applied NNI move (38, 49), no. accepts: 217, new log likelihood: -2032525.5935467444, current phi: 0.44374525030598605, current nu: 0.00010000340758817186
+[2025-10-20 13:28:55.587] [multi_logger] [info] Iteration 422: Applied NNI move (1190, 1277), no. accepts: 218, new log likelihood: -2032497.0785212363, current phi: 0.44403777998880745, current nu: 0.0001000033685717924
+[2025-10-20 13:28:56.253] [multi_logger] [info] Iteration 423: Applied NNI move (1623, 1628), no. accepts: 219, new log likelihood: -2032492.4908388641, current phi: 0.44449419631036813, current nu: 0.00010000329148132066
+[2025-10-20 13:28:56.924] [multi_logger] [info] Iteration 424: Applied NNI move (364, 356), no. accepts: 220, new log likelihood: -2032492.4375240377, current phi: 0.44451099963534735, current nu: 0.00010000324247829941
+[2025-10-20 13:28:57.593] [multi_logger] [info] Iteration 425: Rejected NNI move (743, 811), proposed log likelihood: -2032492.4375240377
+[2025-10-20 13:28:58.265] [multi_logger] [info] Iteration 426: Applied NNI move (229, 284), no. accepts: 221, new log likelihood: -2032492.4366732682, current phi: 0.44451209176409007, current nu: 0.00010000324004208901
+[2025-10-20 13:28:58.885] [multi_logger] [info] Iteration 427: Rejected NNI move (1523, 1521), proposed log likelihood: -2032492.4366732682
+[2025-10-20 13:28:59.584] [multi_logger] [info] Iteration 428: Rejected NNI move (368, 366), proposed log likelihood: -2032492.4366732682
+[2025-10-20 13:29:00.208] [multi_logger] [info] Iteration 429: Rejected NNI move (237, 264), proposed log likelihood: -2032492.4366732682
+[2025-10-20 13:29:00.838] [multi_logger] [info] Iteration 430: Applied NNI move (1283, 1322), no. accepts: 222, new log likelihood: -2032492.436621399, current phi: 0.44451240024651945, current nu: 0.00010000323994870915
+[2025-10-20 13:29:01.486] [multi_logger] [info] Iteration 431: Rejected NNI move (1028, 1015), proposed log likelihood: -2032492.436621399
+[2025-10-20 13:29:02.107] [multi_logger] [info] Iteration 432: Applied NNI move (500, 502), no. accepts: 223, new log likelihood: -2032483.1668642876, current phi: 0.4444950378379304, current nu: 0.0001000032592159512
+[2025-10-20 13:29:02.736] [multi_logger] [info] Iteration 433: Applied NNI move (1554, 1539), no. accepts: 224, new log likelihood: -2032480.6472710967, current phi: 0.44440532597346977, current nu: 0.00010000330091510094
+[2025-10-20 13:29:03.369] [multi_logger] [info] Iteration 434: Rejected NNI move (684, 611), proposed log likelihood: -2032480.6472710967
+[2025-10-20 13:29:03.990] [multi_logger] [info] Iteration 435: Rejected NNI move (991, 879), proposed log likelihood: -2032480.6472710967
+[2025-10-20 13:29:04.619] [multi_logger] [info] Iteration 436: Rejected NNI move (720, 2), proposed log likelihood: -2032480.6472710967
+[2025-10-20 13:29:05.243] [multi_logger] [info] Iteration 437: Applied NNI move (1256, 1351), no. accepts: 225, new log likelihood: -2032479.8893385357, current phi: 0.44437239405041934, current nu: 0.00010000335686969868
+[2025-10-20 13:29:05.871] [multi_logger] [info] Iteration 438: Applied NNI move (1415, 1418), no. accepts: 226, new log likelihood: -2032478.3456059832, current phi: 0.44444173422985245, current nu: 0.00010000335736333982
+[2025-10-20 13:29:06.465] [multi_logger] [info] Iteration 439: Rejected NNI move (394, 387), proposed log likelihood: -2032478.3456059832
+[2025-10-20 13:29:07.117] [multi_logger] [info] Iteration 440: Rejected NNI move (1643, 1642), proposed log likelihood: -2032478.3456059832
+[2025-10-20 13:29:07.733] [multi_logger] [info] Iteration 441: Rejected NNI move (84, 95), proposed log likelihood: -2032478.3456059832
+[2025-10-20 13:29:08.357] [multi_logger] [info] Iteration 442: Applied NNI move (6, 8), no. accepts: 227, new log likelihood: -2032478.0816276248, current phi: 0.4444233424152961, current nu: 0.00010000339271353744
+[2025-10-20 13:29:08.977] [multi_logger] [info] Iteration 443: Rejected NNI move (3, 570), proposed log likelihood: -2032478.0816276248
+[2025-10-20 13:29:09.610] [multi_logger] [info] Iteration 444: Applied NNI move (653, 643), no. accepts: 228, new log likelihood: -2032468.4348135642, current phi: 0.4446792435955544, current nu: 0.0001000033159993891
+[2025-10-20 13:29:10.238] [multi_logger] [info] Iteration 445: Rejected NNI move (1257, 1276), proposed log likelihood: -2032468.4348135642
+[2025-10-20 13:29:10.896] [multi_logger] [info] Iteration 446: Applied NNI move (199, 196), no. accepts: 229, new log likelihood: -2032464.0871910788, current phi: 0.4448838202959743, current nu: 0.00010000317230498679
+[2025-10-20 13:29:11.503] [multi_logger] [info] Iteration 447: Applied NNI move (109, 108), no. accepts: 230, new log likelihood: -2032462.7398948604, current phi: 0.4448907530731727, current nu: 0.00010000311049196292
+[2025-10-20 13:29:12.120] [multi_logger] [info] Iteration 448: Rejected NNI move (908, 899), proposed log likelihood: -2032462.7398948604
+[2025-10-20 13:29:12.762] [multi_logger] [info] Iteration 449: Rejected NNI move (545, 543), proposed log likelihood: -2032462.7398948604
+[2025-10-20 13:29:13.473] [multi_logger] [info] Iteration 450: Rejected NNI move (1485, 1483), proposed log likelihood: -2032462.7398948604
+[2025-10-20 13:29:14.135] [multi_logger] [info] Iteration 451: Rejected NNI move (114, 126), proposed log likelihood: -2032462.7398948604
+[2025-10-20 13:29:14.762] [multi_logger] [info] Iteration 452: Rejected NNI move (816, 821), proposed log likelihood: -2032462.7398948604
+[2025-10-20 13:29:15.387] [multi_logger] [info] Iteration 453: Rejected NNI move (301, 308), proposed log likelihood: -2032462.7398948604
+[2025-10-20 13:29:16.029] [multi_logger] [info] Iteration 454: Applied NNI move (849, 733), no. accepts: 231, new log likelihood: -2032458.1132811236, current phi: 0.4446500270555551, current nu: 0.00010000300374471928
+[2025-10-20 13:29:16.646] [multi_logger] [info] Iteration 455: Rejected NNI move (1642, 1639), proposed log likelihood: -2032458.1132811236
+[2025-10-20 13:29:17.267] [multi_logger] [info] Iteration 456: Rejected NNI move (1582, 1580), proposed log likelihood: -2032458.1132811236
+[2025-10-20 13:29:17.870] [multi_logger] [info] Iteration 457: Applied NNI move (1354, 731), no. accepts: 232, new log likelihood: -2032457.0172814806, current phi: 0.4445245844686811, current nu: 0.00010000311363202977
+[2025-10-20 13:29:18.473] [multi_logger] [info] Iteration 458: Rejected NNI move (9, 74), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:19.130] [multi_logger] [info] Iteration 459: Rejected NNI move (1571, 1574), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:19.775] [multi_logger] [info] Iteration 460: Rejected NNI move (185, 230), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:20.398] [multi_logger] [info] Iteration 461: Rejected NNI move (196, 199), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:21.006] [multi_logger] [info] Iteration 462: Rejected NNI move (1485, 1483), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:21.748] [multi_logger] [info] Iteration 463: Rejected NNI move (1527, 1526), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:22.368] [multi_logger] [info] Iteration 464: Rejected NNI move (30, 13), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:22.985] [multi_logger] [info] Iteration 465: Rejected NNI move (429, 436), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:23.602] [multi_logger] [info] Iteration 466: Rejected NNI move (1205, 1227), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:24.282] [multi_logger] [info] Iteration 467: Rejected NNI move (1523, 1521), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:24.904] [multi_logger] [info] Iteration 468: Rejected NNI move (875, 877), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:25.520] [multi_logger] [info] Iteration 469: Rejected NNI move (1134, 1124), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:26.334] [multi_logger] [info] Iteration 470: Rejected NNI move (1192, 1238), proposed log likelihood: -2032457.0172814806
+[2025-10-20 13:29:26.957] [multi_logger] [info] Iteration 471: Applied NNI move (421, 394), no. accepts: 233, new log likelihood: -2032456.971210464, current phi: 0.4445128553829159, current nu: 0.0001000031611812534
+[2025-10-20 13:29:27.591] [multi_logger] [info] Iteration 472: Applied NNI move (1648, 1656), no. accepts: 234, new log likelihood: -2032454.7404562028, current phi: 0.44447395087933816, current nu: 0.0001000031849507977
+[2025-10-20 13:29:28.216] [multi_logger] [info] Iteration 473: Applied NNI move (806, 760), no. accepts: 235, new log likelihood: -2032454.7394238873, current phi: 0.4444712046703987, current nu: 0.00010000319296107423
+[2025-10-20 13:29:28.815] [multi_logger] [info] Iteration 474: Applied NNI move (705, 707), no. accepts: 236, new log likelihood: -2032451.6960113295, current phi: 0.44455719010158407, current nu: 0.00010000323387878339
+[2025-10-20 13:29:29.426] [multi_logger] [info] Iteration 475: Applied NNI move (1426, 1414), no. accepts: 237, new log likelihood: -2032451.4758402528, current phi: 0.4445941781550205, current nu: 0.00010000326983749875
+[2025-10-20 13:29:30.042] [multi_logger] [info] Iteration 476: Applied NNI move (569, 481), no. accepts: 238, new log likelihood: -2032451.3935096462, current phi: 0.4446007484059564, current nu: 0.00010000327329858211
+[2025-10-20 13:29:30.681] [multi_logger] [info] Iteration 477: Rejected NNI move (1144, 1159), proposed log likelihood: -2032451.3935096462
+[2025-10-20 13:29:31.331] [multi_logger] [info] Iteration 478: Rejected NNI move (1285, 1338), proposed log likelihood: -2032451.3935096462
+[2025-10-20 13:29:31.937] [multi_logger] [info] Iteration 479: Rejected NNI move (1141, 1107), proposed log likelihood: -2032451.3935096462
+[2025-10-20 13:29:32.554] [multi_logger] [info] Iteration 480: Applied NNI move (525, 531), no. accepts: 239, new log likelihood: -2032450.6281674406, current phi: 0.4446208107400685, current nu: 0.00010000327303342905
+[2025-10-20 13:29:33.180] [multi_logger] [info] Iteration 481: Applied NNI move (229, 164), no. accepts: 240, new log likelihood: -2032449.6615908598, current phi: 0.44468361617003127, current nu: 0.00010000327342335156
+[2025-10-20 13:29:33.802] [multi_logger] [info] Iteration 482: Applied NNI move (1108, 1139), no. accepts: 241, new log likelihood: -2032447.4749193632, current phi: 0.4447553440181769, current nu: 0.00010000326509133213
+[2025-10-20 13:29:34.406] [multi_logger] [info] Iteration 483: Applied NNI move (901, 957), no. accepts: 242, new log likelihood: -2032444.3959678025, current phi: 0.44464663594979953, current nu: 0.00010000331652911462
+[2025-10-20 13:29:35.036] [multi_logger] [info] Iteration 484: Applied NNI move (390, 393), no. accepts: 243, new log likelihood: -2032444.1472596456, current phi: 0.444635936071486, current nu: 0.00010000336592262227
+[2025-10-20 13:29:35.661] [multi_logger] [info] Iteration 485: Rejected NNI move (89, 92), proposed log likelihood: -2032444.1472596456
+[2025-10-20 13:29:36.266] [multi_logger] [info] Iteration 486: Applied NNI move (1180, 1181), no. accepts: 244, new log likelihood: -2032444.1213279315, current phi: 0.4446355112496808, current nu: 0.00010000336217572509
+[2025-10-20 13:29:36.881] [multi_logger] [info] Iteration 487: Rejected NNI move (168, 166), proposed log likelihood: -2032444.1213279315
+[2025-10-20 13:29:37.502] [multi_logger] [info] Iteration 488: Rejected NNI move (1292, 1288), proposed log likelihood: -2032444.1213279315
+[2025-10-20 13:29:38.127] [multi_logger] [info] Iteration 489: Rejected NNI move (1055, 1054), proposed log likelihood: -2032444.1213279315
+[2025-10-20 13:29:38.762] [multi_logger] [info] Iteration 490: Rejected NNI move (643, 653), proposed log likelihood: -2032444.1213279315
+[2025-10-20 13:29:39.399] [multi_logger] [info] Iteration 491: Rejected NNI move (1207, 1211), proposed log likelihood: -2032444.1213279315
+[2025-10-20 13:29:40.026] [multi_logger] [info] Iteration 492: Rejected NNI move (1240, 1251), proposed log likelihood: -2032444.1213279315
+[2025-10-20 13:29:40.664] [multi_logger] [info] Iteration 493: Applied NNI move (1153, 1152), no. accepts: 245, new log likelihood: -2032439.2839945308, current phi: 0.4448709588461202, current nu: 0.00010000303272389877
+[2025-10-20 13:29:41.268] [multi_logger] [info] Iteration 494: Applied NNI move (693, 599), no. accepts: 246, new log likelihood: -2032437.8047080443, current phi: 0.4447605795481638, current nu: 0.00010000329446764596
+[2025-10-20 13:29:41.903] [multi_logger] [info] Iteration 495: Applied NNI move (1539, 1551), no. accepts: 247, new log likelihood: -2032429.7101185885, current phi: 0.4449192131694978, current nu: 0.00010000334592696357
+[2025-10-20 13:29:42.523] [multi_logger] [info] Iteration 496: Rejected NNI move (1513, 1524), proposed log likelihood: -2032429.7101185885
+[2025-10-20 13:29:43.140] [multi_logger] [info] Iteration 497: Applied NNI move (1176, 1033), no. accepts: 248, new log likelihood: -2032429.1043922696, current phi: 0.44485135811739396, current nu: 0.00010000343843005169
+[2025-10-20 13:29:43.757] [multi_logger] [info] Iteration 498: Rejected NNI move (769, 766), proposed log likelihood: -2032429.1043922696
+[2025-10-20 13:29:44.364] [multi_logger] [info] Iteration 499: Applied NNI move (510, 515), no. accepts: 249, new log likelihood: -2032425.2343865382, current phi: 0.4448452349222713, current nu: 0.0001000034820507416
+[2025-10-20 13:29:44.961] [multi_logger] [info] Iteration 500: Applied NNI move (1387, 1385), no. accepts: 250, new log likelihood: -2032400.112752825, current phi: 0.4450491737251337, current nu: 0.0001000035567503669
+[2025-10-20 13:29:45.573] [multi_logger] [info] Iteration 501: Applied NNI move (971, 974), no. accepts: 251, new log likelihood: -2032398.015109721, current phi: 0.44469567963177375, current nu: 0.000100003278982478
+[2025-10-20 13:29:46.193] [multi_logger] [info] Iteration 502: Applied NNI move (976, 886), no. accepts: 252, new log likelihood: -2032389.1727971411, current phi: 0.44445707589190714, current nu: 0.0001000032933146952
+[2025-10-20 13:29:46.835] [multi_logger] [info] Iteration 503: Applied NNI move (1237, 1193), no. accepts: 253, new log likelihood: -2032387.9110470568, current phi: 0.44438036370795025, current nu: 0.00010000332740635754
+[2025-10-20 13:29:47.495] [multi_logger] [info] Iteration 504: Applied NNI move (813, 825), no. accepts: 254, new log likelihood: -2032386.971540694, current phi: 0.4443900941398762, current nu: 0.0001000028476523803
+[2025-10-20 13:29:48.113] [multi_logger] [info] Iteration 505: Rejected NNI move (1643, 1637), proposed log likelihood: -2032386.971540694
+[2025-10-20 13:29:48.743] [multi_logger] [info] Iteration 506: Rejected NNI move (1578, 1583), proposed log likelihood: -2032386.971540694
+[2025-10-20 13:29:49.372] [multi_logger] [info] Iteration 507: Applied NNI move (565, 563), no. accepts: 255, new log likelihood: -2032380.8885111162, current phi: 0.44465307971698736, current nu: 0.00010000285551774182
+[2025-10-20 13:29:50.005] [multi_logger] [info] Iteration 508: Rejected NNI move (532, 529), proposed log likelihood: -2032380.8885111162
+[2025-10-20 13:29:50.603] [multi_logger] [info] Iteration 509: Applied NNI move (666, 662), no. accepts: 256, new log likelihood: -2032380.6136507327, current phi: 0.44466605995638214, current nu: 0.00010000293533053024
+[2025-10-20 13:29:51.192] [multi_logger] [info] Iteration 510: Rejected NNI move (479, 477), proposed log likelihood: -2032380.6136507327
+[2025-10-20 13:29:51.807] [multi_logger] [info] Iteration 511: Applied NNI move (852, 855), no. accepts: 257, new log likelihood: -2032378.7804125098, current phi: 0.4448322331918109, current nu: 0.00010000331963650609
+[2025-10-20 13:29:52.441] [multi_logger] [info] Iteration 512: Rejected NNI move (1313, 1310), proposed log likelihood: -2032378.7804125098
+[2025-10-20 13:29:53.065] [multi_logger] [info] Iteration 513: Rejected NNI move (201, 196), proposed log likelihood: -2032378.7804125098
+[2025-10-20 13:29:53.687] [multi_logger] [info] Iteration 514: Rejected NNI move (342, 335), proposed log likelihood: -2032378.7804125098
+[2025-10-20 13:29:54.318] [multi_logger] [info] Iteration 515: Applied NNI move (859, 861), no. accepts: 258, new log likelihood: -2032375.1701680725, current phi: 0.4453455562045354, current nu: 0.00010000437878337885
+[2025-10-20 13:29:54.967] [multi_logger] [info] Iteration 516: Rejected NNI move (17, 29), proposed log likelihood: -2032375.1701680725
+[2025-10-20 13:29:55.576] [multi_logger] [info] Iteration 517: Rejected NNI move (1256, 1350), proposed log likelihood: -2032375.1701680725
+[2025-10-20 13:29:56.220] [multi_logger] [info] Iteration 518: Rejected NNI move (154, 151), proposed log likelihood: -2032375.1701680725
+[2025-10-20 13:29:56.844] [multi_logger] [info] Iteration 519: Applied NNI move (206, 208), no. accepts: 259, new log likelihood: -2032366.2752890706, current phi: 0.4452785509080258, current nu: 0.00010000384031784378
+[2025-10-20 13:29:57.468] [multi_logger] [info] Iteration 520: Rejected NNI move (764, 779), proposed log likelihood: -2032366.2752890706
+[2025-10-20 13:29:58.097] [multi_logger] [info] Iteration 521: Rejected NNI move (1229, 1231), proposed log likelihood: -2032366.2752890706
+[2025-10-20 13:29:58.719] [multi_logger] [info] Iteration 522: Rejected NNI move (1627, 1625), proposed log likelihood: -2032366.2752890706
+[2025-10-20 13:29:59.363] [multi_logger] [info] Iteration 523: Applied NNI move (1140, 1115), no. accepts: 260, new log likelihood: -2032365.7129827677, current phi: 0.4452408372546259, current nu: 0.00010000397418951722
+[2025-10-20 13:30:00.004] [multi_logger] [info] Iteration 524: Rejected NNI move (96, 155), proposed log likelihood: -2032365.7129827677
+[2025-10-20 13:30:00.638] [multi_logger] [info] Iteration 525: Rejected NNI move (1258, 1269), proposed log likelihood: -2032365.7129827677
+[2025-10-20 13:30:01.261] [multi_logger] [info] Iteration 526: Applied NNI move (1547, 1543), no. accepts: 261, new log likelihood: -2032356.1483593744, current phi: 0.44580115156166966, current nu: 0.00010000409037187445
+[2025-10-20 13:30:01.884] [multi_logger] [info] Iteration 527: Applied NNI move (567, 566), no. accepts: 262, new log likelihood: -2032353.6031551352, current phi: 0.4465693992808545, current nu: 0.0001000037724711673
+[2025-10-20 13:30:02.523] [multi_logger] [info] Iteration 528: Rejected NNI move (1588, 1585), proposed log likelihood: -2032353.6031551352
+[2025-10-20 13:30:03.131] [multi_logger] [info] Iteration 529: Applied NNI move (1616, 1618), no. accepts: 263, new log likelihood: -2032347.1909432155, current phi: 0.4468950749734301, current nu: 0.00010000416545121675
+[2025-10-20 13:30:03.749] [multi_logger] [info] Iteration 530: Applied NNI move (779, 778), no. accepts: 264, new log likelihood: -2032346.36887184, current phi: 0.44689562679590394, current nu: 0.00010000450641263547
+[2025-10-20 13:30:04.380] [multi_logger] [info] Iteration 531: Applied NNI move (263, 238), no. accepts: 265, new log likelihood: -2032346.1693959772, current phi: 0.4468877861607924, current nu: 0.00010000455193903693
+[2025-10-20 13:30:05.015] [multi_logger] [info] Iteration 532: Applied NNI move (1346, 1348), no. accepts: 266, new log likelihood: -2032342.6714452961, current phi: 0.447172144515717, current nu: 0.00010000474248519008
+[2025-10-20 13:30:05.661] [multi_logger] [info] Iteration 533: Rejected NNI move (382, 427), proposed log likelihood: -2032342.6714452961
+[2025-10-20 13:30:06.308] [multi_logger] [info] Iteration 534: Applied NNI move (919, 929), no. accepts: 267, new log likelihood: -2032335.6424553292, current phi: 0.4471140533295259, current nu: 0.0001000047312318359
+[2025-10-20 13:30:06.935] [multi_logger] [info] Iteration 535: Applied NNI move (1134, 1124), no. accepts: 268, new log likelihood: -2032335.3145568743, current phi: 0.4470955755939865, current nu: 0.00010000506566209801
+[2025-10-20 13:30:07.580] [multi_logger] [info] Iteration 536: Applied NNI move (413, 398), no. accepts: 269, new log likelihood: -2032334.5452195734, current phi: 0.4470371770218826, current nu: 0.00010000502882068751
+[2025-10-20 13:30:08.185] [multi_logger] [info] Iteration 537: Rejected NNI move (294, 296), proposed log likelihood: -2032334.5452195734
+[2025-10-20 13:30:08.819] [multi_logger] [info] Iteration 538: Rejected NNI move (206, 217), proposed log likelihood: -2032334.5452195734
+[2025-10-20 13:30:09.432] [multi_logger] [info] Iteration 539: Rejected NNI move (294, 298), proposed log likelihood: -2032334.5452195734
+[2025-10-20 13:30:10.047] [multi_logger] [info] Iteration 540: Applied NNI move (1215, 1218), no. accepts: 270, new log likelihood: -2032331.188926275, current phi: 0.447391243346886, current nu: 0.00010000480111257977
+[2025-10-20 13:30:10.638] [multi_logger] [info] Iteration 541: Applied NNI move (635, 637), no. accepts: 271, new log likelihood: -2032330.2641168246, current phi: 0.4472145567818981, current nu: 0.00010000536608000801
+[2025-10-20 13:30:11.242] [multi_logger] [info] Iteration 542: Rejected NNI move (498, 486), proposed log likelihood: -2032330.2641168246
+[2025-10-20 13:30:11.880] [multi_logger] [info] Iteration 543: Rejected NNI move (744, 756), proposed log likelihood: -2032330.2641168246
+[2025-10-20 13:30:12.499] [multi_logger] [info] Iteration 544: Rejected NNI move (1038, 1056), proposed log likelihood: -2032330.2641168246
+[2025-10-20 13:30:13.153] [multi_logger] [info] Iteration 545: Applied NNI move (130, 139), no. accepts: 272, new log likelihood: -2032319.3855120544, current phi: 0.446710935649735, current nu: 0.00010000532487692944
+[2025-10-20 13:30:13.798] [multi_logger] [info] Iteration 546: Rejected NNI move (764, 778), proposed log likelihood: -2032319.3855120544
+[2025-10-20 13:30:14.418] [multi_logger] [info] Iteration 547: Applied NNI move (506, 524), no. accepts: 273, new log likelihood: -2032311.4194632368, current phi: 0.44646040846827934, current nu: 0.0001000056550333559
+[2025-10-20 13:30:15.080] [multi_logger] [info] Iteration 548: Applied NNI move (778, 772), no. accepts: 274, new log likelihood: -2032309.3637907708, current phi: 0.4463574245833148, current nu: 0.00010000599200121425
+[2025-10-20 13:30:15.699] [multi_logger] [info] Iteration 549: Rejected NNI move (582, 584), proposed log likelihood: -2032309.3637907708
+[2025-10-20 13:30:16.318] [multi_logger] [info] Iteration 550: Applied NNI move (33, 35), no. accepts: 275, new log likelihood: -2032308.9844778944, current phi: 0.4465623426677675, current nu: 0.00010000589258437138
+[2025-10-20 13:30:16.924] [multi_logger] [info] Iteration 551: Rejected NNI move (332, 346), proposed log likelihood: -2032308.9844778944
+[2025-10-20 13:30:17.551] [multi_logger] [info] Iteration 552: Applied NNI move (305, 294), no. accepts: 276, new log likelihood: -2032308.7035510978, current phi: 0.44669509361535087, current nu: 0.00010000597909337256
+[2025-10-20 13:30:18.156] [multi_logger] [info] Iteration 553: Rejected NNI move (613, 610), proposed log likelihood: -2032308.7035510978
+[2025-10-20 13:30:18.770] [multi_logger] [info] Iteration 554: Rejected NNI move (1117, 1138), proposed log likelihood: -2032308.7035510978
+[2025-10-20 13:30:19.362] [multi_logger] [info] Iteration 555: Rejected NNI move (425, 437), proposed log likelihood: -2032308.7035510978
+[2025-10-20 13:30:19.972] [multi_logger] [info] Iteration 556: Applied NNI move (763, 786), no. accepts: 277, new log likelihood: -2032306.473136711, current phi: 0.4466870855990347, current nu: 0.00010000609548983025
+[2025-10-20 13:30:20.569] [multi_logger] [info] Iteration 557: Applied NNI move (867, 999), no. accepts: 278, new log likelihood: -2032305.9210043885, current phi: 0.4466969819207647, current nu: 0.0001000060863449797
+[2025-10-20 13:30:21.164] [multi_logger] [info] Iteration 558: Applied NNI move (380, 323), no. accepts: 279, new log likelihood: -2032305.7131771161, current phi: 0.4467017264878843, current nu: 0.000100006148468418
+[2025-10-20 13:30:21.760] [multi_logger] [info] Iteration 559: Applied NNI move (108, 109), no. accepts: 280, new log likelihood: -2032305.6643933929, current phi: 0.44670290887755143, current nu: 0.0001000061628193029
+[2025-10-20 13:30:22.365] [multi_logger] [info] Iteration 560: Rejected NNI move (87, 86), proposed log likelihood: -2032305.6643933929
+[2025-10-20 13:30:22.965] [multi_logger] [info] Iteration 561: Rejected NNI move (1578, 1584), proposed log likelihood: -2032305.6643933929
+[2025-10-20 13:30:23.550] [multi_logger] [info] Iteration 562: Rejected NNI move (763, 784), proposed log likelihood: -2032305.6643933929
+[2025-10-20 13:30:24.127] [multi_logger] [info] Iteration 563: Rejected NNI move (1313, 1310), proposed log likelihood: -2032305.6643933929
+[2025-10-20 13:30:24.739] [multi_logger] [info] Iteration 564: Applied NNI move (842, 740), no. accepts: 281, new log likelihood: -2032304.9777635718, current phi: 0.44670456902923106, current nu: 0.0001000061665837214
+[2025-10-20 13:30:25.330] [multi_logger] [info] Iteration 565: Applied NNI move (106, 104), no. accepts: 282, new log likelihood: -2032291.812512572, current phi: 0.44727560887970286, current nu: 0.00010000651086158165
+[2025-10-20 13:30:25.924] [multi_logger] [info] Iteration 566: Applied NNI move (56, 52), no. accepts: 283, new log likelihood: -2032290.1133617708, current phi: 0.44739627201219967, current nu: 0.00010000603294559915
+[2025-10-20 13:30:26.518] [multi_logger] [info] Iteration 567: Rejected NNI move (114, 127), proposed log likelihood: -2032290.1133617708
+[2025-10-20 13:30:27.130] [multi_logger] [info] Iteration 568: Rejected NNI move (469, 463), proposed log likelihood: -2032290.1133617708
+[2025-10-20 13:30:27.739] [multi_logger] [info] Iteration 569: Rejected NNI move (1198, 1200), proposed log likelihood: -2032290.1133617708
+[2025-10-20 13:30:28.327] [multi_logger] [info] Iteration 570: Applied NNI move (686, 685), no. accepts: 284, new log likelihood: -2032290.108433585, current phi: 0.44740260844220114, current nu: 0.00010000601761402099
+[2025-10-20 13:30:28.927] [multi_logger] [info] Iteration 571: Rejected NNI move (1618, 1616), proposed log likelihood: -2032290.108433585
+[2025-10-20 13:30:29.543] [multi_logger] [info] Iteration 572: Rejected NNI move (790, 793), proposed log likelihood: -2032290.108433585
+[2025-10-20 13:30:30.148] [multi_logger] [info] Iteration 573: Applied NNI move (397, 399), no. accepts: 285, new log likelihood: -2032288.4547680032, current phi: 0.4474085335543529, current nu: 0.00010000601428073014
+[2025-10-20 13:30:30.727] [multi_logger] [info] Iteration 574: Applied NNI move (272, 271), no. accepts: 286, new log likelihood: -2032283.196987445, current phi: 0.4476736509740971, current nu: 0.00010000605171125986
+[2025-10-20 13:30:31.327] [multi_logger] [info] Iteration 575: Rejected NNI move (1318, 1315), proposed log likelihood: -2032283.196987445
+[2025-10-20 13:30:31.928] [multi_logger] [info] Iteration 576: Applied NNI move (133, 135), no. accepts: 287, new log likelihood: -2032279.5010262975, current phi: 0.44778597185580626, current nu: 0.00010000559930370194
+[2025-10-20 13:30:32.527] [multi_logger] [info] Iteration 577: Rejected NNI move (1179, 1182), proposed log likelihood: -2032279.5010262975
+[2025-10-20 13:30:33.125] [multi_logger] [info] Iteration 578: Rejected NNI move (279, 271), proposed log likelihood: -2032279.5010262975
+[2025-10-20 13:30:33.715] [multi_logger] [info] Iteration 579: Applied NNI move (229, 187), no. accepts: 288, new log likelihood: -2032265.7936737058, current phi: 0.44775155005911443, current nu: 0.00010000560141101835
+[2025-10-20 13:30:34.285] [multi_logger] [info] Iteration 580: Rejected NNI move (1618, 1616), proposed log likelihood: -2032265.7936737058
+[2025-10-20 13:30:34.858] [multi_logger] [info] Iteration 581: Rejected NNI move (1096, 1094), proposed log likelihood: -2032265.7936737058
+[2025-10-20 13:30:35.422] [multi_logger] [info] Iteration 582: Rejected NNI move (1485, 1484), proposed log likelihood: -2032265.7936737058
+[2025-10-20 13:30:35.980] [multi_logger] [info] Iteration 583: Rejected NNI move (1257, 1271), proposed log likelihood: -2032265.7936737058
+[2025-10-20 13:30:36.546] [multi_logger] [info] Iteration 584: Applied NNI move (1490, 1497), no. accepts: 289, new log likelihood: -2032265.6661684974, current phi: 0.44779609320445246, current nu: 0.0001000055541589197
+[2025-10-20 13:30:37.113] [multi_logger] [info] Iteration 585: Rejected NNI move (886, 969), proposed log likelihood: -2032265.6661684974
+[2025-10-20 13:30:37.684] [multi_logger] [info] Iteration 586: Rejected NNI move (1588, 1581), proposed log likelihood: -2032265.6661684974
+[2025-10-20 13:30:38.245] [multi_logger] [info] Iteration 587: Rejected NNI move (928, 950), proposed log likelihood: -2032265.6661684974
+[2025-10-20 13:30:38.815] [multi_logger] [info] Iteration 588: Rejected NNI move (730, 1355), proposed log likelihood: -2032265.6661684974
+[2025-10-20 13:30:39.372] [multi_logger] [info] Iteration 589: Rejected NNI move (1596, 1598), proposed log likelihood: -2032265.6661684974
+[2025-10-20 13:30:39.935] [multi_logger] [info] Iteration 590: Rejected NNI move (725, 1632), proposed log likelihood: -2032265.6661684974
+[2025-10-20 13:30:40.513] [multi_logger] [info] Iteration 591: Applied NNI move (672, 674), no. accepts: 290, new log likelihood: -2032265.5436207787, current phi: 0.44780218285788365, current nu: 0.0001000055615853771
+[2025-10-20 13:30:41.065] [multi_logger] [info] Iteration 592: Applied NNI move (576, 596), no. accepts: 291, new log likelihood: -2032260.8580186975, current phi: 0.44784383067192285, current nu: 0.00010000546533245856
+[2025-10-20 13:30:41.644] [multi_logger] [info] Iteration 593: Applied NNI move (1642, 1639), no. accepts: 292, new log likelihood: -2032259.6489690063, current phi: 0.447808399655787, current nu: 0.00010000512765213072
+[2025-10-20 13:30:42.208] [multi_logger] [info] Iteration 594: Applied NNI move (658, 681), no. accepts: 293, new log likelihood: -2032259.581609801, current phi: 0.44779626054582566, current nu: 0.00010000581480259794
+[2025-10-20 13:30:42.773] [multi_logger] [info] Iteration 595: Applied NNI move (129, 148), no. accepts: 294, new log likelihood: -2032259.3133321293, current phi: 0.44780252295765927, current nu: 0.00010000584586321815
+[2025-10-20 13:30:43.336] [multi_logger] [info] Iteration 596: Rejected NNI move (736, 858), proposed log likelihood: -2032259.3133321293
+[2025-10-20 13:30:43.900] [multi_logger] [info] Iteration 597: Rejected NNI move (599, 692), proposed log likelihood: -2032259.3133321293
+[2025-10-20 13:30:44.468] [multi_logger] [info] Iteration 598: Applied NNI move (1319, 1317), no. accepts: 295, new log likelihood: -2032258.4403927028, current phi: 0.44784600900139615, current nu: 0.00010000583737441622
+[2025-10-20 13:30:45.043] [multi_logger] [info] Iteration 599: Applied NNI move (691, 688), no. accepts: 296, new log likelihood: -2032257.7889212358, current phi: 0.44787709801626135, current nu: 0.00010000581527155521
+[2025-10-20 13:30:45.602] [multi_logger] [info] Iteration 600: Rejected NNI move (1022, 1021), proposed log likelihood: -2032257.7889212358
+[2025-10-20 13:30:46.153] [multi_logger] [info] Iteration 601: Applied NNI move (388, 393), no. accepts: 297, new log likelihood: -2032257.194952603, current phi: 0.447660747812461, current nu: 0.00010000600920191866
+[2025-10-20 13:30:46.717] [multi_logger] [info] Iteration 602: Rejected NNI move (1575, 1572), proposed log likelihood: -2032257.194952603
+[2025-10-20 13:30:47.269] [multi_logger] [info] Iteration 603: Rejected NNI move (1266, 1261), proposed log likelihood: -2032257.194952603
+[2025-10-20 13:30:47.834] [multi_logger] [info] Iteration 604: Rejected NNI move (928, 943), proposed log likelihood: -2032257.194952603
+[2025-10-20 13:30:48.408] [multi_logger] [info] Iteration 605: Rejected NNI move (1089, 1075), proposed log likelihood: -2032257.194952603
+[2025-10-20 13:30:48.974] [multi_logger] [info] Iteration 606: Applied NNI move (596, 574), no. accepts: 298, new log likelihood: -2032252.4860613586, current phi: 0.447753522922022, current nu: 0.00010000616598631817
+[2025-10-20 13:30:49.541] [multi_logger] [info] Iteration 607: Rejected NNI move (995, 1006), proposed log likelihood: -2032252.4860613586
+[2025-10-20 13:30:50.111] [multi_logger] [info] Iteration 608: Rejected NNI move (1024, 1022), proposed log likelihood: -2032252.4860613586
+[2025-10-20 13:30:50.664] [multi_logger] [info] Iteration 609: Applied NNI move (870, 871), no. accepts: 299, new log likelihood: -2032252.31244118, current phi: 0.4477934176346381, current nu: 0.00010000614056206044
+[2025-10-20 13:30:51.238] [multi_logger] [info] Iteration 610: Applied NNI move (1606, 1534), no. accepts: 300, new log likelihood: -2032252.0117136855, current phi: 0.44779723119807113, current nu: 0.0001000061278972385
+[2025-10-20 13:30:51.803] [multi_logger] [info] Iteration 611: Rejected NNI move (155, 90), proposed log likelihood: -2032252.0117136855
+[2025-10-20 13:30:52.420] [multi_logger] [info] Iteration 612: Applied NNI move (931, 939), no. accepts: 301, new log likelihood: -2032249.5874437399, current phi: 0.44783802890490054, current nu: 0.00010000619017868536
+[2025-10-20 13:30:53.054] [multi_logger] [info] Iteration 613: Applied NNI move (1261, 1263), no. accepts: 302, new log likelihood: -2032236.0513593683, current phi: 0.44785905772924484, current nu: 0.00010000568789123554
+[2025-10-20 13:30:53.637] [multi_logger] [info] Iteration 614: Rejected NNI move (729, 865), proposed log likelihood: -2032236.0513593683
+[2025-10-20 13:30:54.212] [multi_logger] [info] Iteration 615: Applied NNI move (160, 7), no. accepts: 303, new log likelihood: -2032229.109255068, current phi: 0.4479769003049677, current nu: 0.00010000558360332416
+[2025-10-20 13:30:54.786] [multi_logger] [info] Iteration 616: Applied NNI move (377, 373), no. accepts: 304, new log likelihood: -2032228.454285193, current phi: 0.44773113083682625, current nu: 0.0001000057770712529
+[2025-10-20 13:30:55.361] [multi_logger] [info] Iteration 617: Rejected NNI move (1328, 1333), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:55.961] [multi_logger] [info] Iteration 618: Rejected NNI move (848, 735), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:56.579] [multi_logger] [info] Iteration 619: Rejected NNI move (658, 669), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:57.121] [multi_logger] [info] Iteration 620: Rejected NNI move (131, 140), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:57.662] [multi_logger] [info] Iteration 621: Rejected NNI move (1567, 1565), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:58.192] [multi_logger] [info] Iteration 622: Rejected NNI move (957, 905), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:58.743] [multi_logger] [info] Iteration 623: Rejected NNI move (1594, 1590), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:59.304] [multi_logger] [info] Iteration 624: Rejected NNI move (201, 196), proposed log likelihood: -2032228.454285193
+[2025-10-20 13:30:59.840] [multi_logger] [info] Iteration 625: Applied NNI move (1639, 1642), no. accepts: 305, new log likelihood: -2032225.3980300687, current phi: 0.4476906159963369, current nu: 0.00010000593031874755
+[2025-10-20 13:31:00.377] [multi_logger] [info] Iteration 626: Applied NNI move (1372, 1371), no. accepts: 306, new log likelihood: -2032225.268065702, current phi: 0.4476771122438065, current nu: 0.00010000601242501913
+[2025-10-20 13:31:00.916] [multi_logger] [info] Iteration 627: Rejected NNI move (1180, 1187), proposed log likelihood: -2032225.268065702
+[2025-10-20 13:31:01.452] [multi_logger] [info] Iteration 628: Applied NNI move (569, 5), no. accepts: 307, new log likelihood: -2032217.1794668953, current phi: 0.447698729559481, current nu: 0.00010000603066054366
+[2025-10-20 13:31:01.984] [multi_logger] [info] Iteration 629: Applied NNI move (91, 93), no. accepts: 308, new log likelihood: -2032210.7523594392, current phi: 0.4486454103481123, current nu: 0.0001000061905573766
+[2025-10-20 13:31:02.492] [multi_logger] [info] Iteration 630: Rejected NNI move (556, 555), proposed log likelihood: -2032210.7523594392
+[2025-10-20 13:31:02.986] [multi_logger] [info] Iteration 631: Applied NNI move (841, 840), no. accepts: 309, new log likelihood: -2032210.4952650361, current phi: 0.44865561228342304, current nu: 0.00010000593825307685
+[2025-10-20 13:31:03.499] [multi_logger] [info] Iteration 632: Rejected NNI move (1122, 1121), proposed log likelihood: -2032210.4952650361
+[2025-10-20 13:31:04.005] [multi_logger] [info] Iteration 633: Applied NNI move (1067, 1062), no. accepts: 310, new log likelihood: -2032205.048743023, current phi: 0.4492471491824329, current nu: 0.00010000597062097395
+[2025-10-20 13:31:04.516] [multi_logger] [info] Iteration 634: Rejected NNI move (780, 787), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:05.026] [multi_logger] [info] Iteration 635: Rejected NNI move (1293, 1290), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:05.530] [multi_logger] [info] Iteration 636: Rejected NNI move (667, 683), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:06.048] [multi_logger] [info] Iteration 637: Rejected NNI move (771, 774), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:06.564] [multi_logger] [info] Iteration 638: Rejected NNI move (1465, 1462), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:07.061] [multi_logger] [info] Iteration 639: Rejected NNI move (1229, 1231), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:07.573] [multi_logger] [info] Iteration 640: Rejected NNI move (1513, 1527), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:08.085] [multi_logger] [info] Iteration 641: Rejected NNI move (10, 36), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:08.591] [multi_logger] [info] Iteration 642: Rejected NNI move (653, 656), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:09.107] [multi_logger] [info] Iteration 643: Rejected NNI move (483, 557), proposed log likelihood: -2032205.048743023
+[2025-10-20 13:31:09.610] [multi_logger] [info] Iteration 644: Applied NNI move (130, 135), no. accepts: 311, new log likelihood: -2032204.932984834, current phi: 0.4492636351121656, current nu: 0.00010000637688035547
+[2025-10-20 13:31:10.098] [multi_logger] [info] Iteration 645: Rejected NNI move (171, 174), proposed log likelihood: -2032204.932984834
+[2025-10-20 13:31:10.596] [multi_logger] [info] Iteration 646: Rejected NNI move (1339, 1344), proposed log likelihood: -2032204.932984834
+[2025-10-20 13:31:11.093] [multi_logger] [info] Iteration 647: Rejected NNI move (1502, 1533), proposed log likelihood: -2032204.932984834
+[2025-10-20 13:31:11.748] [multi_logger] [info] Iteration 648: Rejected NNI move (758, 825), proposed log likelihood: -2032204.932984834
+[2025-10-20 13:31:12.243] [multi_logger] [info] Iteration 649: Rejected NNI move (1421, 1416), proposed log likelihood: -2032204.932984834
+[2025-10-20 13:31:12.744] [multi_logger] [info] Iteration 650: Applied NNI move (1045, 1046), no. accepts: 312, new log likelihood: -2032204.7003493917, current phi: 0.4492775966218034, current nu: 0.00010000641447125464
+[2025-10-20 13:31:13.242] [multi_logger] [info] Iteration 651: Applied NNI move (1550, 1553), no. accepts: 313, new log likelihood: -2032196.266194538, current phi: 0.4497950632570022, current nu: 0.00010000686073468461
+[2025-10-20 13:31:13.750] [multi_logger] [info] Iteration 652: Applied NNI move (999, 1000), no. accepts: 314, new log likelihood: -2032195.8470085515, current phi: 0.4498399943888948, current nu: 0.00010000677786832508
+[2025-10-20 13:31:14.246] [multi_logger] [info] Iteration 653: Rejected NNI move (729, 865), proposed log likelihood: -2032195.8470085515
+[2025-10-20 13:31:14.746] [multi_logger] [info] Iteration 654: Applied NNI move (760, 806), no. accepts: 315, new log likelihood: -2032195.519268355, current phi: 0.4498263683149239, current nu: 0.00010000673617587401
+[2025-10-20 13:31:15.259] [multi_logger] [info] Iteration 655: Rejected NNI move (546, 552), proposed log likelihood: -2032195.519268355
+[2025-10-20 13:31:15.757] [multi_logger] [info] Iteration 656: Applied NNI move (643, 649), no. accepts: 316, new log likelihood: -2032194.9701265173, current phi: 0.44943166942181223, current nu: 0.00010000679037927603
+[2025-10-20 13:31:16.241] [multi_logger] [info] Iteration 657: Rejected NNI move (658, 669), proposed log likelihood: -2032194.9701265173
+[2025-10-20 13:31:16.733] [multi_logger] [info] Iteration 658: Applied NNI move (1085, 1084), no. accepts: 317, new log likelihood: -2032194.94300363, current phi: 0.44923040527608604, current nu: 0.00010000647478826334
+[2025-10-20 13:31:17.227] [multi_logger] [info] Iteration 659: Applied NNI move (480, 479), no. accepts: 318, new log likelihood: -2032194.8750246614, current phi: 0.449204675597944, current nu: 0.00010000650370340694
+[2025-10-20 13:31:17.710] [multi_logger] [info] Iteration 660: Rejected NNI move (933, 939), proposed log likelihood: -2032194.8750246614
+[2025-10-20 13:31:18.203] [multi_logger] [info] Iteration 661: Rejected NNI move (1181, 1180), proposed log likelihood: -2032194.8750246614
+[2025-10-20 13:31:18.718] [multi_logger] [info] Iteration 662: Rejected NNI move (1123, 1125), proposed log likelihood: -2032194.8750246614
+[2025-10-20 13:31:19.225] [multi_logger] [info] Iteration 663: Rejected NNI move (424, 429), proposed log likelihood: -2032194.8750246614
+[2025-10-20 13:31:19.701] [multi_logger] [info] Iteration 664: Applied NNI move (1286, 1305), no. accepts: 319, new log likelihood: -2032192.4868983305, current phi: 0.44919086054223767, current nu: 0.00010000649766896102
+[2025-10-20 13:31:20.184] [multi_logger] [info] Iteration 665: Applied NNI move (856, 737), no. accepts: 320, new log likelihood: -2032177.0858583655, current phi: 0.4494644315612983, current nu: 0.0001000063895009979
+[2025-10-20 13:31:20.667] [multi_logger] [info] Iteration 666: Rejected NNI move (498, 489), proposed log likelihood: -2032177.0858583655
+[2025-10-20 13:31:21.164] [multi_logger] [info] Iteration 667: Applied NNI move (333, 338), no. accepts: 321, new log likelihood: -2032175.698401228, current phi: 0.4494385527015908, current nu: 0.00010000621526754872
+[2025-10-20 13:31:21.641] [multi_logger] [info] Iteration 668: Applied NNI move (440, 423), no. accepts: 322, new log likelihood: -2032169.8890112075, current phi: 0.44956294349998316, current nu: 0.0001000062080266317
+[2025-10-20 13:31:22.130] [multi_logger] [info] Iteration 669: Applied NNI move (861, 859), no. accepts: 323, new log likelihood: -2032168.9731410553, current phi: 0.44931980875916083, current nu: 0.00010000532794551713
+[2025-10-20 13:31:22.630] [multi_logger] [info] Iteration 670: Rejected NNI move (1079, 1082), proposed log likelihood: -2032168.9731410553
+[2025-10-20 13:31:23.138] [multi_logger] [info] Iteration 671: Rejected NNI move (573, 595), proposed log likelihood: -2032168.9731410553
+[2025-10-20 13:31:23.655] [multi_logger] [info] Iteration 672: Applied NNI move (678, 676), no. accepts: 324, new log likelihood: -2032168.3217510325, current phi: 0.44933090855412944, current nu: 0.000100005387352542
+[2025-10-20 13:31:24.155] [multi_logger] [info] Iteration 673: Applied NNI move (1465, 1472), no. accepts: 325, new log likelihood: -2032166.8517593425, current phi: 0.44972622473021723, current nu: 0.00010000553997809905
+[2025-10-20 13:31:24.643] [multi_logger] [info] Iteration 674: Rejected NNI move (498, 486), proposed log likelihood: -2032166.8517593425
+[2025-10-20 13:31:25.151] [multi_logger] [info] Iteration 675: Rejected NNI move (1654, 1653), proposed log likelihood: -2032166.8517593425
+[2025-10-20 13:31:25.667] [multi_logger] [info] Iteration 676: Applied NNI move (748, 753), no. accepts: 326, new log likelihood: -2032166.8009617128, current phi: 0.4497104988427762, current nu: 0.0001000055717395247
+[2025-10-20 13:31:26.182] [multi_logger] [info] Iteration 677: Applied NNI move (915, 920), no. accepts: 327, new log likelihood: -2032166.7841547264, current phi: 0.4497084907963651, current nu: 0.0001000055775329258
+[2025-10-20 13:31:26.685] [multi_logger] [info] Iteration 678: Applied NNI move (217, 214), no. accepts: 328, new log likelihood: -2032166.4137744566, current phi: 0.4498986572151065, current nu: 0.00010000579483672312
+[2025-10-20 13:31:27.166] [multi_logger] [info] Iteration 679: Rejected NNI move (163, 285), proposed log likelihood: -2032166.4137744566
+[2025-10-20 13:31:27.672] [multi_logger] [info] Iteration 680: Applied NNI move (1060, 1064), no. accepts: 329, new log likelihood: -2032157.2937172651, current phi: 0.4503818701001369, current nu: 0.00010000609475959109
+[2025-10-20 13:31:28.176] [multi_logger] [info] Iteration 681: Rejected NNI move (101, 110), proposed log likelihood: -2032157.2937172651
+[2025-10-20 13:31:28.670] [multi_logger] [info] Iteration 682: Rejected NNI move (961, 902), proposed log likelihood: -2032157.2937172651
+[2025-10-20 13:31:29.181] [multi_logger] [info] Iteration 683: Rejected NNI move (1024, 1020), proposed log likelihood: -2032157.2937172651
+[2025-10-20 13:31:29.678] [multi_logger] [info] Iteration 684: Rejected NNI move (191, 202), proposed log likelihood: -2032157.2937172651
+[2025-10-20 13:31:30.167] [multi_logger] [info] Iteration 685: Rejected NNI move (875, 877), proposed log likelihood: -2032157.2937172651
+[2025-10-20 13:31:30.672] [multi_logger] [info] Iteration 686: Rejected NNI move (1471, 1469), proposed log likelihood: -2032157.2937172651
+[2025-10-20 13:31:31.160] [multi_logger] [info] Iteration 687: Applied NNI move (691, 604), no. accepts: 330, new log likelihood: -2032157.245138042, current phi: 0.4503932882718508, current nu: 0.00010000606855716696
+[2025-10-20 13:31:31.654] [multi_logger] [info] Iteration 688: Rejected NNI move (328, 327), proposed log likelihood: -2032157.245138042
+[2025-10-20 13:31:32.154] [multi_logger] [info] Iteration 689: Applied NNI move (39, 11), no. accepts: 331, new log likelihood: -2032157.2136994419, current phi: 0.4503940885175126, current nu: 0.00010000604979259616
+[2025-10-20 13:31:32.645] [multi_logger] [info] Iteration 690: Rejected NNI move (599, 692), proposed log likelihood: -2032157.2136994419
+[2025-10-20 13:31:33.136] [multi_logger] [info] Iteration 691: Rejected NNI move (976, 975), proposed log likelihood: -2032157.2136994419
+[2025-10-20 13:31:33.632] [multi_logger] [info] Iteration 692: Rejected NNI move (1207, 1212), proposed log likelihood: -2032157.2136994419
+[2025-10-20 13:31:34.121] [multi_logger] [info] Iteration 693: Applied NNI move (669, 671), no. accepts: 332, new log likelihood: -2032157.1408405355, current phi: 0.45038962189364423, current nu: 0.00010000604106227
+[2025-10-20 13:31:34.613] [multi_logger] [info] Iteration 694: Rejected NNI move (857, 860), proposed log likelihood: -2032157.1408405355
+[2025-10-20 13:31:35.130] [multi_logger] [info] Iteration 695: Rejected NNI move (895, 894), proposed log likelihood: -2032157.1408405355
+[2025-10-20 13:31:35.632] [multi_logger] [info] Iteration 696: Applied NNI move (631, 639), no. accepts: 333, new log likelihood: -2032156.8602920375, current phi: 0.4503787549923555, current nu: 0.00010000602870075644
+[2025-10-20 13:31:36.120] [multi_logger] [info] Iteration 697: Rejected NNI move (1205, 1227), proposed log likelihood: -2032156.8602920375
+[2025-10-20 13:31:36.610] [multi_logger] [info] Iteration 698: Rejected NNI move (238, 263), proposed log likelihood: -2032156.8602920375
+[2025-10-20 13:31:37.098] [multi_logger] [info] Iteration 699: Applied NNI move (1517, 1519), no. accepts: 334, new log likelihood: -2032153.5410491347, current phi: 0.4504258221584277, current nu: 0.00010000641801522334
+[2025-10-20 13:31:37.593] [multi_logger] [info] Iteration 700: Applied NNI move (25, 27), no. accepts: 335, new log likelihood: -2032143.4692839729, current phi: 0.45043463108433174, current nu: 0.00010000601847391973
+[2025-10-20 13:31:38.079] [multi_logger] [info] Iteration 701: Applied NNI move (586, 583), no. accepts: 336, new log likelihood: -2032139.9550448572, current phi: 0.45025248172800786, current nu: 0.00010000630250962385
+[2025-10-20 13:31:38.542] [multi_logger] [info] Iteration 702: Rejected NNI move (101, 110), proposed log likelihood: -2032139.9550448572
+[2025-10-20 13:31:39.006] [multi_logger] [info] Iteration 703: Applied NNI move (607, 618), no. accepts: 337, new log likelihood: -2032139.5999556088, current phi: 0.4501819784797998, current nu: 0.00010000698271631206
+[2025-10-20 13:31:39.472] [multi_logger] [info] Iteration 704: Applied NNI move (19, 27), no. accepts: 338, new log likelihood: -2032139.1710631163, current phi: 0.4501584120258483, current nu: 0.00010000711226859643
+[2025-10-20 13:31:39.969] [multi_logger] [info] Iteration 705: Applied NNI move (513, 514), no. accepts: 339, new log likelihood: -2032136.5417426159, current phi: 0.45018852170513407, current nu: 0.00010000712790802158
+[2025-10-20 13:31:40.463] [multi_logger] [info] Iteration 706: Applied NNI move (373, 377), no. accepts: 340, new log likelihood: -2032135.1452864953, current phi: 0.4504896086198536, current nu: 0.00010000712571631327
+[2025-10-20 13:31:40.929] [multi_logger] [info] Iteration 707: Applied NNI move (294, 295), no. accepts: 341, new log likelihood: -2032133.9573808997, current phi: 0.45044818553346755, current nu: 0.0001000071096059077
+[2025-10-20 13:31:41.416] [multi_logger] [info] Iteration 708: Applied NNI move (504, 540), no. accepts: 342, new log likelihood: -2032133.3272990854, current phi: 0.4504076220488236, current nu: 0.00010000716060291723
+[2025-10-20 13:31:41.916] [multi_logger] [info] Iteration 709: Rejected NNI move (856, 846), proposed log likelihood: -2032133.3272990854
+[2025-10-20 13:31:42.419] [multi_logger] [info] Iteration 710: Rejected NNI move (1638, 1640), proposed log likelihood: -2032133.3272990854
+[2025-10-20 13:31:42.924] [multi_logger] [info] Iteration 711: Rejected NNI move (728, 1396), proposed log likelihood: -2032133.3272990854
+[2025-10-20 13:31:43.422] [multi_logger] [info] Iteration 712: Applied NNI move (989, 983), no. accepts: 343, new log likelihood: -2032132.9021008858, current phi: 0.45036893373389675, current nu: 0.00010000719749516453
+[2025-10-20 13:31:43.921] [multi_logger] [info] Iteration 713: Applied NNI move (93, 91), no. accepts: 344, new log likelihood: -2032126.7660887977, current phi: 0.449914613175798, current nu: 0.00010000636924471411
+[2025-10-20 13:31:44.421] [multi_logger] [info] Iteration 714: Rejected NNI move (1439, 1437), proposed log likelihood: -2032126.7660887977
+[2025-10-20 13:31:44.875] [multi_logger] [info] Iteration 715: Applied NNI move (551, 547), no. accepts: 345, new log likelihood: -2032126.5053461655, current phi: 0.4497068133904085, current nu: 0.00010000672610640342
+[2025-10-20 13:31:45.376] [multi_logger] [info] Iteration 716: Rejected NNI move (14, 31), proposed log likelihood: -2032126.5053461655
+[2025-10-20 13:31:45.846] [multi_logger] [info] Iteration 717: Applied NNI move (656, 651), no. accepts: 346, new log likelihood: -2032126.060407912, current phi: 0.4496627670935502, current nu: 0.00010000690231097659
+[2025-10-20 13:31:46.344] [multi_logger] [info] Iteration 718: Applied NNI move (1401, 1404), no. accepts: 347, new log likelihood: -2032125.4768569735, current phi: 0.44970170085290506, current nu: 0.0001000070168158928
+[2025-10-20 13:31:46.827] [multi_logger] [info] Iteration 719: Applied NNI move (662, 664), no. accepts: 348, new log likelihood: -2032119.249918248, current phi: 0.4492972895561487, current nu: 0.00010000648294352906
+[2025-10-20 13:31:47.328] [multi_logger] [info] Iteration 720: Applied NNI move (826, 823), no. accepts: 349, new log likelihood: -2032118.1831032417, current phi: 0.4492593503945791, current nu: 0.00010000678480258519
+[2025-10-20 13:31:47.795] [multi_logger] [info] Iteration 721: Rejected NNI move (859, 864), proposed log likelihood: -2032118.1831032417
+[2025-10-20 13:31:48.255] [multi_logger] [info] Iteration 722: Rejected NNI move (483, 559), proposed log likelihood: -2032118.1831032417
+[2025-10-20 13:31:48.715] [multi_logger] [info] Iteration 723: Applied NNI move (637, 638), no. accepts: 350, new log likelihood: -2032111.3297855428, current phi: 0.4490488754042518, current nu: 0.00010000595740005643
+[2025-10-20 13:31:49.218] [multi_logger] [info] Iteration 724: Rejected NNI move (88, 156), proposed log likelihood: -2032111.3297855428
+[2025-10-20 13:31:49.727] [multi_logger] [info] Iteration 725: Applied NNI move (1304, 1303), no. accepts: 351, new log likelihood: -2032106.9342455075, current phi: 0.4491833360185764, current nu: 0.00010000598831737992
+[2025-10-20 13:31:50.200] [multi_logger] [info] Iteration 726: Rejected NNI move (301, 308), proposed log likelihood: -2032106.9342455075
+[2025-10-20 13:31:50.680] [multi_logger] [info] Iteration 727: Applied NNI move (566, 561), no. accepts: 352, new log likelihood: -2032106.5580521878, current phi: 0.4491270782556162, current nu: 0.0001000064116450851
+[2025-10-20 13:31:51.171] [multi_logger] [info] Iteration 728: Applied NNI move (394, 385), no. accepts: 353, new log likelihood: -2032106.5404067338, current phi: 0.4491226357801355, current nu: 0.00010000655664309585
+[2025-10-20 13:31:51.663] [multi_logger] [info] Iteration 729: Rejected NNI move (402, 415), proposed log likelihood: -2032106.5404067338
+[2025-10-20 13:31:52.133] [multi_logger] [info] Iteration 730: Rejected NNI move (1055, 1054), proposed log likelihood: -2032106.5404067338
+[2025-10-20 13:31:52.626] [multi_logger] [info] Iteration 731: Applied NNI move (917, 928), no. accepts: 354, new log likelihood: -2032106.5352068327, current phi: 0.4491236659675143, current nu: 0.00010000657594377452
+[2025-10-20 13:31:53.099] [multi_logger] [info] Iteration 732: Applied NNI move (736, 738), no. accepts: 355, new log likelihood: -2032106.5278193885, current phi: 0.44912467765668773, current nu: 0.00010000657836131108
+[2025-10-20 13:31:53.595] [multi_logger] [info] Iteration 733: Applied NNI move (555, 485), no. accepts: 356, new log likelihood: -2032106.510364009, current phi: 0.4491253893011534, current nu: 0.0001000065784569066
+[2025-10-20 13:31:54.088] [multi_logger] [info] Iteration 734: Rejected NNI move (1482, 1488), proposed log likelihood: -2032106.510364009
+[2025-10-20 13:31:54.542] [multi_logger] [info] Iteration 735: Applied NNI move (1069, 1068), no. accepts: 357, new log likelihood: -2032106.4617294022, current phi: 0.44912590356685717, current nu: 0.00010000657718455958
+[2025-10-20 13:31:55.025] [multi_logger] [info] Iteration 736: Applied NNI move (245, 244), no. accepts: 358, new log likelihood: -2032102.8188773356, current phi: 0.4492069868140462, current nu: 0.00010000646860438142
+[2025-10-20 13:31:55.484] [multi_logger] [info] Iteration 737: Rejected NNI move (649, 653), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:55.996] [multi_logger] [info] Iteration 738: Rejected NNI move (933, 938), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:56.491] [multi_logger] [info] Iteration 739: Rejected NNI move (1412, 1433), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:56.976] [multi_logger] [info] Iteration 740: Rejected NNI move (1576, 1596), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:57.473] [multi_logger] [info] Iteration 741: Rejected NNI move (1051, 1046), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:57.980] [multi_logger] [info] Iteration 742: Rejected NNI move (908, 899), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:58.486] [multi_logger] [info] Iteration 743: Rejected NNI move (68, 71), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:58.976] [multi_logger] [info] Iteration 744: Rejected NNI move (506, 533), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:59.478] [multi_logger] [info] Iteration 745: Rejected NNI move (1313, 1310), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:31:59.986] [multi_logger] [info] Iteration 746: Rejected NNI move (602, 690), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:32:00.460] [multi_logger] [info] Iteration 747: Rejected NNI move (1125, 1130), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:32:00.929] [multi_logger] [info] Iteration 748: Rejected NNI move (212, 215), proposed log likelihood: -2032102.8188773356
+[2025-10-20 13:32:01.406] [multi_logger] [info] Iteration 749: Applied NNI move (1000, 867), no. accepts: 359, new log likelihood: -2032102.0159579567, current phi: 0.4492094411809456, current nu: 0.00010000645069642849
+[2025-10-20 13:32:01.895] [multi_logger] [info] Iteration 750: Rejected NNI move (1331, 1330), proposed log likelihood: -2032102.0159579567
+[2025-10-20 13:32:02.363] [multi_logger] [info] Iteration 751: Applied NNI move (9, 14), no. accepts: 360, new log likelihood: -2032099.7515983095, current phi: 0.44925883264837024, current nu: 0.00010000642508318217
+[2025-10-20 13:32:02.836] [multi_logger] [info] Iteration 752: Rejected NNI move (309, 300), proposed log likelihood: -2032099.7515983095
+[2025-10-20 13:32:03.305] [multi_logger] [info] Iteration 753: Applied NNI move (912, 928), no. accepts: 361, new log likelihood: -2032099.3627678796, current phi: 0.4492424457468602, current nu: 0.00010000640115497965
+[2025-10-20 13:32:03.798] [multi_logger] [info] Iteration 754: Applied NNI move (427, 428), no. accepts: 362, new log likelihood: -2032098.470538666, current phi: 0.44894482043411726, current nu: 0.00010000627508777084
+[2025-10-20 13:32:04.281] [multi_logger] [info] Iteration 755: Applied NNI move (950, 947), no. accepts: 363, new log likelihood: -2032093.2546874215, current phi: 0.4487962330848376, current nu: 0.00010000633781316518
+[2025-10-20 13:32:04.743] [multi_logger] [info] Iteration 756: Rejected NNI move (563, 565), proposed log likelihood: -2032093.2546874215
+[2025-10-20 13:32:05.205] [multi_logger] [info] Iteration 757: Applied NNI move (1471, 1470), no. accepts: 364, new log likelihood: -2032081.538440186, current phi: 0.44894543713530993, current nu: 0.00010000787431607137
+[2025-10-20 13:32:05.680] [multi_logger] [info] Iteration 758: Rejected NNI move (1636, 1657), proposed log likelihood: -2032081.538440186
+[2025-10-20 13:32:06.159] [multi_logger] [info] Iteration 759: Rejected NNI move (212, 215), proposed log likelihood: -2032081.538440186
+[2025-10-20 13:32:06.639] [multi_logger] [info] Iteration 760: Rejected NNI move (1642, 1638), proposed log likelihood: -2032081.538440186
+[2025-10-20 13:32:07.110] [multi_logger] [info] Iteration 761: Rejected NNI move (1617, 1620), proposed log likelihood: -2032081.538440186
+[2025-10-20 13:32:07.578] [multi_logger] [info] Iteration 762: Rejected NNI move (49, 41), proposed log likelihood: -2032081.538440186
+[2025-10-20 13:32:08.085] [multi_logger] [info] Iteration 763: Rejected NNI move (1144, 1159), proposed log likelihood: -2032081.538440186
+[2025-10-20 13:32:08.598] [multi_logger] [info] Iteration 764: Applied NNI move (983, 986), no. accepts: 365, new log likelihood: -2032075.4182991986, current phi: 0.4485069942185368, current nu: 0.00010000757942196522
+[2025-10-20 13:32:09.047] [multi_logger] [info] Iteration 765: Applied NNI move (952, 954), no. accepts: 366, new log likelihood: -2032073.8979491522, current phi: 0.4484859148203622, current nu: 0.00010000802663199111
+[2025-10-20 13:32:09.495] [multi_logger] [info] Iteration 766: Applied NNI move (1165, 1143), no. accepts: 367, new log likelihood: -2032068.1034033794, current phi: 0.4485676522669804, current nu: 0.0001000080928926821
+[2025-10-20 13:32:09.941] [multi_logger] [info] Iteration 767: Applied NNI move (1084, 1085), no. accepts: 368, new log likelihood: -2032067.1106230486, current phi: 0.4487427060891523, current nu: 0.00010000855576330428
+[2025-10-20 13:32:10.420] [multi_logger] [info] Iteration 768: Rejected NNI move (1219, 1221), proposed log likelihood: -2032067.1106230486
+[2025-10-20 13:32:10.921] [multi_logger] [info] Iteration 769: Rejected NNI move (1555, 1536), proposed log likelihood: -2032067.1106230486
+[2025-10-20 13:32:11.409] [multi_logger] [info] Iteration 770: Rejected NNI move (1490, 1499), proposed log likelihood: -2032067.1106230486
+[2025-10-20 13:32:11.857] [multi_logger] [info] Iteration 771: Rejected NNI move (1294, 1290), proposed log likelihood: -2032067.1106230486
+[2025-10-20 13:32:12.310] [multi_logger] [info] Iteration 772: Rejected NNI move (1085, 1086), proposed log likelihood: -2032067.1106230486
+[2025-10-20 13:32:12.767] [multi_logger] [info] Iteration 773: Applied NNI move (418, 414), no. accepts: 369, new log likelihood: -2032066.5950418632, current phi: 0.44879300445756254, current nu: 0.00010000852634528003
+[2025-10-20 13:32:13.220] [multi_logger] [info] Iteration 774: Rejected NNI move (388, 390), proposed log likelihood: -2032066.5950418632
+[2025-10-20 13:32:13.689] [multi_logger] [info] Iteration 775: Rejected NNI move (1115, 1139), proposed log likelihood: -2032066.5950418632
+[2025-10-20 13:32:14.188] [multi_logger] [info] Iteration 776: Applied NNI move (514, 513), no. accepts: 370, new log likelihood: -2032066.5803226246, current phi: 0.4488054767162904, current nu: 0.00010000849002231481
+[2025-10-20 13:32:14.637] [multi_logger] [info] Iteration 777: Rejected NNI move (1047, 1049), proposed log likelihood: -2032066.5803226246
+[2025-10-20 13:32:15.081] [multi_logger] [info] Iteration 778: Applied NNI move (1224, 1223), no. accepts: 371, new log likelihood: -2032066.576543964, current phi: 0.44880647318884465, current nu: 0.00010000847608435154
+[2025-10-20 13:32:15.570] [multi_logger] [info] Iteration 779: Rejected NNI move (235, 231), proposed log likelihood: -2032066.576543964
+[2025-10-20 13:32:16.079] [multi_logger] [info] Iteration 780: Applied NNI move (999, 1001), no. accepts: 372, new log likelihood: -2032063.8873202733, current phi: 0.4484132173636277, current nu: 0.00010000837047938882
+[2025-10-20 13:32:16.582] [multi_logger] [info] Iteration 781: Rejected NNI move (161, 445), proposed log likelihood: -2032063.8873202733
+[2025-10-20 13:32:17.095] [multi_logger] [info] Iteration 782: Rejected NNI move (1154, 1157), proposed log likelihood: -2032063.8873202733
+[2025-10-20 13:32:17.615] [multi_logger] [info] Iteration 783: Rejected NNI move (331, 329), proposed log likelihood: -2032063.8873202733
+[2025-10-20 13:32:18.115] [multi_logger] [info] Iteration 784: Applied NNI move (113, 139), no. accepts: 373, new log likelihood: -2032058.871626393, current phi: 0.4481020575849465, current nu: 0.00010000864752557053
+[2025-10-20 13:32:18.614] [multi_logger] [info] Iteration 785: Applied NNI move (1142, 1144), no. accepts: 374, new log likelihood: -2032056.726165591, current phi: 0.4481197325449714, current nu: 0.00010000873526074727
+[2025-10-20 13:32:19.111] [multi_logger] [info] Iteration 786: Rejected NNI move (1441, 1445), proposed log likelihood: -2032056.726165591
+[2025-10-20 13:32:19.606] [multi_logger] [info] Iteration 787: Applied NNI move (1406, 1399), no. accepts: 375, new log likelihood: -2032056.712715334, current phi: 0.448120195540156, current nu: 0.00010000876892846906
+[2025-10-20 13:32:20.113] [multi_logger] [info] Iteration 788: Rejected NNI move (1035, 1073), proposed log likelihood: -2032056.712715334
+[2025-10-20 13:32:20.583] [multi_logger] [info] Iteration 789: Applied NNI move (891, 897), no. accepts: 376, new log likelihood: -2032054.45155606, current phi: 0.4482000424935623, current nu: 0.00010000899298949632
+[2025-10-20 13:32:21.032] [multi_logger] [info] Iteration 790: Applied NNI move (1265, 1260), no. accepts: 377, new log likelihood: -2032054.4304790942, current phi: 0.4482085145739397, current nu: 0.00010000906351772755
+[2025-10-20 13:32:21.517] [multi_logger] [info] Iteration 791: Applied NNI move (164, 186), no. accepts: 378, new log likelihood: -2032043.9777281974, current phi: 0.44828555037857193, current nu: 0.00010000906169709341
+[2025-10-20 13:32:22.031] [multi_logger] [info] Iteration 792: Applied NNI move (1279, 1270), no. accepts: 379, new log likelihood: -2032036.1256982847, current phi: 0.4483692062039738, current nu: 0.00010000875883072835
+[2025-10-20 13:32:22.535] [multi_logger] [info] Iteration 793: Applied NNI move (203, 230), no. accepts: 380, new log likelihood: -2032030.144294486, current phi: 0.4483564099741463, current nu: 0.00010000846860362007
+[2025-10-20 13:32:22.999] [multi_logger] [info] Iteration 794: Applied NNI move (8, 444), no. accepts: 381, new log likelihood: -2032029.8043552493, current phi: 0.448345476184215, current nu: 0.00010000951050020184
+[2025-10-20 13:32:23.463] [multi_logger] [info] Iteration 795: Rejected NNI move (1033, 1176), proposed log likelihood: -2032029.8043552493
+[2025-10-20 13:32:23.919] [multi_logger] [info] Iteration 796: Applied NNI move (932, 937), no. accepts: 382, new log likelihood: -2032026.8736854587, current phi: 0.44859120194718244, current nu: 0.00010000983311344115
+[2025-10-20 13:32:24.422] [multi_logger] [info] Iteration 797: Rejected NNI move (62, 65), proposed log likelihood: -2032026.8736854587
+[2025-10-20 13:32:24.932] [multi_logger] [info] Iteration 798: Applied NNI move (974, 971), no. accepts: 383, new log likelihood: -2032019.9897594354, current phi: 0.44874872767003293, current nu: 0.00010001042742340854
+[2025-10-20 13:32:25.445] [multi_logger] [info] Iteration 799: Rejected NNI move (132, 136), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:25.955] [multi_logger] [info] Iteration 800: Rejected NNI move (1489, 1493), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:26.435] [multi_logger] [info] Iteration 801: Rejected NNI move (1198, 1200), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:26.946] [multi_logger] [info] Iteration 802: Rejected NNI move (574, 596), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:27.451] [multi_logger] [info] Iteration 803: Rejected NNI move (1398, 1404), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:27.959] [multi_logger] [info] Iteration 804: Rejected NNI move (1258, 1269), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:28.462] [multi_logger] [info] Iteration 805: Rejected NNI move (780, 788), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:28.967] [multi_logger] [info] Iteration 806: Rejected NNI move (429, 433), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:29.461] [multi_logger] [info] Iteration 807: Rejected NNI move (96, 155), proposed log likelihood: -2032019.9897594354
+[2025-10-20 13:32:29.947] [multi_logger] [info] Iteration 808: Applied NNI move (320, 309), no. accepts: 384, new log likelihood: -2032019.965148325, current phi: 0.44876425503994843, current nu: 0.00010001070744270685
+[2025-10-20 13:32:30.455] [multi_logger] [info] Iteration 809: Rejected NNI move (436, 434), proposed log likelihood: -2032019.965148325
+[2025-10-20 13:32:30.944] [multi_logger] [info] Iteration 810: Rejected NNI move (357, 359), proposed log likelihood: -2032019.965148325
+[2025-10-20 13:32:31.410] [multi_logger] [info] Iteration 811: Applied NNI move (1088, 1076), no. accepts: 385, new log likelihood: -2032019.372982255, current phi: 0.448762851497715, current nu: 0.00010001069982804946
+[2025-10-20 13:32:31.865] [multi_logger] [info] Iteration 812: Applied NNI move (327, 348), no. accepts: 386, new log likelihood: -2032014.0992472633, current phi: 0.4488444106580904, current nu: 0.00010001110185565817
+[2025-10-20 13:32:32.349] [multi_logger] [info] Iteration 813: Applied NNI move (266, 264), no. accepts: 387, new log likelihood: -2032012.3493671608, current phi: 0.44842852248078646, current nu: 0.00010000967914376771
+[2025-10-20 13:32:32.810] [multi_logger] [info] Iteration 814: Applied NNI move (696, 698), no. accepts: 388, new log likelihood: -2032012.049865271, current phi: 0.4483986455668948, current nu: 0.00010000990213173883
+[2025-10-20 13:32:33.313] [multi_logger] [info] Iteration 815: Applied NNI move (131, 114), no. accepts: 389, new log likelihood: -2032012.0406634137, current phi: 0.44839670730130604, current nu: 0.00010000991511192535
+[2025-10-20 13:32:33.805] [multi_logger] [info] Iteration 816: Rejected NNI move (1234, 1238), proposed log likelihood: -2032012.0406634137
+[2025-10-20 13:32:34.295] [multi_logger] [info] Iteration 817: Rejected NNI move (156, 158), proposed log likelihood: -2032012.0406634137
+[2025-10-20 13:32:34.778] [multi_logger] [info] Iteration 818: Applied NNI move (642, 681), no. accepts: 390, new log likelihood: -2032012.034449711, current phi: 0.44839604757091667, current nu: 0.00010000991521689412
+[2025-10-20 13:32:35.243] [multi_logger] [info] Iteration 819: Rejected NNI move (1659, 1662), proposed log likelihood: -2032012.034449711
+[2025-10-20 13:32:35.737] [multi_logger] [info] Iteration 820: Rejected NNI move (61, 63), proposed log likelihood: -2032012.034449711
+[2025-10-20 13:32:36.251] [multi_logger] [info] Iteration 821: Rejected NNI move (759, 807), proposed log likelihood: -2032012.034449711
+[2025-10-20 13:32:36.750] [multi_logger] [info] Iteration 822: Applied NNI move (1414, 1418), no. accepts: 391, new log likelihood: -2032009.1462420684, current phi: 0.4480907532357338, current nu: 0.00010001008529870128
+[2025-10-20 13:32:37.248] [multi_logger] [info] Iteration 823: Applied NNI move (182, 171), no. accepts: 392, new log likelihood: -2032008.6891967743, current phi: 0.44805898632611807, current nu: 0.00010001015483044213
+[2025-10-20 13:32:37.753] [multi_logger] [info] Iteration 824: Applied NNI move (323, 380), no. accepts: 393, new log likelihood: -2032008.0632616188, current phi: 0.4480221426516755, current nu: 0.00010001015007595356
+[2025-10-20 13:32:38.267] [multi_logger] [info] Iteration 825: Rejected NNI move (982, 988), proposed log likelihood: -2032008.0632616188
+[2025-10-20 13:32:38.726] [multi_logger] [info] Iteration 826: Rejected NNI move (1503, 1608), proposed log likelihood: -2032008.0632616188
+[2025-10-20 13:32:39.226] [multi_logger] [info] Iteration 827: Rejected NNI move (1259, 1263), proposed log likelihood: -2032008.0632616188
+[2025-10-20 13:32:39.718] [multi_logger] [info] Iteration 828: Rejected NNI move (456, 458), proposed log likelihood: -2032008.0632616188
+[2025-10-20 13:32:40.225] [multi_logger] [info] Iteration 829: Applied NNI move (161, 40), no. accepts: 394, new log likelihood: -2032007.2105698304, current phi: 0.44794634554669904, current nu: 0.00010001016467277227
+[2025-10-20 13:32:40.696] [multi_logger] [info] Iteration 830: Applied NNI move (1600, 1537), no. accepts: 395, new log likelihood: -2032006.1865934152, current phi: 0.447888716475125, current nu: 0.00010001019121378221
+[2025-10-20 13:32:41.208] [multi_logger] [info] Iteration 831: Applied NNI move (288, 306), no. accepts: 396, new log likelihood: -2031996.154333144, current phi: 0.4481374098084164, current nu: 0.00010000986891050508
+[2025-10-20 13:32:41.725] [multi_logger] [info] Iteration 832: Applied NNI move (40, 49), no. accepts: 397, new log likelihood: -2031995.0597375813, current phi: 0.4481361726289715, current nu: 0.00010000976392045417
+[2025-10-20 13:32:42.242] [multi_logger] [info] Iteration 833: Rejected NNI move (739, 856), proposed log likelihood: -2031995.0597375813
+[2025-10-20 13:32:42.733] [multi_logger] [info] Iteration 834: Rejected NNI move (130, 133), proposed log likelihood: -2031995.0597375813
+[2025-10-20 13:32:43.242] [multi_logger] [info] Iteration 835: Applied NNI move (603, 605), no. accepts: 398, new log likelihood: -2031993.130955699, current phi: 0.4479356665593716, current nu: 0.00010000983010039383
+[2025-10-20 13:32:43.746] [multi_logger] [info] Iteration 836: Applied NNI move (1223, 1222), no. accepts: 399, new log likelihood: -2031992.150553192, current phi: 0.4478723804538832, current nu: 0.00010000986236890701
+[2025-10-20 13:32:44.251] [multi_logger] [info] Iteration 837: Rejected NNI move (1460, 1474), proposed log likelihood: -2031992.150553192
+[2025-10-20 13:32:44.754] [multi_logger] [info] Iteration 838: Applied NNI move (760, 789), no. accepts: 400, new log likelihood: -2031990.2343765341, current phi: 0.44785828921009074, current nu: 0.00010001002937736397
+[2025-10-20 13:32:45.217] [multi_logger] [info] Iteration 839: Applied NNI move (1492, 1494), no. accepts: 401, new log likelihood: -2031984.292428529, current phi: 0.44805842990949035, current nu: 0.00010001023412735166
+[2025-10-20 13:32:45.721] [multi_logger] [info] Iteration 840: Rejected NNI move (805, 801), proposed log likelihood: -2031984.292428529
+[2025-10-20 13:32:46.214] [multi_logger] [info] Iteration 841: Rejected NNI move (282, 232), proposed log likelihood: -2031984.292428529
+[2025-10-20 13:32:46.682] [multi_logger] [info] Iteration 842: Applied NNI move (1119, 1123), no. accepts: 402, new log likelihood: -2031972.2567765638, current phi: 0.448462751971249, current nu: 0.00010001075554325052
+[2025-10-20 13:32:47.130] [multi_logger] [info] Iteration 843: Applied NNI move (1322, 1285), no. accepts: 403, new log likelihood: -2031972.0764811952, current phi: 0.44845723810139815, current nu: 0.00010001070837749509
+[2025-10-20 13:32:47.632] [multi_logger] [info] Iteration 844: Applied NNI move (463, 465), no. accepts: 404, new log likelihood: -2031970.8035833759, current phi: 0.44842971143289173, current nu: 0.00010001059440560453
+[2025-10-20 13:32:48.105] [multi_logger] [info] Iteration 845: Applied NNI move (1272, 1274), no. accepts: 405, new log likelihood: -2031969.7466893177, current phi: 0.4484509084197955, current nu: 0.00010001031279555652
+[2025-10-20 13:32:48.597] [multi_logger] [info] Iteration 846: Applied NNI move (109, 108), no. accepts: 406, new log likelihood: -2031969.632908835, current phi: 0.4484541607643234, current nu: 0.00010001019473886151
+[2025-10-20 13:32:49.061] [multi_logger] [info] Iteration 847: Rejected NNI move (14, 30), proposed log likelihood: -2031969.632908835
+[2025-10-20 13:32:49.542] [multi_logger] [info] Iteration 848: Rejected NNI move (363, 357), proposed log likelihood: -2031969.632908835
+[2025-10-20 13:32:50.027] [multi_logger] [info] Iteration 849: Rejected NNI move (1414, 1428), proposed log likelihood: -2031969.632908835
+[2025-10-20 13:32:50.504] [multi_logger] [info] Iteration 850: Applied NNI move (355, 326), no. accepts: 407, new log likelihood: -2031969.5778380823, current phi: 0.4484427498654304, current nu: 0.00010001014826802382
+[2025-10-20 13:32:51.003] [multi_logger] [info] Iteration 851: Rejected NNI move (289, 291), proposed log likelihood: -2031969.5778380823
+[2025-10-20 13:32:51.504] [multi_logger] [info] Iteration 852: Rejected NNI move (489, 488), proposed log likelihood: -2031969.5778380823
+[2025-10-20 13:32:51.997] [multi_logger] [info] Iteration 853: Applied NNI move (1300, 1301), no. accepts: 408, new log likelihood: -2031969.5326413037, current phi: 0.4484309549489095, current nu: 0.00010001011018444136
+[2025-10-20 13:32:52.497] [multi_logger] [info] Iteration 854: Rejected NNI move (1100, 1097), proposed log likelihood: -2031969.5326413037
+[2025-10-20 13:32:52.987] [multi_logger] [info] Iteration 855: Rejected NNI move (1313, 1310), proposed log likelihood: -2031969.5326413037
+[2025-10-20 13:32:53.484] [multi_logger] [info] Iteration 856: Rejected NNI move (40, 162), proposed log likelihood: -2031969.5326413037
+[2025-10-20 13:32:53.973] [multi_logger] [info] Iteration 857: Applied NNI move (908, 888), no. accepts: 409, new log likelihood: -2031966.7758673804, current phi: 0.4488794905963794, current nu: 0.00010001006082311855
+[2025-10-20 13:32:54.449] [multi_logger] [info] Iteration 858: Rejected NNI move (453, 452), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:54.931] [multi_logger] [info] Iteration 859: Rejected NNI move (145, 144), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:55.426] [multi_logger] [info] Iteration 860: Rejected NNI move (792, 791), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:55.912] [multi_logger] [info] Iteration 861: Rejected NNI move (1106, 1143), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:56.413] [multi_logger] [info] Iteration 862: Rejected NNI move (1504, 1530), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:56.917] [multi_logger] [info] Iteration 863: Rejected NNI move (1373, 1397), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:57.393] [multi_logger] [info] Iteration 864: Rejected NNI move (1301, 1302), proposed log likelihood: -2031966.7758673804
+[2025-10-20 13:32:57.393] [multi_logger] [info] Terminating: no acceptable move or improvement < η at iteration 865
+[2025-10-20 13:32:57.393] [multi_logger] [info] Simulated annealing completed after 865 iterations. Final log likelihood: -2031966.7758673804
+[2025-10-20 13:32:57.398] [multi_logger] [info] Num missing entries: 9846 Num not missing entries: 30090
+[2025-10-20 13:32:57.460] [multi_logger] [info] EM iteration: 0 Log likelihood: -2073831.345222136
+[2025-10-20 13:32:57.460] [multi_logger] [info] Nu: 0.693670392036438 Phi: 0.8098391890525818
+[2025-10-20 13:32:57.607] [multi_logger] [info] EM iteration: 1 Log likelihood: -2033115.3581665237
+[2025-10-20 13:32:57.607] [multi_logger] [info] Nu: 0.16282810486834326 Phi: 0.17342341761861774
+[2025-10-20 13:32:57.737] [multi_logger] [info] EM iteration: 2 Log likelihood: -2032601.1273554808
+[2025-10-20 13:32:57.737] [multi_logger] [info] Nu: 0.1760016987439307 Phi: 0.13507212427813578
+[2025-10-20 13:32:57.853] [multi_logger] [info] EM iteration: 3 Log likelihood: -2032411.0754314885
+[2025-10-20 13:32:57.853] [multi_logger] [info] Nu: 0.20386715294519103 Phi: 0.11692786764943437
+[2025-10-20 13:32:57.978] [multi_logger] [info] EM iteration: 4 Log likelihood: -2032302.4138347502
+[2025-10-20 13:32:57.978] [multi_logger] [info] Nu: 0.2289441442454071 Phi: 0.10367809916552978
+[2025-10-20 13:32:58.093] [multi_logger] [info] EM iteration: 5 Log likelihood: -2032231.9715944938
+[2025-10-20 13:32:58.093] [multi_logger] [info] Nu: 0.2499647269428448 Phi: 0.09324967733781249
+[2025-10-20 13:32:58.217] [multi_logger] [info] EM iteration: 6 Log likelihood: -2032183.08502128
+[2025-10-20 13:32:58.217] [multi_logger] [info] Nu: 0.2675056682346633 Phi: 0.0848119744147246
+[2025-10-20 13:32:58.347] [multi_logger] [info] EM iteration: 7 Log likelihood: -2032147.4851736715
+[2025-10-20 13:32:58.347] [multi_logger] [info] Nu: 0.28226807675729054 Phi: 0.07783563978339157
+[2025-10-20 13:32:58.486] [multi_logger] [info] EM iteration: 8 Log likelihood: -2032120.6536863036
+[2025-10-20 13:32:58.486] [multi_logger] [info] Nu: 0.2948391015503272 Phi: 0.07196002155907402
+[2025-10-20 13:32:58.626] [multi_logger] [info] EM iteration: 9 Log likelihood: -2032099.8870876885
+[2025-10-20 13:32:58.626] [multi_logger] [info] Nu: 0.3056730545998103 Phi: 0.06693363547817022
+[2025-10-20 13:32:58.889] [multi_logger] [info] Best log likelihood: -2032083.4300054978
+[2025-10-20 13:32:58.889] [multi_logger] [info] Total runtime: 514196 ms
+[2025-10-20 13:32:58.889] [multi_logger] [info] Writing best tree to file...
+[2025-10-20 13:32:58.891] [multi_logger] [info] Optimized tree written to fastlaml_colonies_clone3.stepwise_addition_07_tree.newick
+[2025-10-20 13:32:58.891] [multi_logger] [info] data_type: observation-matrix, writing posterior probs and argmax probs.
+[2025-10-20 13:32:59.177] [multi_logger] [info] Posterior matrix written to fastlaml_colonies_clone3.stepwise_addition_07_posterior_probs.csv
+[2025-10-20 13:32:59.185] [multi_logger] [info] Argmax matrix written to fastlaml_colonies_clone3.stepwise_addition_07_posterior_argmax.csv
+[2025-10-20 13:32:59.186] [multi_logger] [info] JSON summary written to fastlaml_colonies_clone3.stepwise_addition_07_results.json
+[2025-10-20 13:32:59.186] [multi_logger] [info] Tree search and optimization completed. Log likelihood: -2032083.4300054978
