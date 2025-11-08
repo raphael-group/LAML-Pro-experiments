@@ -154,7 +154,7 @@ plot_concordance_distribution(bm_concordance, lp_concordance, bm_genodict, hat,
 ####### Spatial annotation
 
 # scale trees first
-lp_tree.collapse_short_branches(short_branch_thresh)
+#lp_tree.collapse_short_branches(short_branch_thresh)
 lp_tree.root.set_edge_length(0.0)
 
 bm_tree.scale_edges(tau/bm_tree.height())

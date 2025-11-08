@@ -196,7 +196,9 @@ def clustermap_genos(
     outfile: str | None = None,
     n_col_clusters: int = 6,          # how many column clusters to group to the left
     group_blocks_left: bool = True,   # turn grouping on/off
-    show_cell_names: bool = True
+    show_cell_names: bool = True,
+    row_order=None,
+    col_order=None
 ):
     # 1) align rows/cols
     common_rows = bm_chars.index.intersection(lp_chars.index)
@@ -204,20 +206,26 @@ def clustermap_genos(
     bm = bm_chars.loc[common_rows, common_cols].apply(pd.to_numeric, errors="coerce").fillna(-1)
     lp = lp_chars.loc[common_rows, common_cols].apply(pd.to_numeric, errors="coerce").fillna(-1)
     
-    # 2) get LP clustering 
-    g_lp = sns.clustermap(
-        lp, row_cluster=True, col_cluster=True,
-        metric=metric, method=method,
-        xticklabels=False, yticklabels=False, cbar=False
-    )
-    row_order = g_lp.dendrogram_row.reordered_ind
-    col_order = g_lp.dendrogram_col.reordered_ind
-    Zc = g_lp.dendrogram_col.linkage  # column linkage for grouping
-    plt.close(g_lp.fig)               # close the temporary figure
+    if (row_order is not None) and (col_order is not None):
+        print("Taking row and col order as input")
+        lp_ord = lp.loc[row_order,col_order]
+        bm_ord = bm.loc[row_order,col_order]
+    else: 
 
-    # reorder matrices by LP order
-    lp_ord = lp.iloc[row_order, :].iloc[:, col_order]
-    bm_ord = bm.iloc[row_order, :].iloc[:, col_order]
+        # 2) get LP clustering 
+        g_lp = sns.clustermap(
+            lp, row_cluster=True, col_cluster=True,
+            metric=metric, method=method,
+            xticklabels=False, yticklabels=False, cbar=False
+        )
+        row_order = g_lp.dendrogram_row.reordered_ind
+        col_order = g_lp.dendrogram_col.reordered_ind
+        Zc = g_lp.dendrogram_col.linkage  # column linkage for grouping
+        plt.close(g_lp.fig)               # close the temporary figure
+
+        # reorder matrices by LP order
+        lp_ord = lp.iloc[row_order, :].iloc[:, col_order]
+        bm_ord = bm.iloc[row_order, :].iloc[:, col_order]
 
     categories = np.arange(vmin, vmax + 1)
     print("Num categories:", categories)
@@ -246,7 +254,7 @@ def clustermap_genos(
 
     axes[1].set_title(f"{title}: {other} genotypes", fontsize=16)
     axes[1].set_xlabel("Target sites", fontsize=13)
-    axes[1].set_ylabel("Cell names", fontsize=13)
+
     axes[1].tick_params(axis="both", labelsize=11)
 
     # LAML-Pro (right) 
@@ -258,7 +266,7 @@ def clustermap_genos(
     )
     axes[0].set_title(f"{title}: LAML-Pro genotypes", fontsize=16)
     axes[0].set_xlabel("Target sites", fontsize=13)
-    axes[0].set_ylabel("") 
+    axes[0].set_ylabel("Cell names", fontsize=13)
     axes[0].tick_params(axis="both", labelsize=11)
 
     # Black border around each heatmap
@@ -269,10 +277,13 @@ def clustermap_genos(
             ax.spines[side].set_edgecolor("black")
 
     # Shared colorbar
-    cbar = fig.colorbar(
-        plt.cm.ScalarMappable(norm=norm, cmap=cmap),
-        ax=axes, orientation="horizontal", fraction=0.08, pad=0.05
-    )
+    box_h = axes[1].get_position()
+    cax   = fig.add_axes([box_h.x1 + 0.004, box_h.y0, 0.018, box_h.height])  # tweak 0.004/0.018 if needed
+    cbar  = fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), cax=cax)
+    #cbar = fig.colorbar(
+    #    plt.cm.ScalarMappable(norm=norm, cmap=cmap),
+    #    ax=axes, orientation="horizontal", fraction=0.08, pad=0.05
+    #)
     cbar.set_ticks(categories) #["?/-1"] + [str(x) for x in categories[1:]))
     ticklabels = ["?/-1" if x == -1 else str(x) for x in categories]
     cbar.set_ticklabels(ticklabels)

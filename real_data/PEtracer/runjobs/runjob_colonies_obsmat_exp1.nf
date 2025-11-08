@@ -3,7 +3,7 @@ params.matrix = "/Users/gc3045/git/laml2-experiments/real_data/PEtracer/inputs/c
 params.matrix_type = "observation-matrix"
 params.fastlaml_bin = "/Users/gc3045/git/fast-laml/build/src/fastlaml"
 params.seed = 0
-params.max_iter = 5000
+params.max_iter = 10000 
 params.tree_dir = "/Users/gc3045/git/laml2-experiments/real_data/PEtracer/inputs/trees/colonies_subset/"
 
 Channel
@@ -18,11 +18,11 @@ process run_fastlaml {
 
     output:
     path "fastlaml_*", emit: results
-    publishDir "outputs_petracer_colonies_clone${clone}", mode: 'copy'
+    publishDir "colonies_experiment1", mode: 'copy'
 
     script:
     def basename = tree.getBaseName()
-    def outdir = "fastlaml_colonies_${basename}"
+    def outdir = "fastlaml_colonies_${basename}_run2"
 
     """
     echo "Running fastlaml on tree: ${tree}"
@@ -34,6 +34,7 @@ process run_fastlaml {
         --seed ${params.seed} \\
         --max-iterations ${params.max_iter} \\
         --ultrametric \\
+        --min-branch-length 0.01 \\
         -d ${params.matrix_type} \\
         -v
     echo "Finished: ${tree} -> ${outdir}"
